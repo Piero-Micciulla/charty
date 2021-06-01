@@ -2,9 +2,10 @@
 
 # What do we expect you to create?
 
-The assignment is creating a Progressive Web App (PWA) or Android/IOS Mobile application using Angular, Typescript and preferably using reactive programming using the powerful RxJS library.
+The assignment is creating a Progressive Web App (PWA) using Angular, Typescript and preferably using reactive programming using the powerful RxJS library.
 
-You will be working in teams on the application so you are expected to plan together, divide the workload, use GIT flow so you can branch your work, merge or rebase when ready to a development branch and finally build a production ready PWA merged to the master branch.
+You will be working on your own on the project but are encouraged to discuss with your fellow Heroes. 
+Create your own branch in this repository and push your final assignment to the repo when you are done. Keep your work local untill done. 
 
 
 # Must haves
