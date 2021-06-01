@@ -9,12 +9,13 @@ import { Song } from '../models/song';
   providedIn: 'root',
 })
 export class Top40Service {
-  top40Url: string = 'http://www.top40.nl/app_api/top40_json';
+  hitlistUrl: string =
+    'http://localhost:5000/http://www.top40.nl/app_api/top40_json';
 
   constructor(private http: HttpClient) {}
 
   getTop40(): Observable<Song[]> {
-    const url = `${this.top40Url}/1`;
+    const url = `${this.hitlistUrl}/1`;
     const allTopSongs = this.http.get<Song[]>(url);
 
     return allTopSongs;
