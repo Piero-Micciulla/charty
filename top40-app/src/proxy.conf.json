@@ -1,0 +1,10 @@
+{
+    "/api": {
+      "target": "http://www.top40.nl/app_api/top40_json",
+      "secure": true,
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/api": ""
+      }
+    }
+}

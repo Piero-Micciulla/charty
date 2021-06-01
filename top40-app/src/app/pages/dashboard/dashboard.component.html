@@ -1,0 +1,38 @@
+<header>
+    <ul>
+        <li>logo</li>
+        <li>top 40</li>
+        <li>album top 40</li>
+        <li>tipparade</li>
+        <li>film top 40</li>
+        <li>overige hitlijsten</li>
+    </ul>
+</header>
+
+
+<main>
+    <h1>Toplijsten</h1>
+    <ol>
+        <li>top 40</li>
+        <li>album top 40</li>
+        <li>tipparade</li>
+        <li>film top 40</li>
+        <li>global top 40</li>
+        <li>airplay top 40</li>
+        <li>streaming top 40</li>
+        <li>top 100 nederlands product 10's</li>
+        <li>worldwideclub 20</li>
+    </ol>
+
+    <div *ngFor="let song of songs">
+        <p>{{ song.title }}</p>
+
+    </div>
+</main>
+
+
+<footer>
+    <p>
+        Created by Anne van Gorkom
+    </p>
+</footer>
