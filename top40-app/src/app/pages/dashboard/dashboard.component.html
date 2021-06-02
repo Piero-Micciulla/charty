@@ -1,12 +1,5 @@
-<header>
-    <ul>
-        <li>logo</li>
-        <li>top 40</li>
-        <li>album top 40</li>
-        <li>tipparade</li>
-        <li>film top 40</li>
-        <li>overige hitlijsten</li>
-    </ul>
+<header> 
+    <app-navigation></app-navigation>
 </header>
 
 
@@ -24,10 +17,14 @@
         <li>worldwideclub 20</li>
     </ol>
 
-    <div *ngFor="let song of songs">
-        <p>{{ song.title }}</p>
-
-    </div>
+    <!-- <div *ngFor="let hitlist of hitlists">
+        <p>Week {{ hitlist.week }} - {{ hitlist.year }}</p>
+        <div *ngFor="let position of hitlist.positions">
+            <p>{{ position.position }}</p>
+            <p>{{ position.title }}</p>
+            <p>{{ position.credit }}</p>
+        </div>
+    </div> -->
 </main>
 
 

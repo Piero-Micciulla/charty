@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Song } from 'src/app/models/song';
-import { Top40Service } from 'src/app/services/top40.service';
+import { Hitlist } from 'src/app/models/hitlist';
+import { HitlistsService } from 'src/app/services/hitlists.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,15 +8,17 @@ import { Top40Service } from 'src/app/services/top40.service';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  songs!: Song[];
+  hitlists!: Hitlist[];
 
-  constructor(private top40Service: Top40Service) {}
+  constructor(private top40Service: HitlistsService) {}
 
   ngOnInit(): void {
     this.getTop40();
   }
 
   getTop40(): void {
-    this.top40Service.getTop40().subscribe((songs) => (this.songs = songs));
+    this.top40Service
+      .getTop40()
+      .subscribe((hitlists) => (this.hitlists = hitlists));
   }
 }
