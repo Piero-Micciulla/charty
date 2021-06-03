@@ -34,17 +34,15 @@
     
         <mat-sidenav-content role="main">
             <h1>Hitlists</h1>
-            <ol>
-                <li [routerLink]="['/hitlist', top40]">top 40</li>
-                <li>album top 40</li>
-                <li>tipparade</li>
-                <li>film top 40</li>
-                <li>global top 40</li>
-                <li>airplay top 40</li>
-                <li>streaming top 40</li>
-                <li>top 100 nederlands product 10's</li>
-                <li>worldwideclub 20</li>
-            </ol>
+
+            <div>
+                <mat-card role="main">
+                    <!-- <img mat-card-image src="{{ img of number 1 of hitlist }}" alt="">
+                    <mat-card-title>{{ hitlist name }}</mat-card-title> -->
+                    <p>image of #1 position of this specific list</p>
+                    <p>name of this specific list</p>
+                </mat-card>
+            </div>
         </mat-sidenav-content>
     </mat-sidenav-container>
 </div>

@@ -11,15 +11,7 @@ export class DashboardComponent implements OnInit {
   hitlists!: Hitlist[];
   opened!: boolean;
 
-  constructor(private top40Service: HitlistsService) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    this.getTop40();
-  }
-
-  getTop40(): void {
-    this.top40Service
-      .getTop40()
-      .subscribe((hitlists) => (this.hitlists = hitlists));
-  }
+  ngOnInit(): void {}
 }
