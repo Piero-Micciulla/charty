@@ -5,7 +5,7 @@
 The assignment is creating a Progressive Web App (PWA) using Angular, Typescript and preferably using reactive programming using the powerful RxJS library.
 
 You will be working on your own on the project but are encouraged to discuss with your fellow Heroes. 
-Create your own branch in this repository and push your final assignment to the repo when you are done. Keep your work local untill done. 
+Create your own branch in this repository and don't forget to commit often and push to Gitlab.
 
 
 # Must haves
