@@ -1,35 +1,50 @@
-<header> 
-    <app-navigation></app-navigation>
-</header>
+<div>
+    <mat-toolbar role="heading">
+        <img [routerLink]="['/']" src="/top40-app/src/assets/logo-top40.png" alt="Top40 Logo">
+        <span class="example-spacer"></span>
+        <span *ngIf="!opened; else closeButton">
+            <fa-icon (click)="sidenav.toggle()" [icon]="['fas', 'bars']"></fa-icon>
+        </span>
+        <ng-template #closeButton>
+            <fa-icon (click)="sidenav.toggle()" [icon]="['fas', 'times']"></fa-icon>
+        </ng-template>
+            
+    </mat-toolbar>
 
-
-<main>
-    <h1>Toplijsten</h1>
-    <ol>
-        <li>top 40</li>
-        <li>album top 40</li>
-        <li>tipparade</li>
-        <li>film top 40</li>
-        <li>global top 40</li>
-        <li>airplay top 40</li>
-        <li>streaming top 40</li>
-        <li>top 100 nederlands product 10's</li>
-        <li>worldwideclub 20</li>
-    </ol>
-
-    <!-- <div *ngFor="let hitlist of hitlists">
-        <p>Week {{ hitlist.week }} - {{ hitlist.year }}</p>
-        <div *ngFor="let position of hitlist.positions">
-            <p>{{ position.position }}</p>
-            <p>{{ position.title }}</p>
-            <p>{{ position.credit }}</p>
-        </div>
-    </div> -->
-</main>
-
-
-<footer>
-    <p>
-        Created by Anne van Gorkom
-    </p>
-</footer>
+    <mat-sidenav-container>
+        <mat-sidenav #sidenav mode="over" position="end" role="navigation" [(opened)]="opened">
+            <ul>
+                <li>
+                    <a href="#">Top 40</a>
+                </li>
+                <li>
+                    <a href="#">Album Top 40</a>
+                </li>
+                <li>
+                    <a href="#">Tipparade</a>
+                </li>
+                <li>
+                    <a href="#">Movie Top 40</a>
+                </li>
+                <li>
+                    <a href="#">Other hitlists</a>
+                </li>
+            </ul>
+        </mat-sidenav>
+    
+        <mat-sidenav-content role="main">
+            <h1>Hitlists</h1>
+            <ol>
+                <li [routerLink]="['/hitlist', top40]">top 40</li>
+                <li>album top 40</li>
+                <li>tipparade</li>
+                <li>film top 40</li>
+                <li>global top 40</li>
+                <li>airplay top 40</li>
+                <li>streaming top 40</li>
+                <li>top 100 nederlands product 10's</li>
+                <li>worldwideclub 20</li>
+            </ol>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>
