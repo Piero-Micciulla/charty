@@ -1,48 +1,13 @@
+<h1>Hitlists</h1>
+
 <div>
-    <mat-toolbar role="heading">
-        <img [routerLink]="['/']" src="/top40-app/src/assets/logo-top40.png" alt="Top40 Logo">
-        <span class="example-spacer"></span>
-        <span *ngIf="!opened; else closeButton">
-            <fa-icon (click)="sidenav.toggle()" [icon]="['fas', 'bars']"></fa-icon>
-        </span>
-        <ng-template #closeButton>
-            <fa-icon (click)="sidenav.toggle()" [icon]="['fas', 'times']"></fa-icon>
-        </ng-template>
-            
-    </mat-toolbar>
-
-    <mat-sidenav-container>
-        <mat-sidenav #sidenav mode="over" position="end" role="navigation" [(opened)]="opened">
-            <ul>
-                <li>
-                    <a href="#">Top 40</a>
-                </li>
-                <li>
-                    <a href="#">Album Top 40</a>
-                </li>
-                <li>
-                    <a href="#">Tipparade</a>
-                </li>
-                <li>
-                    <a href="#">Movie Top 40</a>
-                </li>
-                <li>
-                    <a href="#">Other hitlists</a>
-                </li>
-            </ul>
-        </mat-sidenav>
-    
-        <mat-sidenav-content role="main">
-            <h1>Hitlists</h1>
-
-            <div>
-                <mat-card role="main">
-                    <!-- <img mat-card-image src="{{ img of number 1 of hitlist }}" alt="">
-                    <mat-card-title>{{ hitlist name }}</mat-card-title> -->
-                    <p>image of #1 position of this specific list</p>
-                    <p>name of this specific list</p>
-                </mat-card>
-            </div>
-        </mat-sidenav-content>
-    </mat-sidenav-container>
+    <mat-card role="main">
+        <mat-card-title-group>
+            <p>image of #1 position of this specific list</p>
+            <!-- <img mat-card-lg-image> -->
+            <mat-card-title>
+                name of this specific list
+            </mat-card-title>
+        </mat-card-title-group>
+    </mat-card>
 </div>
