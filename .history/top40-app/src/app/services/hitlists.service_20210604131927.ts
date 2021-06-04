@@ -6,53 +6,25 @@ import { Observable } from 'rxjs';
 import { Hitlist } from '../models/hitlist';
 import { HitlistComponent } from '../pages/hitlist/hitlist.component';
 
-export const HITLIST_TYPES: HitlistType[] = [
-  {
+export const HITLIST_TYPES: HitlistType[] = 
+  [{
     id: 1,
     title: 'Top 40',
-    size: 40,
+    size: 40
   },
-  {
-    id: 2,
-    title: 'Album Top 40',
-    size: 40,
-  },
-  {
-    id: 3,
-    title: 'Tipparade',
-    size: 30,
-  },
-  {
-    id: 4,
-    title: 'Movie Top 40',
-    size: 40,
-  },
-  // {
-  //   id: 16,
-  //   title: 'Global Top 40',
-  //   size: 40,
-  // },
-  // {
-  //   id: 19,
-  //   title: 'Airplay Top 40',
-  //   size: 40,
-  // },
-  // {
-  //   id: 20,
-  //   title: 'Streaming Top 40',
-  //   size: 40,
-  // },
-  // {
-  //   id: 31,
-  //   title: 'Nederlandse Hits Top 100',
-  //   size: 100,
-  // },
-  // {
-  //   id: 32,
-  //   title: 'World Wide Club 20',
-  //   size: 20,
-  // },
-];
+    {
+      id: 2,
+      title: 'Album Top 40',
+      size: 40
+    },
+    {
+      id: 3,
+      title: 'Tipparade',
+      size: 40
+    },
+    {
+    
+  }]
 
 export interface HitlistType {
   id: number;

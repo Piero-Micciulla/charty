@@ -5,7 +5,7 @@ import { HitlistComponent } from './pages/hitlist/hitlist.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
-  { path: 'hitlist', component: HitlistComponent },
+  { path: 'hitlist/:id', component: HitlistComponent },
 ];
 
 @NgModule({

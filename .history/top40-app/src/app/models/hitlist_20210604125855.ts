@@ -5,7 +5,7 @@ export interface Hitlist {
 }
 
 export interface Position {
-  position: number; 
+  position: number; // todo m
   title: string;
   credit: string;
 }

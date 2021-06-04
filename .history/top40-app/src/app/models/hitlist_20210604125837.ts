@@ -1,11 +1,15 @@
 export interface Hitlist {
   year: number;
   week: number;
-  positions: Position[]
+  positions: {
+    position: number;
+    title: string;
+    credit: string;
+  };
 }
 
 export interface Position {
-  position: number; 
+  position: number;
   title: string;
   credit: string;
 }

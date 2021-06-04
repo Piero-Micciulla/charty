@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { HITLIST_TYPES } from './services/hitlists.service';
+import { HITLIST_TYPES } from ''
 
 @Component({
   selector: 'app-root',

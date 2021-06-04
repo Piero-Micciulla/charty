@@ -5,7 +5,7 @@ export interface Hitlist {
 }
 
 export interface Position {
-  position: number; 
+  position: number;
   title: string;
   credit: string;
 }
