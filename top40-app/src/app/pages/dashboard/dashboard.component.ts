@@ -9,7 +9,6 @@ import { HitlistsService } from 'src/app/services/hitlists.service';
 })
 export class DashboardComponent implements OnInit {
   hitlists!: Hitlist[];
-  opened!: boolean;
 
   constructor() {}
 
