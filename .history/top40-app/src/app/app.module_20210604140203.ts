@@ -16,7 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { HitlistComponent } from './pages/hitlist/hitlist.component';
-import { NavigationComponent } from './pages/navigation/navigation.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 @NgModule({
   declarations: [AppComponent, DashboardComponent, HitlistComponent, NavigationComponent],

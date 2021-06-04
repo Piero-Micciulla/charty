@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { HITLIST_TYPES } from './services/hitlists.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +9,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Top 40';
+  opened!: boolean;
 }

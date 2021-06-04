@@ -18,7 +18,7 @@ export class HitlistComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((routeParams) => {
-      this.getTop40(routeParams.id);
+      this.getTop40(routeParams.id).clos;
     });
   }
 

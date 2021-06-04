@@ -1,0 +1,18 @@
+
+
+
+<mat-sidenav
+  #sidenav
+  mode="over"
+  position="end"
+  role="navigation"
+  [(opened)]="opened"
+>
+  <ul *ngFor="let type of hitlistTypes">
+    <li>
+      <a (click)="sidenav.toggle()" [routerLink]="['./hitlist', type.id]">{{
+        type.title
+      }}</a>
+    </li>
+  </ul>
+</mat-sidenav>

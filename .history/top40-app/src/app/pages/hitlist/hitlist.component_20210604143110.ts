@@ -17,8 +17,19 @@ export class HitlistComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.getTop40(id);
+    } else {
+      // todo handle no route parameter exists
+    }
+
+    this.route.queryParams.subscribe((queryParams) => {
+      // do something with the query params
+    });
+
     this.route.params.subscribe((routeParams) => {
-      this.getTop40(routeParams.id);
+      this.loadUserDetail(routeParams.id);
     });
   }
 
