@@ -1,0 +1,17 @@
+<h1>Hitlists</h1>
+
+<div *ngFor="let type of hitlistTypes">
+  <span *ngFor="let hitlist of hitlists">
+  <mat-card
+    class="hitlist-card"
+    role="main"
+    [routerLink]="['./hitlist', type.id]"
+  >
+      <img
+        mat-card-md-image
+        src="{{ hitlist.positions[0].cover_img_url_medium }}"
+      />
+      <mat-card-title>{{ type.title }}</mat-card-title>
+    </mat-card>
+  </span>
+</div>

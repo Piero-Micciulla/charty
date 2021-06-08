@@ -1,0 +1,10 @@
+<p>hitlist works!</p>
+
+<div *ngFor="let hitList of hitLists">
+  <p>Week {{ hitlist.week }} - {{ hitlist.year }}</p>
+  <div *ngFor="let position of hitlist.positions">
+    <p>{{ position.position }}</p>
+    <p>{{ position.title }}</p>
+    <p>{{ position.credit }}</p>
+  </div>
+</div>
