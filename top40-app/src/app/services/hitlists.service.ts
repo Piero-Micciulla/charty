@@ -65,10 +65,10 @@ export class HitListsService {
     }
 
     // merge returned Observables into a HitList[];
-    const subscription = forkJoin(hitListArray);
+    const observable: Observable<HitList[]> = forkJoin(hitListArray);
 
     // return that HitList[];
-    return subscription;
+    return observable;
 
   }
 
