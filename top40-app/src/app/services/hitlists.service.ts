@@ -41,7 +41,7 @@ export interface HitlistType {
 })
 export class HitListsService {
   // todo save this string in an environment variable
-  hitlistUrl: string =
+  hitlistUrl =
     'http://localhost:5000/http://www.top40.nl/app_api/top40_json';
 
   constructor(private http: HttpClient) {}
@@ -56,18 +56,19 @@ export class HitListsService {
   }
 
   public fetchAll(): Observable<HitList[]> {
-    let hitListArray = [];
-    
+    const hitListArray: Observable<HitList>[] = [];
+
     // call fetchHitList for every known id
-    for (let type of HITLIST_TYPES) {
-      let newHitList = this.fetchHitList(String(type.id));
+    for (const type of HITLIST_TYPES) {
+      const newHitList = this.fetchHitList(String(type.id));
       hitListArray.push(newHitList);
-    };
+    }
+
     // merge returned Observables into a HitList[];
-    forkJoin(hitListArray);
+    const subscription = forkJoin(hitListArray);
 
     // return that HitList[];
-    return hitListArray;
+    return subscription;
 
   }
 
@@ -76,7 +77,7 @@ export class HitListsService {
     const positions = hitListObject.positions;
     const positionArray: Position[] = [];
 
-    for (let position of positions) {
+    for (const position of positions) {
       positionArray.push({
         position: position.position,
         title: position.title,
@@ -86,7 +87,7 @@ export class HitListsService {
     }
 
     const hitList: HitList = {
-      id: id,
+      id,
       year: hitListObject.year,
       week: hitListObject.week,
       positions: positionArray,

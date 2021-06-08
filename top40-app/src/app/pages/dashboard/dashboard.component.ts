@@ -23,7 +23,9 @@ export class DashboardComponent implements OnInit {
 
   fetchHitLists(): void {
     this.hitListService
-      .fetchAll()
-      .subscribe((hitLists: HitList[]) => (this.hitLists = hitLists));
+      .fetchAll().subscribe((hitLists: HitList[]) => {
+        console.log(hitLists);
+        this.hitLists = hitLists;
+      });
   }
 }
