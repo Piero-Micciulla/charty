@@ -5,9 +5,8 @@ import { forkJoin, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { HitList, Position } from '../models/hitlist';
-import { HitlistComponent } from '../pages/hitlist/hitlist.component';
 
-export const HITLIST_TYPES: HitlistType[] = [
+export const HITLIST_TYPES: HitListType[] = [
   {
     id: 1,
     title: 'Top 40',
@@ -30,7 +29,7 @@ export const HITLIST_TYPES: HitlistType[] = [
   },
 ];
 
-export interface HitlistType {
+export interface HitListType {
   id: number;
   title: string;
   size: number;
@@ -41,13 +40,12 @@ export interface HitlistType {
 })
 export class HitListsService {
   // todo save this string in an environment variable
-  hitlistUrl =
-    'http://localhost:5000/http://www.top40.nl/app_api/top40_json';
+  hitListUrl = 'http://localhost:5000/http://www.top40.nl/app_api/top40_json';
 
   constructor(private http: HttpClient) {}
 
-  fetchHitList(id: string): Observable<HitList> {
-    const url = `${this.hitlistUrl}/${id}`;
+  fetchHitList(id: number): Observable<HitList> {
+    const url = `${this.hitListUrl}/${id}`;
     return this.http.get<HttpResponse<any>>(url).pipe(
       map((response) => {
         return this.parseHitList(response, id);
@@ -60,7 +58,7 @@ export class HitListsService {
 
     // call fetchHitList for every known id
     for (const type of HITLIST_TYPES) {
-      const newHitList = this.fetchHitList(String(type.id));
+      const newHitList = this.fetchHitList(type.id);
       hitListArray.push(newHitList);
     }
 
@@ -69,13 +67,13 @@ export class HitListsService {
 
     // return that HitList[];
     return observable;
-
   }
 
-  private parseHitList(response: any, id: string): HitList {
+  private parseHitList(response: any, id: number): HitList {
     const hitListObject = response[0];
     const positions = hitListObject.positions;
     const positionArray: Position[] = [];
+    // const listOverview = HITLIST_TYPES[Number(id)];
 
     for (const position of positions) {
       positionArray.push({
@@ -91,6 +89,7 @@ export class HitListsService {
       year: hitListObject.year,
       week: hitListObject.week,
       positions: positionArray,
+      // name: listOverview.title,
     };
 
     return hitList;

@@ -6,7 +6,11 @@
     role="main"
     [routerLink]="['./hitlist', hitList.id]"
   >
-    <img mat-card-md-image src="{{ hitList.imageUrl }}" />
-    <mat-card-title>{{ hitList.name }}</mat-card-title>
+    <img mat-card-md-image src="{{ hitList.positions[0].image }}" />
+    <!-- <mat-card-title>{{ hitList.name }}</mat-card-title> -->
+    <mat-card-title>Hitlist</mat-card-title>
+    <mat-card-subtitle
+      >Week {{ hitList.week }} - {{ hitList.year }}</mat-card-subtitle
+    >
   </mat-card>
 </div>

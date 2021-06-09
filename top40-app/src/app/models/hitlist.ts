@@ -1,5 +1,5 @@
 export interface HitList {
-  id: string;
+  id: number;
   year: number;
   week: number;
   positions: Position[];

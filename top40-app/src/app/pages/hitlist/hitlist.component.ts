@@ -18,11 +18,11 @@ export class HitlistComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((routeParams) => {
-      this.getHitList(routeParams.id);
+      this.getHitList(Number(routeParams.id));
     });
   }
 
-  getHitList(id: string): void {
+  getHitList(id: number): void {
     this.hitListsService
       .fetchHitList(id)
       .subscribe((hitlists) => (this.hitList = hitlists));
