@@ -72,7 +72,7 @@ export class HitListsService {
     return observable;
   }
 
-  private parseHitList(response: any, listOverview: any): HitList {
+  private parseHitList(response: any, listOverview: HitListType): HitList {
     const hitListObject = response[0];
     const positions = hitListObject.positions;
     const positionArray: Position[] = [];
@@ -82,7 +82,8 @@ export class HitListsService {
         position: position.position,
         title: position.title,
         credit: position.credit,
-        image: position.cover_img_url_medium,
+        imageMedium: position.cover_img_url_medium,
+        imageLarge: position.cover_img_url_large,
       });
     }
 

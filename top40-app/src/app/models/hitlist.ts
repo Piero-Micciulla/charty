@@ -11,5 +11,6 @@ export interface Position {
   position: number;
   title: string;
   credit: string;
-  image: string;
+  imageMedium: string;
+  imageLarge: string;
 }
