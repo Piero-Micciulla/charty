@@ -44,16 +44,33 @@ export class HitListsService {
 
   constructor(private http: HttpClient) {}
 
-  fetchHitList(id: number): Observable<HitList> {
-    const url = `${this.hitListUrl}/${id}`;
+  fetchHitList(type: HitListType): Observable<HitList> {
+    const url = `${this.hitListUrl}/${type.id}`;
 
     // call API
     return this.http.get<HttpResponse<any>>(url).pipe(
       map((response) => {
         // return new hitList
-        return this.parseHitList(response, HITLIST_TYPES[id - 1]);
+        return this.parseHitList(response, type);
       })
     );
+  }
+
+  fetchHitListById(id: number): Observable<HitList> {
+    // match id to hitlist type
+    const type = HITLIST_TYPES.find((hitListType: HitListType) => {
+      return hitListType.id === id;
+    });
+
+    // if no type is found, return message
+    if (!type) {
+      throw new Error(
+        `Unable to fetch hitlist for id ${id}: the type for this hitlist is not found`
+      );
+    }
+
+    // find corresponding hitlist
+    return this.fetchHitList(type);
   }
 
   public fetchAll(): Observable<HitList[]> {
@@ -61,7 +78,7 @@ export class HitListsService {
 
     // call fetchHitList for every known id
     for (const type of HITLIST_TYPES) {
-      const newHitList = this.fetchHitList(type.id);
+      const newHitList = this.fetchHitList(type);
       hitListArray.push(newHitList);
     }
 
@@ -72,7 +89,7 @@ export class HitListsService {
     return observable;
   }
 
-  private parseHitList(response: any, listOverview: HitListType): HitList {
+  private parseHitList(response: any, type: HitListType): HitList {
     const hitListObject = response[0];
     const positions = hitListObject.positions;
     const positionArray: Position[] = [];
@@ -88,11 +105,11 @@ export class HitListsService {
     }
 
     const hitList: HitList = {
-      id: listOverview.id,
+      id: type.id,
       year: hitListObject.year,
       week: hitListObject.week,
       positions: positionArray,
-      name: listOverview.title,
+      name: type.title,
     };
 
     return hitList;

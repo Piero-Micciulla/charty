@@ -24,7 +24,7 @@ export class HitlistComponent implements OnInit {
 
   getHitList(id: number): void {
     this.hitListsService
-      .fetchHitList(id)
+      .fetchHitListById(id)
       .subscribe((hitlists) => (this.hitList = hitlists));
   }
 }
