@@ -46,9 +46,12 @@ export class HitListsService {
 
   fetchHitList(id: number): Observable<HitList> {
     const url = `${this.hitListUrl}/${id}`;
+
+    // call API
     return this.http.get<HttpResponse<any>>(url).pipe(
       map((response) => {
-        return this.parseHitList(response, id);
+        // return new hitList
+        return this.parseHitList(response, HITLIST_TYPES[id - 1]);
       })
     );
   }
@@ -69,11 +72,10 @@ export class HitListsService {
     return observable;
   }
 
-  private parseHitList(response: any, id: number): HitList {
+  private parseHitList(response: any, listOverview: any): HitList {
     const hitListObject = response[0];
     const positions = hitListObject.positions;
     const positionArray: Position[] = [];
-    // const listOverview = HITLIST_TYPES[Number(id)];
 
     for (const position of positions) {
       positionArray.push({
@@ -85,11 +87,11 @@ export class HitListsService {
     }
 
     const hitList: HitList = {
-      id,
+      id: listOverview.id,
       year: hitListObject.year,
       week: hitListObject.week,
       positions: positionArray,
-      // name: listOverview.title,
+      name: listOverview.title,
     };
 
     return hitList;
