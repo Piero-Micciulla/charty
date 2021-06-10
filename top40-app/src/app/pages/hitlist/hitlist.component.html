@@ -1,7 +1,21 @@
-<p>hitlist works!</p>
-<p>Week {{ hitList.week }} - {{ hitList.year }}</p>
+<h1>{{ hitList.name }}</h1>
+<h2>Week {{ hitList.week }} - {{ hitList.year }}</h2>
 <div *ngFor="let position of hitList.positions">
-  <p>{{ position.position }}</p>
-  <p>{{ position.title }}</p>
-  <p>{{ position.credit }}</p>
+  <mat-card
+    class="song-summary"
+    [routerLink]="['./overview', position.titleId]"
+  >
+    <mat-card-header>
+      <div mat-card-avatar class="image-container">
+        <img mat-card-avatar src="{{ position.imageMedium }}" />
+        <div class="overlay">
+          <p>
+            {{ position.position }}
+          </p>
+        </div>
+      </div>
+      <mat-card-title>{{ position.title }}</mat-card-title>
+      <mat-card-subtitle>{{ position.credit }}</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
 </div>

@@ -14,9 +14,15 @@
     </mat-card-header>
     <img mat-card-image src="{{ hitList.positions[0].imageLarge }}" />
     <mat-card-content>
+      <p>This weeks' #1:</p>
       <p>
         {{ hitList.positions[0].title }} - {{ hitList.positions[0].credit }}
       </p>
     </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>
+        Full hitlist <fa-icon [icon]="['fas', 'arrow-right']"></fa-icon>
+      </button>
+    </mat-card-actions>
   </mat-card>
 </div>

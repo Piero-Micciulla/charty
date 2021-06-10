@@ -97,8 +97,10 @@ export class HitListsService {
     for (const position of positions) {
       positionArray.push({
         position: position.position,
+        titleId: position.title_id,
         title: position.title,
         credit: position.credit,
+        imageSmall: position.cover_img_url_small,
         imageMedium: position.cover_img_url_medium,
         imageLarge: position.cover_img_url_large,
       });

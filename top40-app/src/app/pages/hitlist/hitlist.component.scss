@@ -1,0 +1,24 @@
+mat-card-header {
+  text-transform: capitalize;
+}
+
+.song-summary {
+  margin: 16px auto;
+}
+
+.overlay {
+  position: absolute;
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
+  top: 16px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.overlay p {
+  margin: 10px 0;
+}

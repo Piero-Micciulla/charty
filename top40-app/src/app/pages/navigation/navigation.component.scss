@@ -1,3 +1,17 @@
+ul {
+  list-style-type: none;
+  padding: 0 16px;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+mat-sidenav {
+  width: 50%;
+}
+
 mat-sidenav-content {
   margin: 0 16px;
 }

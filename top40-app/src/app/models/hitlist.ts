@@ -9,8 +9,10 @@ export interface HitList {
 
 export interface Position {
   position: number;
+  titleId: number;
   title: string;
   credit: string;
+  imageSmall: string;
   imageMedium: string;
   imageLarge: string;
 }
