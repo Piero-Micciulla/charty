@@ -3,7 +3,7 @@
 <div *ngFor="let position of hitList.positions">
   <mat-card
     class="song-summary"
-    [routerLink]="['./overview', position.titleId]"
+    [routerLink]="['/details', position.titleId]"
   >
     <mat-card-header>
       <div mat-card-avatar class="image-container">

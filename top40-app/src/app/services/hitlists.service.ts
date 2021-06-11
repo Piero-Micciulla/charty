@@ -5,6 +5,7 @@ import { forkJoin, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { HitList, Position } from '../models/hitlist';
+import { itemDetails } from '../models/itemDetails';
 
 export const HITLIST_TYPES: HitListType[] = [
   {
@@ -40,12 +41,12 @@ export interface HitListType {
 })
 export class HitListsService {
   // todo save this string in an environment variable
-  hitListUrl = 'http://localhost:5000/http://www.top40.nl/app_api/top40_json';
+  hitListUrl = 'http://localhost:5000/http://www.top40.nl/app_api';
 
   constructor(private http: HttpClient) {}
 
   fetchHitList(type: HitListType): Observable<HitList> {
-    const url = `${this.hitListUrl}/${type.id}`;
+    const url = `${this.hitListUrl}/top40_json/${type.id}`;
 
     // call API
     return this.http.get<HttpResponse<any>>(url).pipe(
@@ -71,6 +72,13 @@ export class HitListsService {
 
     // find corresponding hitlist
     return this.fetchHitList(type);
+  }
+
+  fetchHitListDetails(id: number): Observable<itemDetails> {
+    const url = `${this.hitListUrl}/titledetails_top40_json/${id}`;
+    const details = this.http.get<itemDetails>(url);
+    console.log(details);
+    return details;
   }
 
   public fetchAll(): Observable<HitList[]> {

@@ -1,1 +1,10 @@
-<p>hitlist-details works!</p>
+<button mat-button (click)="goBack()">
+  <fa-icon [icon]="['fas', 'angle-left']"></fa-icon> Back
+</button>
+
+<div *ngIf="itemDetails">
+  <h1>{{ itemDetails.credit }}</h1>
+  <p>{{ itemDetails.title }}</p>
+  <iframe width="420" height="315" src="videoUrl">
+  </iframe>
+</div>

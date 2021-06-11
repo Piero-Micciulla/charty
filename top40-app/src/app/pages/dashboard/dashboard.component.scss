@@ -6,6 +6,13 @@ mat-card-actions {
   text-align: right;
 }
 
+.hitlist-wrapper {
+  display: grid;
+  grid-gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  margin: 0 auto;
+}
+
 .hitlist-card {
   margin: 16px auto;
 }
