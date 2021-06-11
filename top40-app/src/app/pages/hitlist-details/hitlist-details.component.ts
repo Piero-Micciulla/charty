@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import {
-  DomSanitizer,
-  SafeResourceUrl,
-  SafeUrl,
-} from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Location } from '@angular/common';
 
 import { HitList } from 'src/app/models/hitlist';
@@ -48,7 +44,6 @@ export class HitlistDetailsComponent implements OnInit {
 
   updateVideoUrl() {
     this.dangerousVideoUrl = this.itemDetails.youtube_url;
-    console.log(this.dangerousVideoUrl);
     this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
       this.dangerousVideoUrl
     );
