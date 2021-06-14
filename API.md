@@ -8,17 +8,12 @@ http://www.top40.nl/app_api/top40_json/{listType}
 
 The parameter here is list type, which can be used to specify the type of list. This parameter can be one of the following values:
 
-1 = Top 40
-2 = Album Top 40
-3 = Tip Parade
-4 = Movie Top 40 (no longer updated but interesting nonetheless)
+1. Top 40
+2. Album top 40
+3. Tip Parade
+4. Movie top 40 (no longer updated but nice content to show nonetheless)
 
-
-By default, the most recent published list is always shown. In short, to request the most recent Tipparade, the following HTTP GET request must be made:
-
-## The tip parade list:
-
-http://www.top40.nl/app_api/top40_json/3
+By default, the most recent published list is always shown. In short, to request the most recent Tipparade, the following HTTP GET request must be made: http://www.top40.nl/app_api/top40_json/3
 
 
 ## Details for a specific item:
@@ -30,7 +25,6 @@ http://www.top40.nl/app_api/titledetails_top40_json/${title_id}
 
 
 There are even more lists to use:
-
 
 https://www.top40.nl/app_api/charttypes_json
 
