@@ -16,8 +16,18 @@ The parameter here is list type, which can be used to specify the type of list. 
 
 By default, the most recent published list is always shown. In short, to request the most recent Tipparade, the following HTTP GET request must be made:
 
+## The tip parade list:
 
 http://www.top40.nl/app_api/top40_json/3
+
+
+## Details for a specific item:
+
+If you want to retrieve the details for a specific item which contains additional data, you fetch it using the **title_id** from the items from the lists:
+
+http://www.top40.nl/app_api/titledetails_top40_json/${title_id}
+
+
 
 There are even more lists to use:
 
