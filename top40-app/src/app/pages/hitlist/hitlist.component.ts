@@ -1,9 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { HitList } from 'src/app/models/hitlist';
 import { HitListsService } from 'src/app/services/hitlists/hitlists.service';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { Observable } from 'rxjs';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-hitlist',
@@ -16,6 +15,8 @@ export class HitlistComponent implements OnInit {
 
   length = 0;
   pageSize = 10;
+  showFirstLastButtons = 'true';
+  hidePageSize = 'true';
 
   constructor(
     private route: ActivatedRoute,
@@ -40,5 +41,6 @@ export class HitlistComponent implements OnInit {
     let firstCut = event.pageIndex * event.pageSize;
     let secondCut = firstCut + event.pageSize;
     this.activeHitListData = this.hitList.positions.slice(firstCut, secondCut);
+    // add scroll to top
   }
 }

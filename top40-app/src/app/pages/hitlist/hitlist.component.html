@@ -1,5 +1,7 @@
-<h1>{{ hitList.name }}</h1>
-<h2>Week {{ hitList.week }} - {{ hitList.year }}</h2>
+<header *ngIf="hitList">
+  <h1>{{ hitList.name }}</h1>
+  <h2>Week {{ hitList.week }} - {{ hitList.year }}</h2>
+</header>
 
 <div *ngFor="let position of activeHitListData">
   <mat-card class="song-summary" [routerLink]="['/details', position.titleId]">
@@ -23,6 +25,6 @@
   (page)="getPaginatorData($event)"
   [length]="length"
   [pageSize]="pageSize"
-  [showFirstLastButtons]="true"
-  [hidePageSize]="true"
+  [showFirstLastButtons]="showFirstLastButtons"
+  [hidePageSize]="hidePageSize"
 ></mat-paginator>
