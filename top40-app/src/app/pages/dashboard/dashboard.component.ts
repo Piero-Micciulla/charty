@@ -3,7 +3,7 @@ import { HitList } from 'src/app/models/hitlist';
 import {
   HitListsService,
   HITLIST_TYPES,
-} from 'src/app/services/hitlists.service';
+} from 'src/app/services/hitlists/hitlists.service';
 import { Observable } from 'rxjs';
 
 @Component({

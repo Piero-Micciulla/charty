@@ -4,8 +4,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { forkJoin, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { HitList, Position } from '../models/hitlist';
-import { itemDetails } from '../models/itemDetails';
+import { HitList, Position } from '../../models/hitlist';
 
 export const HITLIST_TYPES: HitListType[] = [
   {
@@ -72,13 +71,6 @@ export class HitListsService {
 
     // find corresponding hitlist
     return this.fetchHitList(type);
-  }
-
-  fetchHitListDetails(id: number): Observable<itemDetails> {
-    const url = `${this.hitListUrl}/titledetails_top40_json/${id}`;
-    const details = this.http.get<itemDetails>(url);
-    console.log(details);
-    return details;
   }
 
   public fetchAll(): Observable<HitList[]> {

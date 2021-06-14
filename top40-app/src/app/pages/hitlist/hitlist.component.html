@@ -1,10 +1,8 @@
 <h1>{{ hitList.name }}</h1>
 <h2>Week {{ hitList.week }} - {{ hitList.year }}</h2>
-<div *ngFor="let position of hitList.positions">
-  <mat-card
-    class="song-summary"
-    [routerLink]="['/details', position.titleId]"
-  >
+
+<div *ngFor="let position of activeHitListData">
+  <mat-card class="song-summary" [routerLink]="['/details', position.titleId]">
     <mat-card-header>
       <div mat-card-avatar class="image-container">
         <img mat-card-avatar src="{{ position.imageMedium }}" />
@@ -19,3 +17,12 @@
     </mat-card-header>
   </mat-card>
 </div>
+
+<mat-paginator
+  #paginator
+  (page)="getPaginatorData($event)"
+  [length]="length"
+  [pageSize]="pageSize"
+  [showFirstLastButtons]="true"
+  [hidePageSize]="true"
+></mat-paginator>

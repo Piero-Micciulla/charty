@@ -6,13 +6,13 @@ import {
 import { HttpClient } from '@angular/common/http';
 
 import { HitListsService } from './hitlists.service';
-import { Hitlist } from '../models/hitlist';
+import { HitList } from '../../models/hitlist';
 
 describe('HitlistsService', () => {
   let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
   let service: HitListsService;
-  let mockHitlist: Hitlist[];
+  let mockHitlist: HitList[];
 
   beforeEach(() => {
     TestBed.configureTestingModule({

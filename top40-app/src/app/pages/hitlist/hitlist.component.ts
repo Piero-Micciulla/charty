@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { HitList } from 'src/app/models/hitlist';
-import { HitListsService } from 'src/app/services/hitlists.service';
+import { HitListsService } from 'src/app/services/hitlists/hitlists.service';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-hitlist',
@@ -10,6 +12,10 @@ import { HitListsService } from 'src/app/services/hitlists.service';
 })
 export class HitlistComponent implements OnInit {
   hitList!: HitList;
+  activeHitListData: any[] = [];
+
+  length = 0;
+  pageSize = 10;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,8 +29,16 @@ export class HitlistComponent implements OnInit {
   }
 
   getHitList(id: number): void {
-    this.hitListsService
-      .fetchHitListById(id)
-      .subscribe((hitLists) => (this.hitList = hitLists));
+    this.hitListsService.fetchHitListById(id).subscribe((hitList) => {
+      this.hitList = hitList;
+      this.length = hitList.positions.length;
+      this.activeHitListData = this.hitList.positions.slice(0, this.pageSize);
+    });
+  }
+
+  public getPaginatorData(event: PageEvent) {
+    let firstCut = event.pageIndex * event.pageSize;
+    let secondCut = firstCut + event.pageSize;
+    this.activeHitListData = this.hitList.positions.slice(firstCut, secondCut);
   }
 }

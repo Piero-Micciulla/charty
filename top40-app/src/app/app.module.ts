@@ -17,6 +17,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -44,6 +45,7 @@ import { HitlistDetailsComponent } from './pages/hitlist-details/hitlist-details
     MatToolbarModule,
     MatCardModule,
     MatButtonModule,
+    MatPaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
