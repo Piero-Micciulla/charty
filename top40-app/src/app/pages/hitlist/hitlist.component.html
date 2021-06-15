@@ -1,37 +1,51 @@
-<header *ngIf="hitList">
-  <h1>{{ hitList.name }}</h1>
-  <h2>Week {{ hitList.week }} - {{ hitList.year }}</h2>
-</header>
+<div *ngIf="hitList">
+    <h1>{{ hitList.name }}</h1>
+    <h2>Week {{ hitList.week }} - {{ hitList.year }}</h2>
 
-<!-- <mat-form-field>
-    <mat-label>Week</mat-label>
-    <mat-select>
-      <mat-option></mat-option>
-    </mat-select>
-  </mat-form-field> -->
+    <div class="filter-container">
+        <mat-form-field appearance="fill">
+            <mat-label>Week</mat-label>
+            <mat-select>
+                <mat-option>{{ hitList.week }}</mat-option>
+            </mat-select>
+        </mat-form-field>
 
-<div *ngFor="let position of activeHitListData">
-  <mat-card class="song-summary" [routerLink]="['/details', position.titleId]">
-    <mat-card-header>
-      <div mat-card-avatar class="image-container">
-        <img mat-card-avatar src="{{ position.imageMedium }}" />
-        <div class="overlay">
-          <p>
-            {{ position.position }}
-          </p>
-        </div>
-      </div>
-      <mat-card-title>{{ position.title }}</mat-card-title>
-      <mat-card-subtitle>{{ position.credit }}</mat-card-subtitle>
-    </mat-card-header>
-  </mat-card>
+        <mat-form-field appearance="fill">
+            <mat-label>Year</mat-label>
+            <mat-select>
+                <mat-option>{{ hitList.year }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <button mat-raised-button>Search</button>
+    </div>
+
+    <div *ngFor="let position of activeHitListData">
+        <mat-card
+            class="song-summary"
+            [routerLink]="['/details', position.titleId]"
+        >
+            <mat-card-header>
+                <div mat-card-avatar class="image-container">
+                    <img mat-card-avatar src="{{ position.imageMedium }}" />
+                    <div class="overlay">
+                        <p>
+                            {{ position.position }}
+                        </p>
+                    </div>
+                </div>
+                <mat-card-title>{{ position.title }}</mat-card-title>
+                <mat-card-subtitle>{{ position.credit }}</mat-card-subtitle>
+            </mat-card-header>
+        </mat-card>
+    </div>
+
+    <mat-paginator
+        #paginator
+        (page)="getPaginatorData($event)"
+        [length]="length"
+        [pageSize]="pageSize"
+        [showFirstLastButtons]="showFirstLastButtons"
+        [hidePageSize]="hidePageSize"
+    ></mat-paginator>
 </div>
-
-<mat-paginator
-  #paginator
-  (page)="getPaginatorData($event)"
-  [length]="length"
-  [pageSize]="pageSize"
-  [showFirstLastButtons]="showFirstLastButtons"
-  [hidePageSize]="hidePageSize"
-></mat-paginator>

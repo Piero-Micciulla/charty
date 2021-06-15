@@ -1,34 +1,40 @@
 <header>
-  <h1>Hitlists</h1>
+    <h1>Hitlists</h1>
 </header>
 
 <main>
-  <div class="hitlist-wrapper">
-    <div *ngFor="let hitList of hitLists">
-      <mat-card
-        class="hitlist-card"
-        role="main"
-        [routerLink]="['./hitlist', hitList.id]"
-      >
-        <mat-card-header>
-          <mat-card-title>{{ hitList.name }}</mat-card-title>
-          <mat-card-subtitle
-            >Week {{ hitList.week }} - {{ hitList.year }}</mat-card-subtitle
-          >
-        </mat-card-header>
-        <img mat-card-image src="{{ hitList.positions[0].imageLarge }}" />
-        <mat-card-content>
-          <p>This weeks' #1:</p>
-          <p>
-            {{ hitList.positions[0].title }} - {{ hitList.positions[0].credit }}
-          </p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-button>
-            Full hitlist <fa-icon [icon]="['fas', 'angle-right']"></fa-icon>
-          </button>
-        </mat-card-actions>
-      </mat-card>
+    <div class="hitlist-wrapper">
+        <div *ngFor="let hitList of hitLists">
+            <mat-card
+                class="hitlist-card"
+                role="main"
+                [routerLink]="['./hitlist', hitList.id]"
+            >
+                <mat-card-header>
+                    <mat-card-title>{{ hitList.name }}</mat-card-title>
+                    <mat-card-subtitle
+                        >Week {{ hitList.week }} -
+                        {{ hitList.year }}</mat-card-subtitle
+                    >
+                </mat-card-header>
+                <img
+                    mat-card-image
+                    src="{{ hitList.positions[0].imageLarge }}"
+                />
+                <mat-card-content>
+                    <p>This weeks' #1:</p>
+                    <p>
+                        {{ hitList.positions[0].title }} -
+                        {{ hitList.positions[0].credit }}
+                    </p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button>
+                        Full hitlist
+                        <fa-icon [icon]="['fas', 'angle-right']"></fa-icon>
+                    </button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
     </div>
-  </div>
 </main>

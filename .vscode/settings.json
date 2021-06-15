@@ -1,5 +1,6 @@
 {
     "editor.formatOnPaste": true,
     "prettier.tabWidth": 4,
-    "files.autoSave": "afterDelay"
+    "files.autoSave": "afterDelay",
+    "editor.detectIndentation": false
 }

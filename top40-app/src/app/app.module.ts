@@ -18,6 +18,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -46,6 +49,8 @@ import { HitlistDetailsComponent } from './pages/hitlist-details/hitlist-details
     MatCardModule,
     MatButtonModule,
     MatPaginatorModule,
+    MatFormFieldModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

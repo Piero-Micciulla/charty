@@ -1,69 +1,69 @@
 ul {
-  list-style-type: none;
-  padding: 0 16px;
+    list-style-type: none;
+    padding: 0 16px;
 }
 
 a {
-  color: #fff;
-  text-decoration: none;
+    color: #fff;
+    text-decoration: none;
 }
 
 .toolbar-container {
-  background-color: #1a1a13;
-  width: 100%;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+    background-color: #1a1a13;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 mat-toolbar {
-  background-color: #1a1a13;
+    background-color: #1a1a13;
 }
 
 mat-sidenav-container {
-  padding-bottom: 16px;
+    padding-bottom: 16px;
 }
 
 mat-sidenav {
-  width: 50%;
+    width: 50%;
 }
 
 mat-sidenav-content {
-  margin: 0 16px;
-  min-height: 100vh;
+    margin: 0 16px;
+    min-height: 100vh;
 }
 
 .toolbar-spacer {
-  flex: 1 1 auto;
+    flex: 1 1 auto;
 }
 
 .toggle {
-  transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 @media all and (min-width: 768px) {
-  * {
-    padding: 0 auto;
-  }
+    * {
+        padding: 0 auto;
+    }
 
-  mat-toolbar {
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 0;
-  }
+    mat-toolbar {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 0;
+    }
 
-  mat-sidenav {
-    width: 25%;
-    height: fit-content;
-  }
+    mat-sidenav {
+        width: 25%;
+        height: fit-content;
+    }
 
-  mat-sidenav-content {
-    max-width: 1440px;
-    margin: 0 auto;
-  }
+    mat-sidenav-content {
+        max-width: 1440px;
+        margin: 0 auto;
+    }
 
-  ul {
-    margin-left: 32px;
-    margin-bottom: 32px;
-  }
+    ul {
+        margin-left: 32px;
+        margin-bottom: 32px;
+    }
 }

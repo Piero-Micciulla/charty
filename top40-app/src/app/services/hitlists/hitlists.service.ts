@@ -7,113 +7,113 @@ import { map } from 'rxjs/operators';
 import { HitList, Position } from '../../models/hitlist';
 
 export const HITLIST_TYPES: HitListType[] = [
-  {
-    id: 1,
-    title: 'Top 40',
-    size: 40,
-  },
-  {
-    id: 2,
-    title: 'Album Top 40',
-    size: 40,
-  },
-  {
-    id: 3,
-    title: 'Tipparade',
-    size: 30,
-  },
-  {
-    id: 4,
-    title: 'Movie Top 40',
-    size: 40,
-  },
+    {
+        id: 1,
+        title: 'Top 40',
+        size: 40,
+    },
+    {
+        id: 2,
+        title: 'Album Top 40',
+        size: 40,
+    },
+    {
+        id: 3,
+        title: 'Tipparade',
+        size: 30,
+    },
+    {
+        id: 4,
+        title: 'Movie Top 40',
+        size: 40,
+    },
 ];
 
 export interface HitListType {
-  id: number;
-  title: string;
-  size: number;
+    id: number;
+    title: string;
+    size: number;
 }
 
 @Injectable({
-  providedIn: 'root',
+    providedIn: 'root',
 })
 export class HitListsService {
-  // todo save this string in an environment variable
-  hitListUrl = 'http://localhost:5000/http://www.top40.nl/app_api';
+    // todo save this string in an environment variable
+    hitListUrl = 'http://localhost:5000/http://www.top40.nl/app_api';
 
-  constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) {}
 
-  fetchHitList(type: HitListType): Observable<HitList> {
-    const url = `${this.hitListUrl}/top40_json/${type.id}`;
+    fetchHitList(type: HitListType): Observable<HitList> {
+        const url = `${this.hitListUrl}/top40_json/${type.id}`;
 
-    // call API
-    return this.http.get<HttpResponse<any>>(url).pipe(
-      map((response) => {
-        // return new hitList
-        return this.parseHitList(response, type);
-      })
-    );
-  }
-
-  fetchHitListById(id: number): Observable<HitList> {
-    // match id to hitlist type
-    const type = HITLIST_TYPES.find((hitListType: HitListType) => {
-      return hitListType.id === id;
-    });
-
-    // if no type is found, return message
-    if (!type) {
-      throw new Error(
-        `Unable to fetch hitlist for id ${id}: the type for this hitlist is not found`
-      );
+        // call API
+        return this.http.get<HttpResponse<any>>(url).pipe(
+            map((response) => {
+                // return new hitList
+                return this.parseHitList(response, type);
+            })
+        );
     }
 
-    // find corresponding hitlist
-    return this.fetchHitList(type);
-  }
+    fetchHitListById(id: number): Observable<HitList> {
+        // match id to hitlist type
+        const type = HITLIST_TYPES.find((hitListType: HitListType) => {
+            return hitListType.id === id;
+        });
 
-  public fetchAll(): Observable<HitList[]> {
-    const hitListArray: Observable<HitList>[] = [];
+        // if no type is found, return message
+        if (!type) {
+            throw new Error(
+                `Unable to fetch hitlist for id ${id}: the type for this hitlist is not found`
+            );
+        }
 
-    // call fetchHitList for every known id
-    for (const type of HITLIST_TYPES) {
-      const newHitList = this.fetchHitList(type);
-      hitListArray.push(newHitList);
+        // find corresponding hitlist
+        return this.fetchHitList(type);
     }
 
-    // merge returned Observables into a HitList[];
-    const observable: Observable<HitList[]> = forkJoin(hitListArray);
+    public fetchAll(): Observable<HitList[]> {
+        const hitListArray: Observable<HitList>[] = [];
 
-    // return that HitList[];
-    return observable;
-  }
+        // call fetchHitList for every known id
+        for (const type of HITLIST_TYPES) {
+            const newHitList = this.fetchHitList(type);
+            hitListArray.push(newHitList);
+        }
 
-  private parseHitList(response: any, type: HitListType): HitList {
-    const hitListObject = response[0];
-    const positions = hitListObject.positions;
-    const positionArray: Position[] = [];
+        // merge returned Observables into a HitList[];
+        const observable: Observable<HitList[]> = forkJoin(hitListArray);
 
-    for (const position of positions) {
-      positionArray.push({
-        position: position.position,
-        titleId: position.title_id,
-        title: position.title,
-        credit: position.credit,
-        imageSmall: position.cover_img_url_small,
-        imageMedium: position.cover_img_url_medium,
-        imageLarge: position.cover_img_url_large,
-      });
+        // return that HitList[];
+        return observable;
     }
 
-    const hitList: HitList = {
-      id: type.id,
-      year: hitListObject.year,
-      week: hitListObject.week,
-      positions: positionArray,
-      name: type.title,
-    };
+    private parseHitList(response: any, type: HitListType): HitList {
+        const hitListObject = response[0];
+        const positions = hitListObject.positions;
+        const positionArray: Position[] = [];
 
-    return hitList;
-  }
+        for (const position of positions) {
+            positionArray.push({
+                position: position.position,
+                titleId: position.title_id,
+                title: position.title,
+                credit: position.credit,
+                imageSmall: position.cover_img_url_small,
+                imageMedium: position.cover_img_url_medium,
+                imageLarge: position.cover_img_url_large,
+            });
+        }
+
+        const hitList: HitList = {
+            id: type.id,
+            year: hitListObject.year,
+            week: hitListObject.week,
+            positions: positionArray,
+            name: type.title,
+        };
+
+        return hitList;
+    }
 }

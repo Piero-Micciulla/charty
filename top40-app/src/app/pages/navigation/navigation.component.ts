@@ -4,15 +4,15 @@ import { ActivatedRoute } from '@angular/router';
 import { HITLIST_TYPES } from 'src/app/services/hitlists/hitlists.service';
 
 @Component({
-  selector: 'app-navigation',
-  templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.scss'],
+    selector: 'app-navigation',
+    templateUrl: './navigation.component.html',
+    styleUrls: ['./navigation.component.scss'],
 })
 export class NavigationComponent implements OnInit {
-  hitlistTypes = HITLIST_TYPES;
-  opened!: boolean;
+    hitlistTypes = HITLIST_TYPES;
+    opened!: boolean;
 
-  constructor(private route: ActivatedRoute) {}
+    constructor(private route: ActivatedRoute) {}
 
-  ngOnInit(): void {}
+    ngOnInit(): void {}
 }

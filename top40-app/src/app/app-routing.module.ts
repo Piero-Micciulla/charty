@@ -5,13 +5,13 @@ import { HitlistDetailsComponent } from './pages/hitlist-details/hitlist-details
 import { HitlistComponent } from './pages/hitlist/hitlist.component';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent },
-  { path: 'hitlist/:id', component: HitlistComponent },
-  { path: 'details/:id', component: HitlistDetailsComponent },
+    { path: '', component: DashboardComponent },
+    { path: 'hitlist/:id', component: HitlistComponent },
+    { path: 'details/:id', component: HitlistDetailsComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule],
 })
 export class AppRoutingModule {}
