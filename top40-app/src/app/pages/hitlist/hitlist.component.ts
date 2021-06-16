@@ -1,8 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { HitList } from 'src/app/models/hitlist';
-import { HitListsService } from 'src/app/services/hitlists/hitlists.service';
 import { PageEvent } from '@angular/material/paginator';
+
+import { HitList } from 'src/app/models/hitlist';
+// import { Week } from 'src/app/models/week';
+// import { Year } from 'src/app/models/year';
+import { HitListsService } from 'src/app/services/hitlists/hitlists.service';
+import {
+    generateArrayOfYears,
+    generateArrayOfWeeks,
+} from 'src/app/lib/helpers';
 
 @Component({
     selector: 'app-hitlist',
@@ -11,7 +18,15 @@ import { PageEvent } from '@angular/material/paginator';
 })
 export class HitlistComponent implements OnInit {
     hitList!: HitList;
+    // week!: Week;
+    // year!: Year;
     activeHitListData: any[] = [];
+
+    weeks = generateArrayOfWeeks();
+    years = generateArrayOfYears();
+
+    selectedWeek: number = 0;
+    selectedYear: number = 0;
 
     length = 0;
     pageSize = 10;
@@ -37,6 +52,8 @@ export class HitlistComponent implements OnInit {
                 0,
                 this.pageSize
             );
+            this.selectedWeek = hitList.week;
+            this.selectedYear = hitList.year;
         });
     }
 

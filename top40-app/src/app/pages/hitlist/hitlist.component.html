@@ -5,15 +5,19 @@
     <div class="filter-container">
         <mat-form-field appearance="fill">
             <mat-label>Week</mat-label>
-            <mat-select>
-                <mat-option>{{ hitList.week }}</mat-option>
+            <mat-select [(value)]="selectedWeek">
+                <mat-option *ngFor="let week of weeks" [value]="week">{{
+                    week
+                }}</mat-option>
             </mat-select>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
             <mat-label>Year</mat-label>
-            <mat-select>
-                <mat-option>{{ hitList.year }}</mat-option>
+            <mat-select [(value)]="selectedYear">
+                <mat-option *ngFor="let year of years" [value]="year">{{
+                    year
+                }}</mat-option>
             </mat-select>
         </mat-form-field>
 
