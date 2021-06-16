@@ -103,6 +103,7 @@ export class HitListsService {
                 imageSmall: position.cover_img_url_small,
                 imageMedium: position.cover_img_url_medium,
                 imageLarge: position.cover_img_url_large,
+                youtubeCode: position.youtube_code,
             });
         }
 

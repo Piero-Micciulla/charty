@@ -3,5 +3,4 @@ export interface itemDetails {
     credit: string;
     title: string;
     cover_image_url_large: string;
-    youtube_url: string;
 }

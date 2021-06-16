@@ -52,4 +52,9 @@
         [showFirstLastButtons]="showFirstLastButtons"
         [hidePageSize]="hidePageSize"
     ></mat-paginator>
+    <iframe
+        class="e2e-iframe-trusted-src"
+        [src]="videoUrl"
+        onerror="this.style.display='none'"
+    ></iframe>
 </div>
