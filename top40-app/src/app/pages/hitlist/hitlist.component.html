@@ -52,9 +52,16 @@
         [showFirstLastButtons]="showFirstLastButtons"
         [hidePageSize]="hidePageSize"
     ></mat-paginator>
-    <iframe
-        class="e2e-iframe-trusted-src"
-        [src]="videoUrl"
-        onerror="this.style.display='none'"
-    ></iframe>
+
+    <div class="player-container">
+        <iframe
+            class="e2e-iframe-trusted-src"
+            [src]="videoUrl"
+            height="180"
+            width="320"
+            onerror="this.style.display='none'"
+            loading="lazy"
+            title="Video clips of the hit songs"
+        ></iframe>
+    </div>
 </div>

@@ -87,7 +87,11 @@ export class HitlistComponent implements OnInit {
 
     generateVideoList(list: any): void {
         for (let item of list) {
-            this.videoList += item.youtubeCode + ',';
+            if (item.youtubeCode === null) {
+                this.videoList.replace('null', '');
+            } else {
+                this.videoList += item.youtubeCode + ',';
+            }
         }
     }
 }

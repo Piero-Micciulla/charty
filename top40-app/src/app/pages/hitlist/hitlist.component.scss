@@ -8,6 +8,15 @@ button {
     height: 48px;
     grid-column: 1 / 3;
 }
+iframe {
+    width: -webkit-fill-available;
+    border: 1px solid #303030;
+    margin-top: 16px;
+}
+
+.player-container {
+    width: 100%;
+}
 
 .filter-container {
     display: grid;
