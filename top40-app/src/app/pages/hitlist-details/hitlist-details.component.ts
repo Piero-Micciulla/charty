@@ -13,6 +13,7 @@ import { HitlistItemsService } from 'src/app/services/hitlist-items/hitlist-item
 })
 export class HitlistDetailsComponent implements OnInit {
     itemDetails: ItemDetails | undefined;
+    panelOpenState = false;
 
     constructor(
         private route: ActivatedRoute,

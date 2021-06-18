@@ -64,6 +64,10 @@ export class HitlistComponent implements OnInit {
         });
     }
 
+    // searchHitList(week: number, year: number): void {
+    //     this.hitListsService.findOtherHitList(week, year).subscribe(hitList => this.hitList = hitList);
+    // }
+
     getPaginatorData(event: PageEvent): void {
         const firstCut = event.pageIndex * event.pageSize;
         const secondCut = firstCut + event.pageSize;

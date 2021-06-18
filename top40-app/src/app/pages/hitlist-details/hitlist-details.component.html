@@ -1,8 +1,63 @@
-<button mat-button (click)="goBack()">
-    <fa-icon [icon]="['fas', 'angle-left']"></fa-icon> Back
-</button>
-
 <div *ngIf="itemDetails">
-    <h1>{{ itemDetails.title }}</h1>
-    <p>{{ itemDetails.credit }}</p>
+    <button mat-button (click)="goBack()">
+        <fa-icon [icon]="['fas', 'angle-left']"></fa-icon> Back
+    </button>
+
+    <div *ngIf="itemDetails">
+        <h1>{{ itemDetails.title }}</h1>
+        <h2>{{ itemDetails.credit }}</h2>
+        <mat-accordion>
+            <!-- artist information panel -->
+            <mat-expansion-panel
+                (opened)="panelOpenState = true"
+                (closed)="panelOpenState = false"
+            >
+                <mat-expansion-panel-header>
+                    <mat-panel-title>Artist information</mat-panel-title>
+                </mat-expansion-panel-header>
+                <ng-template matExpansionPanelContent>
+                    <div
+                        class="artist-information"
+                        *ngFor="let artist of itemDetails.artists"
+                    >
+                        <img src="{{ artist.artist_img_url }}" width="100%" />
+                        <h2>{{ artist.name }}</h2>
+                        <p>{{ artist.biography }}</p>
+                        <p>From: {{ artist.country }}</p>
+                        <p>Born: {{ artist.birthdate | date }}</p>
+                    </div>
+                </ng-template>
+            </mat-expansion-panel>
+
+            <!-- lyrics panel -->
+            <mat-expansion-panel
+                (opened)="panelOpenState = true"
+                (closed)="panelOpenState = false"
+            >
+                <mat-expansion-panel-header>
+                    <mat-panel-title>Lyrics</mat-panel-title>
+                </mat-expansion-panel-header>
+                <ng-template matExpansionPanelContent>
+                    <p>{{ itemDetails.songwiki_lyrics }}</p>
+                </ng-template>
+            </mat-expansion-panel>
+        </mat-accordion>
+
+        <h3 *ngIf="itemDetails.related_tracks">Related tracks</h3>
+        <div
+            class="related-tracks-items"
+            *ngFor="let track of itemDetails.related_tracks"
+        >
+            <mat-card
+                class="song-summary"
+                [routerLink]="[track.title_id]"
+            >
+                <mat-card-header>
+                    <img mat-card-avatar src="{{ track.cover_image_url }}" >
+                    <mat-card-title>{{ track.title }}</mat-card-title>
+                    <mat-card-subtitle>{{ track.credit }}</mat-card-subtitle>
+                </mat-card-header>
+            </mat-card>
+        </div>
+    </div>
 </div>

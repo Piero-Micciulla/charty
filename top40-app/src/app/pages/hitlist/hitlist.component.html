@@ -21,8 +21,12 @@
             </mat-select>
         </mat-form-field>
 
-        <button mat-raised-button>Search</button>
+        <button mat-raised-button>
+            <!-- (click)="searchHitList(selectedWeek, selectedYear)" -->
+            Search
+        </button>
     </div>
+    <!-- <p>You selected: {{ selectedWeek }} - {{ selectedYear }}</p> -->
 
     <div *ngFor="let position of activeHitListData">
         <mat-card

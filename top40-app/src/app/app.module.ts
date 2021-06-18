@@ -20,6 +20,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -50,6 +51,7 @@ import { HitlistDetailsComponent } from './pages/hitlist-details/hitlist-details
         MatPaginatorModule,
         MatFormFieldModule,
         MatSelectModule,
+        MatExpansionModule,
     ],
     providers: [],
     bootstrap: [AppComponent],
