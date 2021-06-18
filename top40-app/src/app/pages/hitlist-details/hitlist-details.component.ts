@@ -23,6 +23,11 @@ export class HitlistDetailsComponent implements OnInit {
 
     ngOnInit(): void {
         this.getHitListDetails();
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: 'smooth',
+        });
     }
 
     getHitListDetails(): void {

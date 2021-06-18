@@ -40,7 +40,7 @@ export class HitlistComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private hitListsService: HitListsService,
-        private sanitizer: DomSanitizer,
+        private sanitizer: DomSanitizer
     ) {}
 
     ngOnInit(): void {
@@ -73,7 +73,12 @@ export class HitlistComponent implements OnInit {
                 secondCut
             );
         }
-        // add scroll to top
+        // scroll to top
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: 'smooth',
+        });
     }
 
     updateVideoUrl(id: string): void {
