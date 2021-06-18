@@ -4,8 +4,6 @@ import { PageEvent } from '@angular/material/paginator';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 import { HitList } from 'src/app/models/hitlist';
-// import { Week } from 'src/app/models/week';
-// import { Year } from 'src/app/models/year';
 import { HitListsService } from 'src/app/services/hitlists/hitlists.service';
 import {
     generateArrayOfYears,
@@ -42,7 +40,7 @@ export class HitlistComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private hitListsService: HitListsService,
-        private sanitizer: DomSanitizer
+        private sanitizer: DomSanitizer,
     ) {}
 
     ngOnInit(): void {
@@ -87,6 +85,7 @@ export class HitlistComponent implements OnInit {
     }
 
     generateVideoList(list: any): void {
+        this.videoList = '';
         for (const item of list) {
             if (item.youtubeCode === null) {
                 this.videoList.replace('null', '');

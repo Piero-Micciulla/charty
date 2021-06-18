@@ -55,6 +55,7 @@
 
     <div class="player-container">
         <iframe
+            id="iframePlayer"
             class="e2e-iframe-trusted-src"
             [src]="videoUrl"
             height="180"
@@ -62,6 +63,7 @@
             onerror="this.style.display='none'"
             loading="lazy"
             title="Video clips of the hit songs"
+            allowfullscreen
         ></iframe>
     </div>
 </div>

@@ -75,6 +75,12 @@ export class HitListsService {
         );
     }
 
+    findOtherHitList(type: HitListType, week: number, year: number): Observable<HitList> {
+        const url = `${this.hitListUrl}/top40_json/${type.id}?week=${week}&year=${year}`;
+
+        return this.http.get<HitList>(url);
+    }
+
     public fetchAll(): Observable<HitList[]> {
         const hitListArray: Observable<HitList>[] = [];
 
