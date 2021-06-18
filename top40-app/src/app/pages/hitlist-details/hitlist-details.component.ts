@@ -3,7 +3,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Location } from '@angular/common';
 
-import { itemDetails } from 'src/app/models/itemDetails';
+import { ItemDetails } from 'src/app/models/itemDetails';
 import { HitlistItemsService } from 'src/app/services/hitlist-items/hitlist-items.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { HitlistItemsService } from 'src/app/services/hitlist-items/hitlist-item
     styleUrls: ['./hitlist-details.component.scss'],
 })
 export class HitlistDetailsComponent implements OnInit {
-    itemDetails!: itemDetails;
+    itemDetails: ItemDetails | undefined;
 
     constructor(
         private route: ActivatedRoute,

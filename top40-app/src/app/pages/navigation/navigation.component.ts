@@ -10,7 +10,7 @@ import { HITLIST_TYPES } from 'src/app/services/hitlists/hitlists.service';
 })
 export class NavigationComponent implements OnInit {
     hitlistTypes = HITLIST_TYPES;
-    opened!: boolean;
+    opened: boolean | undefined;
 
     constructor(private route: ActivatedRoute) {}
 

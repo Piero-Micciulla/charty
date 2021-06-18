@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
     styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-    hitLists!: HitList[];
+    hitLists: HitList[] | undefined;
     hitlistTypes = HITLIST_TYPES;
 
     constructor(protected hitListService: HitListsService) {}

@@ -1,4 +1,4 @@
-export interface itemDetails {
+export interface ItemDetails {
     title_id: number;
     credit: string;
     title: string;

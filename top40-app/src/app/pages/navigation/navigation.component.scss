@@ -41,6 +41,14 @@ mat-sidenav-content {
     transition: all 0.3s ease-in-out;
 }
 
+footer {
+    background-color: #1a1a13;
+    text-align: center;
+    color: #fff;
+    padding: 16px;
+    border-top: 2px solid #ec1c24;
+}
+
 @media all and (min-width: 768px) {
     * {
         padding: 0 auto;

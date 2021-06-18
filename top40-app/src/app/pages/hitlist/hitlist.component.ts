@@ -19,26 +19,25 @@ import { Position } from '@angular/compiler';
     styleUrls: ['./hitlist.component.scss'],
 })
 export class HitlistComponent implements OnInit {
-    hitList!: HitList;
-    positions!: Position;
-    // week!: Week;
-    // year!: Year;
-    activeHitListData: any[] = [];
+    hitList: HitList | undefined;
+    positions: Position[] | undefined;
+
+    activeHitListData: any[] | undefined;
 
     weeks = generateArrayOfWeeks();
     years = generateArrayOfYears();
 
-    selectedWeek: number = 0;
-    selectedYear: number = 0;
+    selectedWeek = 0;
+    selectedYear = 0;
 
     length = 0;
     pageSize = 10;
-    showFirstLastButtons = 'true';
-    hidePageSize = 'true';
+    showFirstLastButtons = true;
+    hidePageSize = true;
 
     videoList = '';
-    dangerousVideoUrl!: string;
-    videoUrl!: SafeResourceUrl;
+    dangerousVideoUrl: string | undefined;
+    videoUrl: SafeResourceUrl | undefined;
 
     constructor(
         private route: ActivatedRoute,
@@ -67,17 +66,19 @@ export class HitlistComponent implements OnInit {
         });
     }
 
-    public getPaginatorData(event: PageEvent) {
-        let firstCut = event.pageIndex * event.pageSize;
-        let secondCut = firstCut + event.pageSize;
-        this.activeHitListData = this.hitList.positions.slice(
-            firstCut,
-            secondCut
-        );
+    getPaginatorData(event: PageEvent): void {
+        const firstCut = event.pageIndex * event.pageSize;
+        const secondCut = firstCut + event.pageSize;
+        if (this.hitList?.positions) {
+            this.activeHitListData = this.hitList.positions.slice(
+                firstCut,
+                secondCut
+            );
+        }
         // add scroll to top
     }
 
-    updateVideoUrl(id: string) {
+    updateVideoUrl(id: string): void {
         this.dangerousVideoUrl =
             'https://www.youtube.com/embed/videoseries?playlist=' + id;
         this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
@@ -86,7 +87,7 @@ export class HitlistComponent implements OnInit {
     }
 
     generateVideoList(list: any): void {
-        for (let item of list) {
+        for (const item of list) {
             if (item.youtubeCode === null) {
                 this.videoList.replace('null', '');
             } else {

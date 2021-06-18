@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { itemDetails } from 'src/app/models/itemDetails';
+import { ItemDetails } from 'src/app/models/itemDetails';
 
 @Injectable({
     providedIn: 'root',
@@ -12,9 +12,9 @@ export class HitlistItemsService {
 
     constructor(private http: HttpClient) {}
 
-    fetchHitListDetails(id: number): Observable<itemDetails> {
+    fetchHitListDetails(id: number): Observable<ItemDetails> {
         const url = `${this.hitListUrl}/titledetails_top40_json/${id}`;
-        const details = this.http.get<itemDetails>(url);
+        const details = this.http.get<ItemDetails>(url);
         console.log(details);
         return details;
     }

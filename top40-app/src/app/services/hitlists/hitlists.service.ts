@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 
 import { forkJoin, Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 import { HitList, Position } from '../../models/hitlist';
 
@@ -70,7 +70,9 @@ export class HitListsService {
         }
 
         // find corresponding hitlist
-        return this.fetchHitList(type);
+        return this.fetchHitList(type).pipe(
+            catchError(this.handleError<HitList[]>('fetchHitListById', []))
+        );
     }
 
     public fetchAll(): Observable<HitList[]> {
@@ -86,7 +88,9 @@ export class HitListsService {
         const observable: Observable<HitList[]> = forkJoin(hitListArray);
 
         // return that HitList[];
-        return observable;
+        return observable.pipe(
+            catchError(this.handleError<HitList[]>('fetchAll', []))
+        );
     }
 
     private parseHitList(response: any, type: HitListType): HitList {
@@ -116,5 +120,18 @@ export class HitListsService {
         };
 
         return hitList;
+    }
+
+    private handleError<T>(operation = 'operation', result?: T): any {
+        return (error: any): Observable<T> => {
+            // TODO: send the error to remote logging infrastructure
+            console.error(error); // log to console instead
+
+            // TODO: better job of transforming error for user consumption
+            console.log(`${operation} failed: ${error.message}`);
+
+            // Let the app keep running by returning an empty result.
+            return of(result as T);
+        };
     }
 }
