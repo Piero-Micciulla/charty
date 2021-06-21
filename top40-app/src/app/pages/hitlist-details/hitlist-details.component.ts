@@ -14,7 +14,7 @@ export class HitlistDetailsComponent implements OnInit {
     itemDetails: ItemDetails | undefined;
     panelOpenState = false;
     biography: string | undefined;
-    lyrics: string | undefined;
+    lyrics: string | undefined; // \r\n vervangen door <br>
 
     constructor(
         private route: ActivatedRoute,
@@ -38,7 +38,7 @@ export class HitlistDetailsComponent implements OnInit {
             .fetchHitListDetails(Number(id))
             .subscribe((itemDetails) => {
                 this.itemDetails = itemDetails;
-                this.lyrics = itemDetails.songwiki_lyrics;
+                this.cleanUpLyricsString(itemDetails.songwiki_lyrics);
                 this.showHTML(itemDetails.artists);
             });
     }
@@ -48,6 +48,11 @@ export class HitlistDetailsComponent implements OnInit {
             this.biography = artist.biography;
         }
         // toont alleen de laatste bio bij alle artiesten in het geval er meerdere artiesten zijn. Nog oplossing voor vinden.
+    }
+
+    cleanUpLyricsString(songLyrics: string): void {
+        const replaceTheseCharacters = /\r\n/gi;
+        this.lyrics = songLyrics.replace(replaceTheseCharacters, '<br>');
     }
 
     goBack(): void {
