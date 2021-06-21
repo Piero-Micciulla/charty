@@ -14,7 +14,7 @@ export class HitlistDetailsComponent implements OnInit {
     itemDetails: ItemDetails | undefined;
     panelOpenState = false;
     biography: string | undefined;
-    lyrics: string | undefined; // \r\n vervangen door <br>
+    lyrics: string | undefined;
 
     constructor(
         private route: ActivatedRoute,

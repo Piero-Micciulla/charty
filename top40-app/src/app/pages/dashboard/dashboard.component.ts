@@ -4,7 +4,6 @@ import {
     HitListsService,
     HITLIST_TYPES,
 } from 'src/app/services/hitlists/hitlists.service';
-import { Observable } from 'rxjs';
 
 @Component({
     selector: 'app-dashboard',
@@ -23,7 +22,6 @@ export class DashboardComponent implements OnInit {
 
     fetchHitLists(): void {
         this.hitListService.fetchAll().subscribe((hitLists: HitList[]) => {
-            console.log(hitLists);
             this.hitLists = hitLists;
         });
     }

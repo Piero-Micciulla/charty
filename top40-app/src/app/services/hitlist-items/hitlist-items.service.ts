@@ -15,7 +15,6 @@ export class HitlistItemsService {
     fetchHitListDetails(id: number): Observable<ItemDetails> {
         const url = `${this.hitListUrl}/titledetails_top40_json/${id}`;
         const details = this.http.get<ItemDetails>(url);
-        console.log(details);
         return details;
     }
 }
