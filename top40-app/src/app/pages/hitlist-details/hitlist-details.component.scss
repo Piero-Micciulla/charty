@@ -5,7 +5,7 @@ mat-card {
 }
 
 h3 {
-margin-top: 48px;
+    margin-top: 48px;
 }
 
 ul {
@@ -23,4 +23,14 @@ mat-card {
 .artist-information {
     border-top: 2px solid #ec1c24;
     padding-top: 16px;
+}
+
+.related-tracks {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-column-gap: 16px;
+}
+
+.related-tracks-items {
+    height: 100%;
 }

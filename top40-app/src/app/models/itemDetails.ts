@@ -2,7 +2,7 @@ export interface ItemDetails {
     title_id: number;
     credit: string;
     title: string;
-    cover_image_url_large: string;
+    cover_img_url_large: string;
     songwiki_album: string;
     songwiki_length: string;
     songwiki_composer: string;
@@ -26,5 +26,5 @@ export interface RelatedTracks {
     title_id: number;
     credit: string;
     title: string;
-    cover_image_url: string;
+    cover_img_url: string;
 }

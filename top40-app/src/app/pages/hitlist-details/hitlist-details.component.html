@@ -6,7 +6,7 @@
     <div *ngIf="itemDetails">
         <h1>{{ itemDetails.title }}</h1>
         <h2>{{ itemDetails.credit }}</h2>
-        <img src="{{ itemDetails.cover_image_url_large }}" alt="" />
+        <img src="{{ itemDetails.cover_img_url_large }}" alt="" />
         <ul>
             <li>Album: {{ itemDetails.songwiki_album }}</li>
             <li>Length: {{ itemDetails.songwiki_length }}</li>
@@ -58,20 +58,22 @@
         </mat-accordion>
 
         <h3 *ngIf="itemDetails.related_tracks">Related tracks</h3>
-        <div
-            class="related-tracks-items"
-            *ngFor="let track of itemDetails.related_tracks"
-        >
-            <mat-card
-                class="song-summary"
-                [routerLink]="['/details', track.title_id]"
+        <div class="related-tracks">
+            <div
+                class="related-tracks-items"
+                *ngFor="let track of itemDetails.related_tracks"
             >
-                <mat-card-header>
-                    <img mat-card-avatar src="{{ track.cover_image_url }}" />
-                    <mat-card-title>{{ track.title }}</mat-card-title>
-                    <mat-card-subtitle>{{ track.credit }}</mat-card-subtitle>
-                </mat-card-header>
-            </mat-card>
+                <mat-card
+                    class="song-summary"
+                    [routerLink]="['/details', track.title_id]"
+                >
+                    <mat-card-header>
+                        <img mat-card-avatar src="{{ track.cover_img_url }}" />
+                        <mat-card-title>{{ track.title }}</mat-card-title>
+                        <mat-card-subtitle>{{ track.credit }}</mat-card-subtitle>
+                    </mat-card-header>
+                </mat-card>
+            </div>
         </div>
     </div>
 </div>
