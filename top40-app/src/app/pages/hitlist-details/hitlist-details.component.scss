@@ -1,3 +1,26 @@
+h1,
+h2,
+mat-card {
+    text-transform: capitalize;
+}
+
+h3 {
+margin-top: 48px;
+}
+
+ul {
+    list-style-type: disclosure-closed;
+}
+
+li {
+    line-height: 2em;
+}
+
+mat-card {
+    margin-bottom: 16px;
+}
+
 .artist-information {
     border-top: 2px solid #ec1c24;
+    padding-top: 16px;
 }

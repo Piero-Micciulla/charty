@@ -3,6 +3,12 @@ export interface ItemDetails {
     credit: string;
     title: string;
     cover_image_url_large: string;
+    songwiki_album: string;
+    songwiki_length: string;
+    songwiki_composer: string;
+    songwiki_producer: string;
+    songwiki_label: string;
+    songwiki_releasedate: string;
     songwiki_lyrics: string;
     artists: Artist[];
     related_tracks: RelatedTracks[];

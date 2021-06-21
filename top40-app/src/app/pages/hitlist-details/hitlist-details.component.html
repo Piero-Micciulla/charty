@@ -6,6 +6,19 @@
     <div *ngIf="itemDetails">
         <h1>{{ itemDetails.title }}</h1>
         <h2>{{ itemDetails.credit }}</h2>
+        <ul>
+            <li>Album: {{ itemDetails.songwiki_album }}</li>
+            <li>Length: {{ itemDetails.songwiki_length }}</li>
+            <li>Composer: {{ itemDetails.songwiki_composer }}</li>
+            <li>Producer: {{ itemDetails.songwiki_producer }}</li>
+            <li>Label: {{ itemDetails.songwiki_label }}</li>
+            <li>
+                Release date:
+                {{ itemDetails.songwiki_releasedate | date: "dd/MM/yyyy" }}
+            </li>
+        </ul>
+
+        <h3>Other information</h3>
         <mat-accordion>
             <!-- artist information panel -->
             <mat-expansion-panel
@@ -22,7 +35,7 @@
                     >
                         <img src="{{ artist.artist_img_url }}" width="100%" />
                         <h2>{{ artist.name }}</h2>
-                        <p>{{ artist.biography }}</p>
+                        <p [innerHTML]="biography"></p>
                         <p>From: {{ artist.country }}</p>
                         <p>Born: {{ artist.birthdate | date }}</p>
                     </div>
@@ -38,7 +51,7 @@
                     <mat-panel-title>Lyrics</mat-panel-title>
                 </mat-expansion-panel-header>
                 <ng-template matExpansionPanelContent>
-                    <p>{{ itemDetails.songwiki_lyrics }}</p>
+                    <p [innerHTML]="lyrics"></p>
                 </ng-template>
             </mat-expansion-panel>
         </mat-accordion>
@@ -50,10 +63,10 @@
         >
             <mat-card
                 class="song-summary"
-                [routerLink]="[track.title_id]"
+                [routerLink]="['/details', track.title_id]"
             >
                 <mat-card-header>
-                    <img mat-card-avatar src="{{ track.cover_image_url }}" >
+                    <img mat-card-avatar src="{{ track.cover_image_url }}" />
                     <mat-card-title>{{ track.title }}</mat-card-title>
                     <mat-card-subtitle>{{ track.credit }}</mat-card-subtitle>
                 </mat-card-header>

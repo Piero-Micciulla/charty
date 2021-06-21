@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Location } from '@angular/common';
 
-import { ItemDetails } from 'src/app/models/itemDetails';
+import { Artist, ItemDetails } from 'src/app/models/itemDetails';
 import { HitlistItemsService } from 'src/app/services/hitlist-items/hitlist-items.service';
 
 @Component({
@@ -14,16 +13,19 @@ import { HitlistItemsService } from 'src/app/services/hitlist-items/hitlist-item
 export class HitlistDetailsComponent implements OnInit {
     itemDetails: ItemDetails | undefined;
     panelOpenState = false;
+    biography: string | undefined;
+    lyrics: string | undefined;
 
     constructor(
         private route: ActivatedRoute,
         private hitListItemsService: HitlistItemsService,
-        private location: Location,
-        private sanitizer: DomSanitizer
+        private location: Location
     ) {}
 
     ngOnInit(): void {
-        this.getHitListDetails();
+        this.route.params.subscribe((routeParams) => {
+            this.getHitListDetails(Number(routeParams.id));
+        });
         window.scroll({
             top: 0,
             left: 0,
@@ -31,12 +33,21 @@ export class HitlistDetailsComponent implements OnInit {
         });
     }
 
-    getHitListDetails(): void {
-        const itemId = this.route.snapshot.paramMap.get('id');
-
+    getHitListDetails(id: number): void {
         this.hitListItemsService
-            .fetchHitListDetails(Number(itemId))
-            .subscribe((itemDetails) => (this.itemDetails = itemDetails));
+            .fetchHitListDetails(Number(id))
+            .subscribe((itemDetails) => {
+                this.itemDetails = itemDetails;
+                this.lyrics = itemDetails.songwiki_lyrics;
+                this.showHTML(itemDetails.artists);
+            });
+    }
+
+    showHTML(artists: Array<Artist>): void {
+        for (let artist of artists) {
+            this.biography = artist.biography;
+        }
+        // toont alleen de laatste bio bij alle artiesten in het geval er meerdere artiesten zijn. Nog oplossing voor vinden.
     }
 
     goBack(): void {

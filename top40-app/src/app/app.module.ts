@@ -10,6 +10,7 @@ import {
     faTimes,
     faAngleRight,
     faAngleLeft,
+    faAngleUp,
 } from '@fortawesome/free-solid-svg-icons';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -58,6 +59,6 @@ import { HitlistDetailsComponent } from './pages/hitlist-details/hitlist-details
 })
 export class AppModule {
     constructor(private library: FaIconLibrary) {
-        library.addIcons(faBars, faTimes, faAngleRight, faAngleLeft);
+        library.addIcons(faBars, faTimes, faAngleRight, faAngleLeft, faAngleUp);
     }
 }
