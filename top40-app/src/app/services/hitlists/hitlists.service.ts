@@ -44,7 +44,7 @@ export class HitListsService {
 
     constructor(private http: HttpClient) {}
 
-    fetchHitList(type: HitListType): Observable<HitList> {
+    fetchHitList(type: HitListType, week?: number, year?: number): Observable<HitList> {
         const url = `${this.hitListUrl}/top40_json/${type.id}`;
 
         // call API
@@ -75,7 +75,18 @@ export class HitListsService {
         );
     }
 
-    findOtherHitList(type: HitListType, week: number, year: number): Observable<HitList> {
+    findOtherHitList(id: number, week: number, year: number): Observable<HitList> {
+        const type = HITLIST_TYPES.find((hitListType: HitListType) => {
+            return hitListType.id === id;
+        });
+
+        // if no type is found, return message
+        if (!type) {
+            throw new Error(
+                `Unable to fetch hitlist for id ${id}: the type for this hitlist is not found`
+            );
+        }
+
         const url = `${this.hitListUrl}/top40_json/${type.id}?week=${week}&year=${year}`;
 
         //  call API

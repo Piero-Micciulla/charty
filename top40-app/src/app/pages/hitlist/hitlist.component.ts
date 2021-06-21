@@ -19,6 +19,7 @@ import { Position } from '@angular/compiler';
 export class HitlistComponent implements OnInit {
     hitList: HitList | undefined;
     positions: Position[] | undefined;
+    hitListId: number | undefined;
 
     activeHitListData: any[] | undefined;
 
@@ -61,12 +62,20 @@ export class HitlistComponent implements OnInit {
             this.selectedYear = hitList.year;
             this.generateVideoList(hitList.positions);
             this.updateVideoUrl(this.videoList);
+            this.hitListId = hitList.id;
         });
     }
 
-    // searchHitList(week: number, year: number): void {
-    //     this.hitListsService.findOtherHitList(week, year).subscribe(hitList => this.hitList = hitList);
-    // }
+    searchHitList(week: number, year: number): void {
+        if (this.hitListId) {
+            this.hitListsService
+                .findOtherHitList(this.hitListId, week, year)
+                .subscribe((hitList) => {
+                    this.hitList = hitList;
+                });
+            console.log(week, year);
+        }
+    }
 
     getPaginatorData(event: PageEvent): void {
         const firstCut = event.pageIndex * event.pageSize;

@@ -6,6 +6,7 @@
     <div *ngIf="itemDetails">
         <h1>{{ itemDetails.title }}</h1>
         <h2>{{ itemDetails.credit }}</h2>
+        <img src="{{ itemDetails.cover_image_url_large }}" alt="" />
         <ul>
             <li>Album: {{ itemDetails.songwiki_album }}</li>
             <li>Length: {{ itemDetails.songwiki_length }}</li>
