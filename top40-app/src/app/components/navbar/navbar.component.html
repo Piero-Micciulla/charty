@@ -1,0 +1,21 @@
+<nav class="flex items-center text-white justify-between px-20 py-14">
+    <div class="flex items-center mr-6">
+        <a class="w-40">
+            <img src="../../../assets/logo.png" class="h-auto object-contain md:object-scale-down" alt="Logo">
+        </a>
+    </div>
+    <div class="block lg:hidden">
+        <button class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
+        <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+      </button>
+    </div>
+    <ng-container *ngIf="lists$ | async as lists">
+        <div class="w-full font-montserrat lg:flex lg:items-center lg:justify-evenly lg:w-3/4">
+            <div *ngFor="let item of lists " class="text-2xl lg:flex-grow">
+                <a [routerLink]="['./list', item.id]" class="block mt-4 uppercase lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+                {{item.name}}
+            </a>
+            </div>
+        </div>
+    </ng-container>
+</nav>

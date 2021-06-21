@@ -1,0 +1,22 @@
+<header>
+    <!-- <app-navbar></app-navbar> -->
+    <div class=" bg-header-pattern h-auto -mt-72 lg:-mt-72 md:-mt-72 sm:-mt-72">
+        <div class="flex justify-evenly items-center pt-52 lg:pt-52 md:pt-52 sm:pt-52">
+            <ng-container *ngIf="headerList">
+                <div class="font-raleway w-3/6 pl-24 py-16 font-bold text-white">
+                    <h1 class="text-6xl py-8">{{ headerList.name }}</h1>
+                    <h2 class="text-4xl">Week {{ headerList.week }} - {{ headerList.year }}</h2>
+                    <div class="text-pink-900 my-6 z-50">
+                        <button [routerLink]="['/../details', headerList.id]" class="bg-white px-8 py-4 text-xl font-bold rounded-lg">Go for details</button>
+                    </div>
+                </div>
+                <div class="font-raleway px-32 py-20 text-center">
+                    <img src="{{ headerList.positions[0].imageLarge }}" class="h-96 w-96 rounded-full mb-8" />
+                    <p class="text-white font-bold break-words">
+                        {{ headerList.positions[0].title }} - {{ headerList.positions[0].credit }}
+                    </p>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</header>

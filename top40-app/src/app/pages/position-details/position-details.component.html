@@ -1,0 +1,65 @@
+<section>
+    <div class=" bg-header-pattern h-auto -mt-72 lg:-mt-72 md:-mt-72 sm:-mt-72">
+        <div class="flex flex-col  pt-60 lg:pt-60 md:pt-60 sm:pt-60">
+            <ng-container *ngIf="positionDetails">
+                <div class="font-raleway w-full flex justify-between items-center pl-24 py-16 font-bold text-white">
+                    <div>
+                        <h1 class="text-6xl py-8">{{ positionDetails.title }}</h1>
+                        <h2 class="text-4xl break-words w-3/5">{{ positionDetails.credit }}</h2>
+                    </div>
+                    <div class="text-pink-900 my-6 mx-24 z-50">
+                        <button class="bg-white px-8 py-4 text-xl font-bold rounded-lg" (click)="goBack()">Back</button>
+                    </div>
+                </div>
+                <section class="my-20 bg-white ">
+                    <h1 class="m-12 font-montserrat text-pink-900 text-4xl">{{positionDetails.title}}</h1>
+                    <div *ngIf="positionDetails" class="flex flex-row mx-8 text-center text-pink-900 text-lg p-5 lg:p-3 md:p-3 sm:p-3">
+                        <div class="w-2/3 overflow-auto h-80 mx-4 px-14 py-4 overflow-ellipsis">
+                            <p *ngIf="positionDetails.songwiki_lyrics" class="font-bold text-2xl">Lyrics </p>
+                            <p class="font-raleway font-semibold">{{positionDetails.songwiki_lyrics}}</p>
+                        </div>
+                        <div class="mx-4 px-14 py-4 justify-center items-center">
+                            <img src="{{ positionDetails.cover_img_url_large }}" class="w-64 h-64">
+                            <button class="m-6 rounded bg-pink-900 p-4 text-white text-xl">
+                                <a href="{{ positionDetails.itunes_track_preview_url }}" download="{{ positionDetails.title }}.pdf">Download Track</a>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="m-12 flex justify-around">
+                    <div *ngIf="positionDetails.youtube_url">
+                        <youtube-player videoId="{{videoID}}" loading="lazy" title="Video clips of the hit songs" suggestedQuality="highres" [height]="250" [width]="500">
+                        </youtube-player>
+                    </div>
+                    <div class="flex flex-col">
+                        <div *ngIf="positionDetails.songwiki_releasedate" class="p-8 font-montserrat text-white text-2xl font-bold">Released Date:
+                            <p class="font-raleway font-medium">{{positionDetails.songwiki_releasedate}}</p>
+                        </div>
+                        <div *ngIf="positionDetails.main_artist" class="p-8 font-montserrat  text-white text-2xl font-bold">Main Artist:
+                            <p class="font-raleway font-medium">{{positionDetails.main_artist}}</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="mt-20">
+                    <h1 class="m-12 font-montserrat text-white text-4xl">Related Tracks</h1>
+                    <div *ngIf="positionDetails" class="mx-12 capitalize text-white text-lg p-5 lg:p-3 md:p-3 sm:p-3 grid grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div *ngFor="let item of positionDetails.related_tracks" class="font-raleway mb-6">
+                            <div *ngIf="positionDetails" class="flex">
+                                <div class="mx-2">
+                                    <img src="{{item.cover_img_url}}" alt="cover-img" class="">
+                                </div>
+                                <div>
+                                    <p>Title: {{item.title}}</p>
+                                    <p>Credit: {{item.credit}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </ng-container>
+        </div>
+
+    </div>
+</section>

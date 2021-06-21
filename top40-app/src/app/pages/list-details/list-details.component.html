@@ -1,0 +1,35 @@
+<section>
+    <div class=" bg-header-pattern h-auto -mt-72 lg:-mt-72 md:-mt-72 sm:-mt-72">
+        <div class="flex flex-col  pt-60 lg:pt-60 md:pt-60 sm:pt-60">
+            <ng-container *ngIf="detailList">
+                <div class="font-raleway w-full flex justify-between items-center pl-24 py-16 font-bold text-white">
+                    <div>
+                        <h1 class="text-6xl py-8">{{ detailList.name }}</h1>
+                        <h2 class="text-4xl">Week {{ detailList.week }} - {{ detailList.year }}</h2>
+                    </div>
+                    <div class="text-pink-900 my-6 mx-24 z-50">
+                        <button class="bg-white px-8 py-4 text-xl font-bold rounded-lg" (click)="goBack()">Back</button>
+                    </div>
+                </div>
+                <div class="">
+                    <!-- swiper -->
+                    <swiper [slidesPerView]="3" [spaceBetween]="20" [navigation]="true">
+                        <ng-template swiperSlide *ngFor="let item of detailListData; index as i">
+                            <img src="{{ item.imageLarge }}" class="w-64 h-64 cursor-pointer" [routerLink]="['../../positionDetails', item.titleId]" />
+                            <div class="text-justify text-white">
+                                <p class="text-xl capitalize">
+                                    {{item.position}} {{ item.title }}
+                                </p>
+                            </div>
+                        </ng-template>
+                    </swiper>
+                </div>
+                <div *ngIf="videoUrl" class="mx-auto">
+                    <iframe class="e2e-iframe-trusted-src m-16" [src]="videoUrl" [height]="350" [width]="600" onerror="this.style.display='none'"></iframe>
+                </div>
+            </ng-container>
+
+        </div>
+
+    </div>
+</section>

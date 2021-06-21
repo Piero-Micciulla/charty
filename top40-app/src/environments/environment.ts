@@ -4,6 +4,7 @@
 
 export const environment = {
     production: false,
+    apiURL: 'https://www.top40.nl/app_api',
 };
 
 /*
