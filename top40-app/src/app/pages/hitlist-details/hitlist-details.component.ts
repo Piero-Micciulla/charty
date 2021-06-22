@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 
 import { Artist, ItemDetails } from 'src/app/models/itemDetails';
 import { HitlistItemsService } from 'src/app/services/hitlist-items/hitlist-items.service';
+import { LoadingService } from 'src/app/services/loading/loading.service';
 
 @Component({
     selector: 'app-hitlist-details',
@@ -15,11 +16,13 @@ export class HitlistDetailsComponent implements OnInit {
     panelOpenState = false;
     biography: string | undefined;
     lyrics: string | undefined;
+    loading$ = this.loader.loading$;
 
     constructor(
         private route: ActivatedRoute,
         private hitListItemsService: HitlistItemsService,
-        private location: Location
+        private location: Location,
+        public loader: LoadingService
     ) {}
 
     ngOnInit(): void {

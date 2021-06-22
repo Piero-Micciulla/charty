@@ -1,3 +1,8 @@
+<mat-progress-spinner
+    [mode]="indeterminate"
+    *ngIf="loading$ | async"
+></mat-progress-spinner>
+
 <div *ngIf="hitList">
     <h1>{{ hitList.name }}</h1>
     <h2>Week {{ hitList.week }} - {{ hitList.year }}</h2>

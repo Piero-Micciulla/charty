@@ -5,6 +5,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 import { HitList, Position } from 'src/app/models/hitlist';
 import { HitListsService } from 'src/app/services/hitlists/hitlists.service';
+import { LoadingService } from 'src/app/services/loading/loading.service';
 import {
     generateArrayOfYears,
     generateArrayOfWeeks,
@@ -19,6 +20,7 @@ export class HitlistComponent implements OnInit {
     hitList: HitList | undefined;
     positions: Position[] | undefined;
     hitListId: number | undefined;
+    loading$ = this.loader.loading$;
 
     weeks = generateArrayOfWeeks();
     years = generateArrayOfYears();
@@ -38,7 +40,8 @@ export class HitlistComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private hitListsService: HitListsService,
-        private sanitizer: DomSanitizer
+        private sanitizer: DomSanitizer,
+        public loader: LoadingService
     ) {}
 
     ngOnInit(): void {

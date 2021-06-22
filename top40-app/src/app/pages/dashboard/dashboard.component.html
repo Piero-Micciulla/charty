@@ -2,6 +2,11 @@
     <h1>Hitlists</h1>
 </header>
 
+<mat-progress-spinner
+    [mode]="indeterminate"
+    *ngIf="loading$ | async"
+></mat-progress-spinner>
+
 <main>
     <div class="hitlist-wrapper">
         <div *ngFor="let hitList of hitLists">

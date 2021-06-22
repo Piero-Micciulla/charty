@@ -1,3 +1,8 @@
+<mat-progress-spinner
+    [mode]="indeterminate"
+    *ngIf="loading$ | async"
+></mat-progress-spinner>
+
 <div *ngIf="itemDetails">
     <button mat-button (click)="goBack()">
         <fa-icon [icon]="['fas', 'angle-left']"></fa-icon> Back
@@ -70,7 +75,9 @@
                     <mat-card-header>
                         <img mat-card-avatar src="{{ track.cover_img_url }}" />
                         <mat-card-title>{{ track.title }}</mat-card-title>
-                        <mat-card-subtitle>{{ track.credit }}</mat-card-subtitle>
+                        <mat-card-subtitle>{{
+                            track.credit
+                        }}</mat-card-subtitle>
                     </mat-card-header>
                 </mat-card>
             </div>
