@@ -28,9 +28,8 @@
             Search
         </button>
     </div>
-    <!-- <p>You selected: {{ selectedWeek }} - {{ selectedYear }}</p> -->
 
-    <div *ngFor="let position of activeHitListData">
+    <div *ngFor="let position of positions">
         <mat-card
             class="song-summary"
             [routerLink]="['/details', position.titleId]"

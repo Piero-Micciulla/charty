@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HitList } from 'src/app/models/hitlist';
-import {
-    HitListsService,
-    HITLIST_TYPES,
-} from 'src/app/services/hitlists/hitlists.service';
+import { HitListsService } from 'src/app/services/hitlists/hitlists.service';
+import { HITLIST_TYPES } from '../../models/hitListTypes';
 
 @Component({
     selector: 'app-dashboard',

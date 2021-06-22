@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { PageEvent } from '@angular/material/paginator';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
-import { HitList } from 'src/app/models/hitlist';
+import { HitList, Position } from 'src/app/models/hitlist';
 import { HitListsService } from 'src/app/services/hitlists/hitlists.service';
 import {
     generateArrayOfYears,
     generateArrayOfWeeks,
 } from 'src/app/lib/helpers';
-import { Position } from '@angular/compiler';
 
 @Component({
     selector: 'app-hitlist',
@@ -20,8 +19,6 @@ export class HitlistComponent implements OnInit {
     hitList: HitList | undefined;
     positions: Position[] | undefined;
     hitListId: number | undefined;
-
-    activeHitListData: any[] | undefined;
 
     weeks = generateArrayOfWeeks();
     years = generateArrayOfYears();
@@ -54,10 +51,7 @@ export class HitlistComponent implements OnInit {
         this.hitListsService.fetchHitListById(id).subscribe((hitList) => {
             this.hitList = hitList;
             this.length = hitList.positions.length;
-            this.activeHitListData = this.hitList.positions.slice(
-                0,
-                this.pageSize
-            );
+            this.positions = this.hitList.positions.slice(0, this.pageSize);
             this.selectedWeek = hitList.week;
             this.selectedYear = hitList.year;
             this.generateVideoList(hitList.positions);
@@ -72,8 +66,8 @@ export class HitlistComponent implements OnInit {
                 .findOtherHitList(this.hitListId, week, year)
                 .subscribe((hitList) => {
                     this.hitList = hitList;
+                    this.positions = hitList.positions;
                 });
-            console.log(week, year);
         }
     }
 
@@ -81,10 +75,7 @@ export class HitlistComponent implements OnInit {
         const firstCut = event.pageIndex * event.pageSize;
         const secondCut = firstCut + event.pageSize;
         if (this.hitList?.positions) {
-            this.activeHitListData = this.hitList.positions.slice(
-                firstCut,
-                secondCut
-            );
+            this.positions = this.hitList.positions.slice(firstCut, secondCut);
         }
         // scroll to top
         window.scroll({

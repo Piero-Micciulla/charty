@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { HITLIST_TYPES } from 'src/app/services/hitlists/hitlists.service';
+import { HITLIST_TYPES } from '../../models/hitListTypes';
 
 @Component({
     selector: 'app-navigation',

@@ -5,35 +5,7 @@ import { forkJoin, Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 import { HitList, Position } from '../../models/hitlist';
-
-export const HITLIST_TYPES: HitListType[] = [
-    {
-        id: 1,
-        title: 'Top 40',
-        size: 40,
-    },
-    {
-        id: 2,
-        title: 'Album Top 40',
-        size: 40,
-    },
-    {
-        id: 3,
-        title: 'Tipparade',
-        size: 30,
-    },
-    {
-        id: 4,
-        title: 'Movie Top 40',
-        size: 40,
-    },
-];
-
-export interface HitListType {
-    id: number;
-    title: string;
-    size: number;
-}
+import { HitListType, HITLIST_TYPES } from '../../models/hitListTypes';
 
 @Injectable({
     providedIn: 'root',
@@ -44,7 +16,11 @@ export class HitListsService {
 
     constructor(private http: HttpClient) {}
 
-    fetchHitList(type: HitListType, week?: number, year?: number): Observable<HitList> {
+    fetchHitList(
+        type: HitListType,
+        week?: number,
+        year?: number
+    ): Observable<HitList> {
         const url = `${this.hitListUrl}/top40_json/${type.id}`;
 
         // call API
@@ -75,7 +51,11 @@ export class HitListsService {
         );
     }
 
-    findOtherHitList(id: number, week: number, year: number): Observable<HitList> {
+    findOtherHitList(
+        id: number,
+        week: number,
+        year: number
+    ): Observable<HitList> {
         const type = HITLIST_TYPES.find((hitListType: HitListType) => {
             return hitListType.id === id;
         });
