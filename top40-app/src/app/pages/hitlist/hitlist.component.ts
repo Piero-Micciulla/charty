@@ -45,6 +45,11 @@ export class HitlistComponent implements OnInit {
         this.route.params.subscribe((routeParams) => {
             this.getHitList(Number(routeParams.id));
         });
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: 'smooth',
+        });
     }
 
     getHitList(id: number): void {
@@ -60,7 +65,7 @@ export class HitlistComponent implements OnInit {
         });
     }
 
-    searchHitList(week: number, year: number): void {
+    findHitList(week: number, year: number): void {
         if (this.hitListId) {
             this.hitListsService
                 .findOtherHitList(this.hitListId, week, year)
@@ -93,7 +98,7 @@ export class HitlistComponent implements OnInit {
         );
     }
 
-    generateVideoList(list: any): void {
+    generateVideoList(list: Position[]): void {
         this.videoList = '';
         for (const item of list) {
             if (item.youtubeCode === null) {

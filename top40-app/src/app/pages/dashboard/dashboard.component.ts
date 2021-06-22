@@ -16,6 +16,11 @@ export class DashboardComponent implements OnInit {
 
     ngOnInit(): void {
         this.fetchHitLists();
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: 'smooth',
+        });
     }
 
     fetchHitLists(): void {

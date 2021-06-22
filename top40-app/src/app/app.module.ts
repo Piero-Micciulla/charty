@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {
     FontAwesomeModule,
     FaIconLibrary,
@@ -22,6 +22,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,6 +30,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { HitlistComponent } from './pages/hitlist/hitlist.component';
 import { NavigationComponent } from './pages/navigation/navigation.component';
 import { HitlistDetailsComponent } from './pages/hitlist-details/hitlist-details.component';
+import { NetworkInterceptor } from './interceptors/network.interceptor';
 
 @NgModule({
     declarations: [
@@ -53,8 +55,13 @@ import { HitlistDetailsComponent } from './pages/hitlist-details/hitlist-details
         MatFormFieldModule,
         MatSelectModule,
         MatExpansionModule,
+        MatProgressSpinnerModule,
     ],
-    providers: [],
+    providers: [{
+        provide: HTTP_INTERCEPTORS,
+        useClass: NetworkInterceptor,
+        multi: true,
+    }],
     bootstrap: [AppComponent],
 })
 export class AppModule {
