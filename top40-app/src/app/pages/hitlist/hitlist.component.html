@@ -68,14 +68,12 @@
             [hidePageSize]="hidePageSize"
         ></mat-paginator>
 
-        <div class="player-container">
+        <div class="player-container" *ngIf="hitList.positions[0].youtubeCode">
             <iframe
-                id="iframePlayer"
-                class="e2e-iframe-trusted-src"
+                class="iframePlayer"
                 [src]="videoUrl"
                 height="180"
                 width="320"
-                onerror="this.style.display='none'"
                 loading="lazy"
                 title="Video clips of the hit songs"
                 allowfullscreen

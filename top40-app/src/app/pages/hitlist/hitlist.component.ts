@@ -74,7 +74,7 @@ export class HitlistComponent implements OnInit {
                 .findOtherHitList(this.hitListId, week, year)
                 .subscribe((hitList) => {
                     this.hitList = hitList;
-                    this.positions = hitList.positions;
+                    this.positions = hitList.positions.slice(0, this.pageSize);
                 });
         }
     }
