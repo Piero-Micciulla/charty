@@ -3,7 +3,9 @@
 </header>
 
 <mat-progress-spinner
-    [mode]="indeterminate"
+    mode="indeterminate"
+    color="warn"
+    aria-label="loading"
     *ngIf="loading$ | async"
 ></mat-progress-spinner>
 

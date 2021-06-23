@@ -18,6 +18,7 @@ a {
 
 .logo {
     cursor: pointer;
+    width: 150px;
 }
 
 mat-toolbar {
@@ -34,7 +35,6 @@ mat-sidenav {
 
 mat-sidenav-content {
     margin: 0 16px;
-    min-height: 100vh;
 }
 
 .toolbar-spacer {
@@ -90,8 +90,21 @@ footer {
         margin: 0 auto;
     }
 
+    router-outlet {
+        height: 100vh;
+    }
+
     ul {
         margin-left: 32px;
         margin-bottom: 32px;
+    }
+
+    .logo {
+        width: 200px;
+    }
+
+    .back-to-top-button {
+        bottom: 50px;
+        right: 60px;
     }
 }

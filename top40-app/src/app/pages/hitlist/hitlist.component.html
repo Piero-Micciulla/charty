@@ -1,79 +1,85 @@
 <mat-progress-spinner
-    [mode]="indeterminate"
+    mode="indeterminate"
+    color="warn"
+    aria-label="loading"
     *ngIf="loading$ | async"
 ></mat-progress-spinner>
 
 <div *ngIf="hitList">
-    <h1>{{ hitList.name }}</h1>
-    <h2>Week {{ hitList.week }} - {{ hitList.year }}</h2>
+    <header>
+        <h1>{{ hitList.name }}</h1>
+        <h2>Week {{ hitList.week }} - {{ hitList.year }}</h2>
+    </header>
 
-    <div class="filter-container">
-        <mat-form-field appearance="fill">
-            <mat-label>Week</mat-label>
-            <mat-select [(value)]="selectedWeek">
-                <mat-option *ngFor="let week of weeks" [value]="week">{{
-                    week
-                }}</mat-option>
-            </mat-select>
-        </mat-form-field>
+    <main>
+        <div class="filter-container">
+            <mat-form-field appearance="fill">
+                <mat-label>Week</mat-label>
+                <mat-select [(value)]="selectedWeek">
+                    <mat-option *ngFor="let week of weeks" [value]="week">{{
+                        week
+                    }}</mat-option>
+                </mat-select>
+            </mat-form-field>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Year</mat-label>
-            <mat-select [(value)]="selectedYear">
-                <mat-option *ngFor="let year of years" [value]="year">{{
-                    year
-                }}</mat-option>
-            </mat-select>
-        </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Year</mat-label>
+                <mat-select [(value)]="selectedYear">
+                    <mat-option *ngFor="let year of years" [value]="year">{{
+                        year
+                    }}</mat-option>
+                </mat-select>
+            </mat-form-field>
 
-        <button
-            mat-raised-button
-            (click)="findHitList(selectedWeek, selectedYear)"
-        >
-            Find hitlist
-        </button>
-    </div>
+            <button
+                mat-raised-button
+                (click)="findHitList(selectedWeek, selectedYear)"
+            >
+                Find hitlist
+            </button>
+        </div>
 
-    <div *ngFor="let position of positions">
-        <mat-card
-            class="song-summary"
-            [routerLink]="['/details', position.titleId]"
-        >
-            <mat-card-header>
-                <div mat-card-avatar class="image-container">
-                    <img mat-card-avatar src="{{ position.imageMedium }}" />
-                    <div class="overlay">
-                        <p>
-                            {{ position.position }}
-                        </p>
+        <div *ngFor="let position of positions">
+            <mat-card
+                class="song-summary"
+                [routerLink]="['/details', position.titleId]"
+            >
+                <mat-card-header>
+                    <div mat-card-avatar class="image-container">
+                        <img mat-card-avatar src="{{ position.imageMedium }}" />
+                        <div class="overlay">
+                            <p>
+                                {{ position.position }}
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <mat-card-title>{{ position.title }}</mat-card-title>
-                <mat-card-subtitle>{{ position.credit }}</mat-card-subtitle>
-            </mat-card-header>
-        </mat-card>
-    </div>
+                    <mat-card-title>{{ position.title }}</mat-card-title>
+                    <mat-card-subtitle>{{ position.credit }}</mat-card-subtitle>
+                </mat-card-header>
+            </mat-card>
+        </div>
 
-    <mat-paginator
-        #paginator
-        (page)="getPaginatorData($event)"
-        [length]="length"
-        [pageSize]="pageSize"
-        [showFirstLastButtons]="showFirstLastButtons"
-        [hidePageSize]="hidePageSize"
-    ></mat-paginator>
+        <mat-paginator
+            #paginator
+            (page)="getPaginatorData($event)"
+            [length]="length"
+            [pageSize]="pageSize"
+            [showFirstLastButtons]="showFirstLastButtons"
+            [hidePageSize]="hidePageSize"
+        ></mat-paginator>
 
-    <div class="player-container">
-        <iframe
-            id="iframePlayer"
-            class="e2e-iframe-trusted-src"
-            [src]="videoUrl"
-            height="180"
-            width="320"
-            onerror="this.style.display='none'"
-            loading="lazy"
-            title="Video clips of the hit songs"
-            allowfullscreen
-        ></iframe>
-    </div>
+        <div class="player-container">
+            <iframe
+                id="iframePlayer"
+                class="e2e-iframe-trusted-src"
+                [src]="videoUrl"
+                height="180"
+                width="320"
+                onerror="this.style.display='none'"
+                loading="lazy"
+                title="Video clips of the hit songs"
+                allowfullscreen
+            ></iframe>
+        </div>
+    </main>
 </div>

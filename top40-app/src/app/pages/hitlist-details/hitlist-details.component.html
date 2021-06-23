@@ -1,50 +1,88 @@
-<mat-progress-spinner
-    [mode]="indeterminate"
-    *ngIf="loading$ | async"
-></mat-progress-spinner>
+<div>
+    <mat-progress-spinner
+        mode="indeterminate"
+        color="warn"
+        aria-label="loading"
+        *ngIf="loading$ | async"
+    ></mat-progress-spinner>
+</div>
 
 <div *ngIf="itemDetails">
-    <button mat-button (click)="goBack()">
+    <button mat-button class="back-button" (click)="goBack()">
         <fa-icon [icon]="['fas', 'angle-left']"></fa-icon> Back
     </button>
 
-    <div *ngIf="itemDetails">
-        <h1>{{ itemDetails.title }}</h1>
-        <h2>{{ itemDetails.credit }}</h2>
-        <img src="{{ itemDetails.cover_img_url_large }}" alt="" />
-        <ul>
-            <li>Album: {{ itemDetails.songwiki_album }}</li>
-            <li>Length: {{ itemDetails.songwiki_length }}</li>
-            <li>Composer: {{ itemDetails.songwiki_composer }}</li>
-            <li>Producer: {{ itemDetails.songwiki_producer }}</li>
-            <li>Label: {{ itemDetails.songwiki_label }}</li>
-            <li>
-                Release date:
-                {{ itemDetails.songwiki_releasedate | date: "dd/MM/yyyy" }}
-            </li>
-        </ul>
+    <header class="detail-heading">
+        <img
+            class="album-cover"
+            src="{{ itemDetails.cover_img_url_large }}"
+            alt="Album cover"
+            width="100%"
+            height="100%"
+        />
+        <div class="heading-text">
+            <h1 class="song-title">{{ itemDetails.title }}</h1>
+            <h2 class="artist-name">{{ itemDetails.credit }}</h2>
 
-        <h3>Other information</h3>
+            <ul class="song-details">
+                <li *ngIf="itemDetails.songwiki_album">
+                    Album: {{ itemDetails.songwiki_album }}
+                </li>
+                <li *ngIf="itemDetails.songwiki_length">
+                    Length: {{ itemDetails.songwiki_length }}
+                </li>
+                <li *ngIf="itemDetails.songwiki_composer">
+                    Composer: {{ itemDetails.songwiki_composer }}
+                </li>
+                <li *ngIf="itemDetails.songwiki_producer">
+                    Producer: {{ itemDetails.songwiki_producer }}
+                </li>
+                <li *ngIf="itemDetails.songwiki_label">
+                    Label: {{ itemDetails.songwiki_label }}
+                </li>
+                <li *ngIf="itemDetails.songwiki_releasedate">
+                    Release date:
+                    {{ itemDetails.songwiki_releasedate | date: "dd/MM/yyyy" }}
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <h3
+            *ngIf="itemDetails.artists || itemDetails.songwiki_lyrics"
+        >
+            Other information
+        </h3>
         <mat-accordion>
             <!-- artist information panel -->
             <mat-expansion-panel
                 (opened)="panelOpenState = true"
                 (closed)="panelOpenState = false"
+                *ngFor="let artist of itemDetails.artists"
             >
                 <mat-expansion-panel-header>
-                    <mat-panel-title>Artist information</mat-panel-title>
+                    <mat-panel-title>{{ artist.name }}</mat-panel-title>
                 </mat-expansion-panel-header>
                 <ng-template matExpansionPanelContent>
-                    <div
-                        class="artist-information"
-                        *ngFor="let artist of itemDetails.artists"
-                    >
-                        <img src="{{ artist.artist_img_url }}" width="100%" />
-                        <h2>{{ artist.name }}</h2>
-                        <p [innerHTML]="biography"></p>
-                        <p>From: {{ artist.country }}</p>
-                        <p>Born: {{ artist.birthdate | date }}</p>
-                    </div>
+                    <img
+                        src="{{ artist.artist_img_url }}"
+                        alt="Image of {{ artist.name }}"
+                        class="artist-image"
+                        width="100%"
+                        height="100%"
+                    />
+
+                    <h2>{{ artist.name }}</h2>
+
+                    <h4 *ngIf="artist.country">From</h4>
+                    <p>{{ artist.country }}</p>
+
+                    <h4 *ngIf="artist.birthdate">Born</h4>
+                    <p>{{ artist.birthdate | date }}</p>
+
+                    <h4 *ngIf="artist.biography">Biography</h4>
+                    <p [innerHTML]="biography"></p>
                 </ng-template>
             </mat-expansion-panel>
 
@@ -52,20 +90,22 @@
             <mat-expansion-panel
                 (opened)="panelOpenState = true"
                 (closed)="panelOpenState = false"
+                *ngIf="itemDetails.songwiki_lyrics"
             >
                 <mat-expansion-panel-header>
                     <mat-panel-title>Lyrics</mat-panel-title>
                 </mat-expansion-panel-header>
                 <ng-template matExpansionPanelContent>
-                    <p [innerHTML]="lyrics"></p>
+                    <p class="lyrics-text" [innerHTML]="lyrics"></p>
                 </ng-template>
             </mat-expansion-panel>
         </mat-accordion>
+        <ng-template #noInfo>No information available</ng-template>
 
         <h3 *ngIf="itemDetails.related_tracks">Related tracks</h3>
         <div class="related-tracks">
             <div
-                class="related-tracks-items"
+                class="related-tracks"
                 *ngFor="let track of itemDetails.related_tracks"
             >
                 <mat-card
@@ -82,5 +122,5 @@
                 </mat-card>
             </div>
         </div>
-    </div>
+    </main>
 </div>

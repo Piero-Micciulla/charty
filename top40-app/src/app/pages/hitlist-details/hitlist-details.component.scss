@@ -8,6 +8,14 @@ h3 {
     margin-top: 48px;
 }
 
+h4::after {
+    content: "";
+    display: block;
+    width: 100%;
+    border-bottom: 2px solid #ec1c24;
+    padding-top: 2px;
+}
+
 ul {
     list-style-type: disclosure-closed;
 }
@@ -29,8 +37,37 @@ mat-card {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-column-gap: 16px;
+    justify-items: stretch;
+    align-items: stretch;
 }
 
-.related-tracks-items {
-    height: 100%;
+@media all and (min-width: 768px) {
+    .detail-heading {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+    }
+
+    .album-cover {
+        grid-area: 1 / 1 / -1 / 2;
+        height: 400px;
+        width: 400px;
+        justify-self: end;
+    }
+
+    .heading-text {
+        grid-area: 1 / 2;
+        justify-self: start;
+    }
+
+    .artist-image {
+        max-height: 300px;
+        max-width: 300px;
+        float: left;
+        margin: 16px 16px 16px 0;
+    }
+
+    .lyrics-text {
+        text-align: center;
+    }
 }
