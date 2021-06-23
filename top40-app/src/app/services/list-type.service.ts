@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { forkJoin, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -36,6 +36,23 @@ export class ListTypeService {
             );
         }
         return this.getListTypes(type);
+    }
+
+    getListBySearch(id: number, week: number, year: number): Observable<List> {
+        const type = LIST_TYPES.find((listType: Types) => listType.id === id);
+
+        if (! type) {
+            throw new Error(
+                `Unable to fetch hitlist for id ${id}: the type for this hitlist is not found`,
+            );
+        }
+
+        const url = `${this.apiURL}/top40_json/${type.id}?week=${week}&year=${year}`;
+
+        return this.http.get<HttpResponse<any>>(url).pipe(
+            map((response) => this.responseList(response, type)),
+        );
+
     }
 
     public getAll(): Observable<List[]> {

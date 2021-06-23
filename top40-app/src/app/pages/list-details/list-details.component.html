@@ -15,8 +15,8 @@
                     <!-- swiper -->
                     <swiper [slidesPerView]="3" [spaceBetween]="20" [navigation]="true">
                         <ng-template swiperSlide *ngFor="let item of detailListData; index as i">
-                            <img src="{{ item.imageLarge }}" class="w-64 h-64 cursor-pointer" [routerLink]="['../../positionDetails', item.titleId]" />
-                            <div class="text-justify text-white">
+                            <img src="{{ item.imageLarge }}" class="w-80 h-72 cursor-pointer" [routerLink]="['../../positionDetails', item.titleId]" />
+                            <div class=" text-white">
                                 <p class="text-xl capitalize">
                                     {{item.position}} {{ item.title }}
                                 </p>

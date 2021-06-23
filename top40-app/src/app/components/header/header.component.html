@@ -1,21 +1,52 @@
 <header>
     <!-- <app-navbar></app-navbar> -->
     <div class=" bg-header-pattern h-auto -mt-72 lg:-mt-72 md:-mt-72 sm:-mt-72">
-        <div class="flex justify-evenly items-center pt-52 lg:pt-52 md:pt-52 sm:pt-52">
+        <div class="  pt-52 lg:pt-52 md:pt-52 sm:pt-52">
             <ng-container *ngIf="headerList">
-                <div class="font-raleway w-3/6 pl-24 py-16 font-bold text-white">
-                    <h1 class="text-6xl py-8">{{ headerList.name }}</h1>
-                    <h2 class="text-4xl">Week {{ headerList.week }} - {{ headerList.year }}</h2>
-                    <div class="text-pink-900 my-6 z-50">
-                        <button [routerLink]="['/../details', headerList.id]" class="bg-white px-8 py-4 text-xl font-bold rounded-lg">Go for details</button>
+                <div class="flex justify-between items-end">
+                    <div class="font-raleway w-3/6 pl-24 py-16 font-bold text-white">
+                        <h1 class="text-6xl py-8">{{ headerList.name }}</h1>
+                        <h2 class="text-4xl">Week {{ headerList.week }} - {{ headerList.year }}</h2>
+                        <div class="text-pink-900 my-6 z-50">
+                            <button [routerLink]="['/../details', headerList.id]" class="bg-white px-8 py-4 text-xl font-bold rounded-lg">Go for details</button>
+                        </div>
+                    </div>
+                    <div class="font-raleway font-bold w-3/6 pr-24 py-16">
+                        <form class="">
+                            <select name="week" [(ngModel)]="selectedWeek" class="w-2/5 p-4 my-4 ml-4 font-lato">
+                                <option *ngFor="let week of weeks" [value]="week">
+                                    {{week}}
+                                </option>
+                            </select>
+                            <select name="year" [(ngModel)]="selectedYear" class="w-2/5 p-4 my-4 ml-4 font-lato">
+                                <option *ngFor="let year of years" [value]="year">
+                                    {{year}}
+                                </option>
+                            </select>
+                        </form>
+                        <div class="text-pink-900 my-6 z-50">
+                            <button (click)="searchByWeekYear(selectedWeek, selectedYear)" class="bg-white px-8 py-4 ml-4 text-xl font-bold rounded-lg">
+                                Search
+                            </button>
+                        </div>
+
                     </div>
                 </div>
-                <div class="font-raleway px-32 py-20 text-center">
-                    <img src="{{ headerList.positions[0].imageLarge }}" class="h-96 w-96 rounded-full mb-8" />
-                    <p class="text-white font-bold break-words">
-                        {{ headerList.positions[0].title }} - {{ headerList.positions[0].credit }}
-                    </p>
+                <div class="bg-white font-raleway justify-items-center py-20 text-center grid grid-cols-1 lg:grid-cols-3 lg:gap-0">
+                    <div *ngFor="let item of detailListData; index as i" class="justify-items-cener">
+                        <img src="{{ item.imageMedium }}" class="h-72 w-72" [routerLink]="['../../positionDetails', item.titleId]" />
+                        <div class="text-pink-900 font-bold break-words">
+                            <p class="mt-4">
+                                {{item.title}}
+                            </p>
+                            <p class="mb-4">
+                                {{item.credit}}
+                            </p>
+
+                        </div>
+                    </div>
                 </div>
+
             </ng-container>
         </div>
     </div>

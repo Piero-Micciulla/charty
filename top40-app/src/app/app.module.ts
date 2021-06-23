@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { SwiperModule } from 'swiper/angular';
 import { YouTubePlayerModule } from '@angular/youtube-player';
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
@@ -23,6 +24,7 @@ import { PositionDetailsComponent } from './pages/position-details/position-deta
         BrowserModule,
         AppRoutingModule,
         SwiperModule,
+        FormsModule,
         HttpClientModule,
         YouTubePlayerModule,
     ],
