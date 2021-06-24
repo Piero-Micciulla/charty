@@ -34,6 +34,7 @@ mat-toolbar {
 mat-sidenav-container {
     padding-bottom: 16px;
     flex: auto;
+    overflow: none;
 }
 
 mat-sidenav {
@@ -77,6 +78,13 @@ footer {
 }
 
 @media all and (min-width: 768px) {
+    .back-to-top-button {
+        bottom: 30px;
+        right: 40px;
+    }
+}
+
+@media all and (min-width: 1024px) {
     * {
         padding: 0 auto;
     }
