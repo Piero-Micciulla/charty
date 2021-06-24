@@ -6,14 +6,12 @@ import { catchError, map } from 'rxjs/operators';
 
 import { HitList, Position } from '../../models/hitlist';
 import { HitListType, HITLIST_TYPES } from '../../models/hitListTypes';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
     providedIn: 'root',
 })
 export class HitListsService {
-    // todo save this string in an environment variable
-    hitListUrl = 'http://localhost:5000/http://www.top40.nl/app_api';
-
     constructor(private http: HttpClient) {}
 
     fetchHitList(
@@ -21,7 +19,7 @@ export class HitListsService {
         week?: number,
         year?: number
     ): Observable<HitList> {
-        const url = `${this.hitListUrl}/top40_json/${type.id}`;
+        const url = `${environment.hitListUrl}/top40_json/${type.id}`;
 
         // call API
         return this.http.get<HttpResponse<any>>(url).pipe(
@@ -67,7 +65,7 @@ export class HitListsService {
             );
         }
 
-        const url = `${this.hitListUrl}/top40_json/${type.id}?week=${week}&year=${year}`;
+        const url = `${environment.hitListUrl}/top40_json/${type.id}?week=${week}&year=${year}`;
 
         //  call API
         return this.http.get<HttpResponse<any>>(url).pipe(
