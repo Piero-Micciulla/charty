@@ -1,3 +1,9 @@
+.test {
+    display: flex;
+    flex-flow: wrap;
+    flex-direction: row;
+}
+
 ul {
     list-style-type: none;
     padding: 0 16px;
@@ -23,10 +29,12 @@ a {
 
 mat-toolbar {
     background-color: #1a1a13;
+    flex-grow: 1;
 }
 
 mat-sidenav-container {
     padding-bottom: 16px;
+    flex-grow: 2;
 }
 
 mat-sidenav {
@@ -67,6 +75,8 @@ footer {
     color: #fff;
     padding: 16px;
     border-top: 2px solid #ec1c24;
+    flex-grow: 1;
+    width: 100%;
 }
 
 @media all and (min-width: 768px) {

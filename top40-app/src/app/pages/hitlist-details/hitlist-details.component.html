@@ -82,8 +82,7 @@
                     <p>{{ artist.birthdate | date }}</p>
 
                     <h4 *ngIf="artist.biography">Biography</h4>
-                    <p>{{ artist.biography }}</p>
-                    <!-- [innerHTML]="biography" -->
+                    <p [innerHTML]="artist.biography"></p>
                 </ng-template>
             </mat-expansion-panel>
 

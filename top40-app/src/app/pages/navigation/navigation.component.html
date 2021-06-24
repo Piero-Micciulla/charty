@@ -1,57 +1,59 @@
-<div class="test"></div>
-<div class="toolbar-container">
-    <mat-toolbar role="heading">
-        <img
-            class="logo"
-            src="/assets/images/logo-top40.png"
-            alt="Top40 Logo"
-            [routerLink]="['/']"
-        />
-        <span class="toolbar-spacer"></span>
-        <span *ngIf="!opened; else closeButton">
-            <fa-icon
-                class="toggle"
-                (click)="sidenav.toggle()"
-                [icon]="['fas', 'bars']"
-            ></fa-icon>
-        </span>
-        <ng-template #closeButton>
-            <fa-icon
-                class="toggle"
-                (click)="sidenav.toggle()"
-                [icon]="['fas', 'times']"
-            ></fa-icon>
-        </ng-template>
-    </mat-toolbar>
-</div>
-
-<mat-sidenav-container>
-    <mat-sidenav
-        #sidenav
-        mode="over"
-        position="end"
-        role="navigation"
-        [(opened)]="opened"
-    >
-        <ul *ngFor="let type of hitlistTypes">
-            <li>
-                <a
+<div class="test">
+    <div class="toolbar-container">
+        <mat-toolbar role="heading">
+            <img
+                class="logo"
+                src="/assets/images/logo-top40.png"
+                alt="Top40 Logo"
+                [routerLink]="['/']"
+            />
+            <span class="toolbar-spacer"></span>
+            <span *ngIf="!opened; else closeButton">
+                <fa-icon
+                    class="toggle"
                     (click)="sidenav.toggle()"
-                    [routerLink]="['./hitlist', type.id]"
-                    >{{ type.title }}</a
-                >
-            </li>
-        </ul>
-    </mat-sidenav>
+                    [icon]="['fas', 'bars']"
+                ></fa-icon>
+            </span>
+            <ng-template #closeButton>
+                <fa-icon
+                    class="toggle"
+                    (click)="sidenav.toggle()"
+                    [icon]="['fas', 'times']"
+                ></fa-icon>
+            </ng-template>
+        </mat-toolbar>
+    </div>
 
-    <mat-sidenav-content role="main">
-        <router-outlet></router-outlet>
-    </mat-sidenav-content>
-</mat-sidenav-container>
+    <mat-sidenav-container>
+        <mat-sidenav
+            #sidenav
+            mode="over"
+            position="end"
+            role="navigation"
+            [(opened)]="opened"
+        >
+            <ul *ngFor="let type of hitlistTypes">
+                <li>
+                    <a
+                        (click)="sidenav.toggle()"
+                        [routerLink]="['./hitlist', type.id]"
+                        >{{ type.title }}</a
+                    >
+                </li>
+            </ul>
+        </mat-sidenav>
 
-<footer>
-    Created by Anne van Gorkom for the PXL.Widgets Heroes traineeship
-</footer>
+        <mat-sidenav-content role="main">
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+
+    <footer>
+        Created by Anne van Gorkom for the PXL.Widgets Heroes traineeship
+    </footer>
+
+</div>
 
 <button class="back-to-top-button" (click)="backToTop()">
     <fa-icon [icon]="['fas', 'angle-up']"></fa-icon>

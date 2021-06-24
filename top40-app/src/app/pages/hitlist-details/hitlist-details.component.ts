@@ -14,7 +14,6 @@ import { LoadingService } from 'src/app/services/loading/loading.service';
 export class HitlistDetailsComponent implements OnInit {
     itemDetails: ItemDetails | undefined;
     panelOpenState = false;
-    biography: string | undefined;
     lyrics: string | undefined;
     loading$ = this.loader.loading$;
 
@@ -42,15 +41,7 @@ export class HitlistDetailsComponent implements OnInit {
             .subscribe((itemDetails) => {
                 this.itemDetails = itemDetails;
                 this.cleanUpLyricsString(itemDetails.songwiki_lyrics);
-                this.showHTML(itemDetails.artists);
             });
-    }
-
-    showHTML(artists: Array<Artist>): void {
-        for (let artist of artists) {
-            this.biography = artist.biography;
-        }
-        // toont alleen de laatste bio bij alle artiesten in het geval er meerdere artiesten zijn. Nog oplossing voor vinden.
     }
 
     cleanUpLyricsString(songLyrics: string): void {
