@@ -56,6 +56,11 @@
                     <mat-card-title>{{ position.title }}</mat-card-title>
                     <mat-card-subtitle>{{ position.credit }}</mat-card-subtitle>
                 </mat-card-header>
+                <mat-card-content class="status">
+                    <p>Previous position: {{ position.prevPosition }}</p>
+                    <p>Highest position: {{ position.highestPosition }}</p>
+                    <p>Number of weeks: {{ position.numberOfWeeks }}</p>
+                </mat-card-content>
             </mat-card>
         </div>
 

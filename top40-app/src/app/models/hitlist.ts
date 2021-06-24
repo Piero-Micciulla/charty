@@ -12,6 +12,9 @@ export interface Position {
     titleId: number;
     title: string;
     credit: string;
+    prevPosition: number;
+    highestPosition: number;
+    numberOfWeeks: number;
     imageSmall: string;
     imageMedium: string;
     imageLarge: string;

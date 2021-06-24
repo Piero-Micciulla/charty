@@ -1,7 +1,6 @@
-.test {
+.page-body {
     display: flex;
-    flex-flow: wrap;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 ul {
@@ -20,6 +19,7 @@ a {
     position: sticky;
     top: 0;
     z-index: 100;
+    flex-grow: 1;
 }
 
 .logo {
@@ -29,12 +29,11 @@ a {
 
 mat-toolbar {
     background-color: #1a1a13;
-    flex-grow: 1;
 }
 
 mat-sidenav-container {
     padding-bottom: 16px;
-    flex-grow: 2;
+    flex: auto;
 }
 
 mat-sidenav {
@@ -76,7 +75,6 @@ footer {
     padding: 16px;
     border-top: 2px solid #ec1c24;
     flex-grow: 1;
-    width: 100%;
 }
 
 @media all and (min-width: 768px) {

@@ -70,6 +70,10 @@ iframe {
     margin: 10px 0;
 }
 
+.status {
+    display: flex;
+}
+
 @media all and (min-width: 768px) {
     button {
         grid-column: 3;
