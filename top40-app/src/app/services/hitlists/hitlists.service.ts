@@ -12,6 +12,9 @@ import { environment } from 'src/environments/environment';
     providedIn: 'root',
 })
 export class HitListsService {
+
+    HITLIST_API: string = environment.hitListUrl;
+
     constructor(private http: HttpClient) {}
 
     fetchHitList(
@@ -20,7 +23,7 @@ export class HitListsService {
         year?: number
     ): Observable<HitList> {
 
-        let url = `${environment.hitListUrl}/top40_json/${type.id}`;
+        let url = `${this.HITLIST_API}/top40_json/${type.id}`;
 
         if (week !== undefined && year !== undefined) {
             url += `?week=${week}&year=${year}`;

@@ -1,6 +1,4 @@
 .page-body {
-    display: flex;
-    flex-direction: column;
     height: 100%;
 }
 
@@ -31,17 +29,15 @@ mat-toolbar {
     background-color: #1a1a13;
 }
 
-mat-sidenav-container {
-    flex: auto;
-    overflow: none;
+.content {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    margin-bottom: auto;
 }
 
 mat-sidenav {
     width: 50%;
-}
-
-mat-sidenav-content {
-    margin: 0 16px;
 }
 
 .toolbar-spacer {
@@ -74,6 +70,7 @@ footer {
     color: #fff;
     padding: 16px;
     border-top: 2px solid #ec1c24;
+    margin-top: 16px;
 }
 
 @media all and (min-width: 768px) {
@@ -101,11 +98,6 @@ footer {
 
     mat-sidenav-content {
         margin: 0;
-    }
-
-    .content-wrapper {
-        max-width: 1200px;
-        margin: 0 auto;
     }
 
     ul {

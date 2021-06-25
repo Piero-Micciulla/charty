@@ -2,12 +2,14 @@
     <h1 class="hero">Hitlists</h1>
 </header>
 
-<mat-progress-spinner
-    mode="indeterminate"
-    color="warn"
-    aria-label="loading"
-    *ngIf="loading$ | async"
-></mat-progress-spinner>
+<div class="loading-indicator">
+    <mat-progress-spinner
+        mode="indeterminate"
+        color="warn"
+        aria-label="loading"
+        *ngIf="loading$ | async"
+    ></mat-progress-spinner>
+</div>
 
 <main>
     <div class="hitlist-wrapper">
@@ -18,7 +20,9 @@
             *ngFor="let hitList of hitLists"
         >
             <mat-card-header class="hitlist-card__header">
-                <mat-card-title class="hitlist-card__header-title">{{ hitList.name }}</mat-card-title>
+                <mat-card-title class="hitlist-card__header-title">{{
+                    hitList.name
+                }}</mat-card-title>
                 <mat-card-subtitle class="hitlist-card__header-subtitle"
                     >Week {{ hitList.week }} -
                     {{ hitList.year }}</mat-card-subtitle

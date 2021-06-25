@@ -1,31 +1,5 @@
 <div class="page-body">
-    <div class="toolbar-container">
-        <mat-toolbar role="heading">
-            <img
-                class="logo"
-                src="/assets/images/logo-top40.png"
-                alt="Top40 Logo"
-                [routerLink]="['/']"
-            />
-            <span class="toolbar-spacer"></span>
-            <span *ngIf="!opened; else closeButton">
-                <fa-icon
-                    class="toggle"
-                    (click)="sidenav.toggle()"
-                    [icon]="['fas', 'bars']"
-                ></fa-icon>
-            </span>
-            <ng-template #closeButton>
-                <fa-icon
-                    class="toggle"
-                    (click)="sidenav.toggle()"
-                    [icon]="['fas', 'times']"
-                ></fa-icon>
-            </ng-template>
-        </mat-toolbar>
-    </div>
-
-    <mat-sidenav-container>
+    <mat-sidenav-container fullscreen>
         <mat-sidenav
             #sidenav
             mode="over"
@@ -44,17 +18,43 @@
             </ul>
         </mat-sidenav>
 
-        <mat-sidenav-content role="main">
-            <div class="content-wrapper">
-                <router-outlet></router-outlet>
-            </div>
-        </mat-sidenav-content>
+        <!-- HEADER -->
+        <div class="toolbar-container">
+            <mat-toolbar role="heading">
+                <img
+                    class="logo"
+                    src="/assets/images/logo-top40.png"
+                    alt="Top40 Logo"
+                    [routerLink]="['/']"
+                />
+                <span class="toolbar-spacer"></span>
+                <span *ngIf="!opened; else closeButton">
+                    <fa-icon
+                        class="toggle"
+                        (click)="sidenav.toggle()"
+                        [icon]="['fas', 'bars']"
+                    ></fa-icon>
+                </span>
+                <ng-template #closeButton>
+                    <fa-icon
+                        class="toggle"
+                        (click)="sidenav.toggle()"
+                        [icon]="['fas', 'times']"
+                    ></fa-icon>
+                </ng-template>
+            </mat-toolbar>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div class="content" role="main">
+            <router-outlet></router-outlet>
+        </div>
+
+        <!-- FOOTER -->
+        <footer>
+            Created by Anne van Gorkom for the PXL.Widgets Heroes traineeship
+        </footer>
     </mat-sidenav-container>
-
-    <footer>
-        Created by Anne van Gorkom for the PXL.Widgets Heroes traineeship
-    </footer>
-
 </div>
 
 <button class="back-to-top-button" (click)="backToTop()">

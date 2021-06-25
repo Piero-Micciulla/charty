@@ -1,9 +1,11 @@
-<mat-progress-spinner
-    mode="indeterminate"
-    color="warn"
-    aria-label="loading"
-    *ngIf="loading$ | async"
-></mat-progress-spinner>
+<div class="loading-indicator">
+    <mat-progress-spinner
+        mode="indeterminate"
+        color="warn"
+        aria-label="loading"
+        *ngIf="loading$ | async"
+    ></mat-progress-spinner>
+</div>
 
 <div *ngIf="hitList">
     <header>

@@ -1,4 +1,4 @@
-<div>
+<div class="loading-indicator">
     <mat-progress-spinner
         mode="indeterminate"
         color="warn"
@@ -49,9 +49,7 @@
     </header>
 
     <main>
-        <h3
-            *ngIf="itemDetails.artists || itemDetails.songwiki_lyrics"
-        >
+        <h3 *ngIf="itemDetails.artists || itemDetails.songwiki_lyrics">
             Other information
         </h3>
         <mat-accordion>
