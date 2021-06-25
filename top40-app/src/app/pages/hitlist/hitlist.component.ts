@@ -71,7 +71,7 @@ export class HitlistComponent implements OnInit {
     findHitList(week: number, year: number): void {
         if (this.hitListId) {
             this.hitListsService
-                .findOtherHitList(this.hitListId, week, year)
+                .fetchHitListById(this.hitListId, week, year)
                 .subscribe((hitList) => {
                     this.hitList = hitList;
                     this.positions = hitList.positions.slice(0, this.pageSize);

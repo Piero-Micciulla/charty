@@ -19,18 +19,30 @@ export class HitListsService {
         week?: number,
         year?: number
     ): Observable<HitList> {
-        const url = `${environment.hitListUrl}/top40_json/${type.id}`;
+        if (week && year) {
+            const url = `${environment.hitListUrl}/top40_json/${type.id}?week=${week}&year=${year}`;
 
-        // call API
-        return this.http.get<HttpResponse<any>>(url).pipe(
-            map((response) => {
-                // return new hitList
-                return this.parseHitList(response, type);
-            })
-        );
+            // call API
+            return this.http.get<HttpResponse<any>>(url).pipe(
+                map((response) => {
+                    // return new hitList
+                    return this.parseHitList(response, type);
+                })
+            );
+        } else {
+            const url = `${environment.hitListUrl}/top40_json/${type.id}`;
+
+            // call API
+            return this.http.get<HttpResponse<any>>(url).pipe(
+                map((response) => {
+                    // return new hitList
+                    return this.parseHitList(response, type);
+                })
+            );
+        }
     }
 
-    fetchHitListById(id: number): Observable<HitList> {
+    fetchHitListById(id: number, week?: number, year?: number): Observable<HitList> {
         // match id to hitlist type
         const type = HITLIST_TYPES.find((hitListType: HitListType) => {
             return hitListType.id === id;
@@ -44,35 +56,8 @@ export class HitListsService {
         }
 
         // find corresponding hitlist
-        return this.fetchHitList(type).pipe(
+        return this.fetchHitList(type, week, year).pipe(
             catchError(this.handleError<HitList[]>('fetchHitListById', []))
-        );
-    }
-
-    findOtherHitList(
-        id: number,
-        week: number,
-        year: number
-    ): Observable<HitList> {
-        const type = HITLIST_TYPES.find((hitListType: HitListType) => {
-            return hitListType.id === id;
-        });
-
-        // if no type is found, return message
-        if (!type) {
-            throw new Error(
-                `Unable to fetch hitlist for id ${id}: the type for this hitlist is not found`
-            );
-        }
-
-        const url = `${environment.hitListUrl}/top40_json/${type.id}?week=${week}&year=${year}`;
-
-        //  call API
-        return this.http.get<HttpResponse<any>>(url).pipe(
-            map((response) => {
-                // return new hitList
-                return this.parseHitList(response, type);
-            })
         );
     }
 
