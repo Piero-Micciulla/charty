@@ -19,27 +19,20 @@ export class HitListsService {
         week?: number,
         year?: number
     ): Observable<HitList> {
-        if (week && year) {
-            const url = `${environment.hitListUrl}/top40_json/${type.id}?week=${week}&year=${year}`;
 
-            // call API
-            return this.http.get<HttpResponse<any>>(url).pipe(
-                map((response) => {
-                    // return new hitList
-                    return this.parseHitList(response, type);
-                })
-            );
-        } else {
-            const url = `${environment.hitListUrl}/top40_json/${type.id}`;
+        let url = `${environment.hitListUrl}/top40_json/${type.id}`;
 
-            // call API
-            return this.http.get<HttpResponse<any>>(url).pipe(
-                map((response) => {
-                    // return new hitList
-                    return this.parseHitList(response, type);
-                })
-            );
+        if (week !== undefined && year !== undefined) {
+            url += `?week=${week}&year=${year}`;
         }
+        
+        // call API
+        return this.http.get<HttpResponse<any>>(url).pipe(
+            map((response) => {
+                // return new hitList
+                return this.parseHitList(response, type);
+            })
+        );
     }
 
     fetchHitListById(id: number, week?: number, year?: number): Observable<HitList> {

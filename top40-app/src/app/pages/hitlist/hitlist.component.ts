@@ -75,6 +75,8 @@ export class HitlistComponent implements OnInit {
                 .subscribe((hitList) => {
                     this.hitList = hitList;
                     this.positions = hitList.positions.slice(0, this.pageSize);
+                    this.generateVideoList(hitList.positions);
+                    this.updateVideoUrl(this.videoList);
                 });
         }
     }
@@ -85,6 +87,7 @@ export class HitlistComponent implements OnInit {
         if (this.hitList?.positions) {
             this.positions = this.hitList.positions.slice(firstCut, secondCut);
         }
+
         // scroll to top
         window.scroll({
             top: 0,
