@@ -32,7 +32,6 @@ mat-toolbar {
 }
 
 mat-sidenav-container {
-    padding-bottom: 16px;
     flex: auto;
     overflow: none;
 }
@@ -101,6 +100,10 @@ footer {
     }
 
     mat-sidenav-content {
+        margin: 0;
+    }
+
+    .content-wrapper {
         max-width: 1200px;
         margin: 0 auto;
     }

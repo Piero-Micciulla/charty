@@ -1,31 +1,10 @@
-h1 {
+.hero {
     background: url("src/assets/images/header-mobile.jpg") no-repeat center;
     background-size: cover;
     text-align: center;
     height: 200px;
     line-height: 200px;
     text-shadow: 0px 8px 12px #1a1a13;
-}
-
-mat-card {
-    border-bottom: 2px solid transparent;
-}
-
-mat-card:hover {
-    box-shadow: 0px 8px 12px #1a1a13;
-    border-bottom: 2px solid #ec1c24;
-}
-
-mat-card:hover .hitlist-image {
-    opacity: 0.8;
-}
-
-mat-card-content {
-    text-transform: capitalize;
-}
-
-mat-card-actions {
-    text-align: right;
 }
 
 .hitlist-wrapper {
@@ -35,8 +14,26 @@ mat-card-actions {
     margin: 0 auto;
 }
 
+.hitlist-card {
+    border-bottom: 2px solid transparent;
+}
+
+.hitlist-card:hover {
+    box-shadow: 0px 8px 12px #1a1a13;
+    border-bottom: 2px solid #ec1c24;
+}
+
+.hitlist-card:hover .hitlist-image {
+    opacity: 0.8;
+}
+
+.hitlist-card__content {
+    text-transform: capitalize;
+}
+
+
 @media all and (min-width: 768px) {
-    h1 {
+    .hero {
         background: url("src/assets/images/header-desktop.jpg") no-repeat center;
         height: 300px;
         line-height: 300px;

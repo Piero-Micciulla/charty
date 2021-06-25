@@ -1,5 +1,5 @@
 <header>
-    <h1>Hitlists</h1>
+    <h1 class="hero">Hitlists</h1>
 </header>
 
 <mat-progress-spinner
@@ -17,9 +17,9 @@
             [routerLink]="['./hitlist', hitList.id]"
             *ngFor="let hitList of hitLists"
         >
-            <mat-card-header>
-                <mat-card-title>{{ hitList.name }}</mat-card-title>
-                <mat-card-subtitle
+            <mat-card-header class="hitlist-card__header">
+                <mat-card-title class="hitlist-card__header-title">{{ hitList.name }}</mat-card-title>
+                <mat-card-subtitle class="hitlist-card__header-subtitle"
                     >Week {{ hitList.week }} -
                     {{ hitList.year }}</mat-card-subtitle
                 >
@@ -29,7 +29,7 @@
                 class="hitlist-image"
                 src="{{ hitList.positions[0].imageLarge }}"
             />
-            <mat-card-content>
+            <mat-card-content class="hitlist-card__content">
                 <p>This weeks' #1:</p>
                 <p>
                     {{ hitList.positions[0].title }} -
