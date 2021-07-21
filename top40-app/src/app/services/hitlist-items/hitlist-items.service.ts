@@ -9,10 +9,12 @@ import { environment } from 'src/environments/environment';
     providedIn: 'root',
 })
 export class HitlistItemsService {
+    ITEMDETAILS_API = environment.hitListUrl;
+
     constructor(private http: HttpClient) {}
 
     fetchHitListDetails(id: number): Observable<ItemDetails> {
-        const url = `${environment.hitListUrl}/titledetails_top40_json/${id}`;
+        const url = `${this.ITEMDETAILS_API}/titledetails_top40_json/${id}`;
         const details = this.http.get<ItemDetails>(url);
         return details;
     }

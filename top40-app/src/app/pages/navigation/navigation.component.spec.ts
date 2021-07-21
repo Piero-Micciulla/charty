@@ -7,9 +7,13 @@ describe('NavigationComponent', () => {
     let fixture: ComponentFixture<NavigationComponent>;
 
     beforeEach(async () => {
-        await TestBed.configureTestingModule({
+        TestBed.configureTestingModule({
             declarations: [NavigationComponent],
-        }).compileComponents();
+        }).compileComponents().then(() => {
+            fixture = TestBed.createComponent(NavigationComponent);
+            component = fixture.componentInstance;
+            fixture.detectChanges();
+        });
     });
 
     beforeEach(() => {
