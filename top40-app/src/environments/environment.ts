@@ -3,6 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  top40SongsApiUrl: 'https://www.top40.nl/app_api/top40_json/1',
+  top40AlbumsApiUrl: 'https://www.top40.nl/app_api/top40_json/2',
+  top40MoviesApiUrl: 'https://www.top40.nl/app_api/top40_json/4',
+  top40TipparadeApiUrl: 'https://www.top40.nl/app_api/top40_json/3',
   production: false
 };
 

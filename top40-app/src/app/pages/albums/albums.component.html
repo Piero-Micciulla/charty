@@ -1,0 +1,15 @@
+<div class="albums">
+    <h1>All Albums</h1>
+    <div class="albums-grid-container">
+        <div *ngFor="let album of top40Albums$ | async">
+            <div class="card" style="height: 500px; width: 300px">
+                <p>{{album.position}}</p>
+                <p>{{album.title}}</p>
+                <p>{{album.label}}</p>
+                <p>{{album.youtube_url}}</p>
+                <p>{{album.itunes_track_price}}</p>
+                <p>{{album.itunes_track_url}}</p>
+            </div>
+        </div>
+    </div>
+</div>

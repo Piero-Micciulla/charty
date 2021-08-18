@@ -1,0 +1,15 @@
+<div class="movies">
+    <h1>All Movies</h1>
+    <div class="movies-grid-container">
+        <div *ngFor="let movie of top40Movies$ | async">
+            <div class="card" style="height: 500px; width: 300px">
+                <p>{{movie.position}}</p>
+                <p>{{movie.title}}</p>
+                <p>{{movie.label}}</p>
+                <p>{{movie.youtube_url}}</p>
+                <p>{{movie.itunes_track_price}}</p>
+                <p>{{movie.itunes_track_url}}</p>
+            </div>
+        </div>
+    </div>
+</div>
