@@ -4,7 +4,7 @@
         <div *ngFor="let album of top40Albums$ | async">
             <div class="card" style="height: 500px; width: 300px">
                 <p>{{album.position}}</p>
-                <p>{{album.title}}</p>
+                <a routerLink="/albums/{{album.title_id}}">>{{album.title}}</a>
                 <p>{{album.label}}</p>
                 <p>{{album.youtube_url}}</p>
                 <p>{{album.itunes_track_price}}</p>

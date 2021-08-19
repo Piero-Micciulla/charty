@@ -1,4 +1,4 @@
-import {Song} from './song';
+import {IObject} from './object';
 
 export interface HttpResponse {
     year: number;
@@ -6,5 +6,5 @@ export interface HttpResponse {
     date: string;
     date_timestamp: number;
     published: number;
-    positions: Song[];
+    positions: IObject[];
 }

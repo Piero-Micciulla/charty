@@ -1,3 +1,4 @@
+import { AlbumDetailsComponent } from './components/album-details/album-details.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AlbumsComponent } from './pages/albums/albums.component';
@@ -10,6 +11,7 @@ const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'music', component: MusicComponent},
   {path: 'albums', component: AlbumsComponent},
+  {path: 'albums/:title_id', component: AlbumDetailsComponent},
   {path: 'movies', component: MoviesComponent},
   {path: 'tipparade', component: TipparadeComponent },
   {path: '**', component: HomeComponent },

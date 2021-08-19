@@ -1,7 +1,8 @@
-import { SongsDataService } from './../../shared/services/top-40-songs/songs-data.service';
+import { DataService } from './../../shared/services/top-40-service/data.service';
 import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
-import {Song} from '../../shared/models/song';
+import {IObject} from '../../shared/models/object';
+import {environment} from '../../../environments/environment'
 
 
 @Component({
@@ -11,16 +12,16 @@ import {Song} from '../../shared/models/song';
 })
 export class MusicComponent implements OnInit {
 
-  
-  top40Songs$ : Observable<Song[]> | null = null;
+  private apiUrl = environment.top40SongsApiUrl;
+  top40Songs$ : Observable<IObject[]> | null = null;
 
-  constructor(private songsDataService: SongsDataService) { 
+  constructor(private dataService: DataService) { 
 
   }
 
   ngOnInit(){
 
-    this.top40Songs$ = this.songsDataService.loadTop40SongsObject()
+    this.top40Songs$ = this.dataService.loadTop40Objects(this.apiUrl)
 
 
     // this.top40Songs$.subscribe(

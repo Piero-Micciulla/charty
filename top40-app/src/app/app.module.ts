@@ -11,6 +11,7 @@ import { MusicComponent } from './pages/music/music.component';
 import { AlbumsComponent } from './pages/albums/albums.component';
 import { MoviesComponent } from './pages/movies/movies.component';
 import { TipparadeComponent } from './pages/tipparade/tipparade.component';
+import { AlbumDetailsComponent } from './components/album-details/album-details.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { TipparadeComponent } from './pages/tipparade/tipparade.component';
     MusicComponent,
     AlbumsComponent,
     MoviesComponent,
-    TipparadeComponent
+    TipparadeComponent,
+    AlbumDetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-export interface Tipparade {
+export interface IObject {
     position: number;
     position_id: number;
     title_id: number;

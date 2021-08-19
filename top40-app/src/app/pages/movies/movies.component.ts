@@ -1,7 +1,8 @@
-import { MoviesDataService } from './../../shared/services/top-40-movies/movies-data.service';
+import { DataService } from './../../shared/services/top-40-service/data.service';
 import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
-import {Movie} from '../../shared/models/movie';
+import {IObject} from '../../shared/models/object';
+import {environment} from '../../../environments/environment'
 
 @Component({
   selector: 'app-movies',
@@ -10,13 +11,14 @@ import {Movie} from '../../shared/models/movie';
 })
 export class MoviesComponent implements OnInit {
 
-  top40Movies$ : Observable<Movie[]> | null = null;
+  private apiUrl = environment.top40MoviesApiUrl;
+  top40Movies$ : Observable<IObject[]> | null = null;
 
-  constructor(private moviesDataService: MoviesDataService) { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
 
-    this.top40Movies$ = this.moviesDataService.loadTop40MoviesObject()
+    this.top40Movies$ = this.dataService.loadTop40Objects(this.apiUrl)
 
     // this.top40Movies$.subscribe(
     //   moviesArray => moviesArray,
