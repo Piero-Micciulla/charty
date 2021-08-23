@@ -1,6 +1,60 @@
 @import '../../../styles.scss';
 
 header {
-    height: 10vh;
-    background-color: $black;
+    height: 100vh;
+    // width: 10vw;
+    padding: 2em 0 2em 2em;
+    text-align: left;
+    background: #2F343D;
+    border-right: 5px solid #3F83EF;
+    
+
+    nav{
+
+        div{
+            margin-bottom: 5em;
+        }
+
+        ul{
+            padding: 0;
+            li{
+                list-style: none;             
+                cursor: pointer;
+                border-top-left-radius: 20px;
+                border-bottom-left-radius: 20px;
+                height: 2em;
+                padding: 0.5em 0em 0.5em 1em;
+                transition: 0.5s;
+
+                &:hover{
+                    transition: 0s;
+                    background: #242932;
+                }
+
+                &.active{
+                    transition: 0s;
+                    background: #3F83EF;
+                }
+
+                span{
+
+                    padding: 1em 0 1em 0;
+                    width: 80%;
+                    color: $white;
+
+                    
+                    a{
+                        font-weight: bold;
+                        margin-left: 0.5em;
+
+                        &.active{
+                            transition: 0s;
+                            background: #3F83EF;
+                        }
+                        
+                    }
+                }
+            }
+        }
+    }
 }

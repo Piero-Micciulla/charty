@@ -7,16 +7,16 @@ import { DataService } from '../../shared/services/top-40-service/data.service';
 import { environment } from '../../../environments/environment';
 
 @Component({
-  selector: 'app-album-details',
-  templateUrl: './album-details.component.html',
-  styleUrls: ['./album-details.component.scss']
+  selector: 'app-music-details',
+  templateUrl: './music-details.component.html',
+  styleUrls: ['./music-details.component.scss']
 })
-export class AlbumDetailsComponent implements OnInit {
+export class MusicDetailsComponent implements OnInit {
 
 
-  private apiUrl = environment.top40AlbumsApiUrl;
-  albumTitleId: string | null = null;
-  albumDetails$: Observable<IObjectDetails> | null = null;
+  private apiUrl = environment.top40SongsApiUrl;
+  musicTitleId: string | null = null;
+  musicDetails$: Observable<IObjectDetails> | null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,11 +24,11 @@ export class AlbumDetailsComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.albumTitleId = this.route.snapshot.paramMap.get('title_id');
+    this.musicTitleId = this.route.snapshot.paramMap.get('title_id');
 
-    this.albumDetails$ = this.route.paramMap.pipe(
+    this.musicDetails$ = this.route.paramMap.pipe(
       switchMap(params => {
-        const title_id = this.albumTitleId
+        const title_id = this.musicTitleId
         console.log({ title_id });
         if (title_id === null) {
            throw new Error('No id found in the URL');
@@ -41,3 +41,4 @@ export class AlbumDetailsComponent implements OnInit {
   }
 
 }
+

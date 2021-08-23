@@ -4,7 +4,7 @@
         <div *ngFor="let movie of top40Movies$ | async">
             <div class="card" style="height: 500px; width: 300px">
                 <p>{{movie.position}}</p>
-                <p>{{movie.title}}</p>
+                <a routerLink="/movies/{{movie.title_id}}">>{{movie.title}}</a>
                 <p>{{movie.label}}</p>
                 <p>{{movie.youtube_url}}</p>
                 <p>{{movie.itunes_track_price}}</p>

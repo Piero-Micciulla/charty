@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
 
 // scss COLORS variables 
 
@@ -11,7 +11,7 @@ $dark-moderate-cyan: hsl(168, 34%, 41%); //(footer)
 $light-blue:#4ABEFF;
 
 // secondary
-$very-dark-desaturated-blue: hsl(212, 27%, 19%);
+$grey: #6E7482;
 // $very-dark-grayish-blue: hsl(213, 9%, 39%);
 $very-dark-grayish-blue: #9fa2af;
 $dark-grayish-blue: hsl(232, 10%, 55%);
@@ -26,7 +26,7 @@ $font-size: 18px;
 $font-size-mobile: 14px;
 
 //fonts
-$primary-font: 'Montserrat', sans-serif;
+$primary-font: 'Alata', sans-serif;
 
 
 
@@ -39,6 +39,7 @@ body{
     font-display: swap;
     margin: 0;
     padding: 0;
+    background-color: #CBDBE9;
 }
 
 h1{
@@ -47,6 +48,7 @@ h1{
 
 a{
     text-decoration: none;
+    color: $white;
 }
 
 p{

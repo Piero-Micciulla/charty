@@ -1,5 +1,20 @@
 <div class="home">
-    <!-- <h1>Home</h1> -->
+    <div class="albums-slider">
+        <h3>Featured</h3>
+        <h2>Top 40 Albums</h2>
+        <carousel [cellWidth]=300 [cellsToShow]=7 [cellsToScroll]=3 [lightDOM]=true [autoplay]=true [autoplayInterval]=5000 [pauseOnHover]=true [margin]=20 [arrowsOutside]=false style="height: 400px; width: 100%;">
+            <div *ngFor="let album of top40Albums$ | async" class="carousel-cell">
+                <div class="album-img-box" >
+                    <img  src="{{album.cover_img_url_medium}}" />
+                    <p>#{{album.position}} - {{album.title}}</p>
+                    <p>{{album.credit}}</p>
+                </div>
+            </div>
+        </carousel>
+    </div>
+    <div class="weekly-hits">
+        <h2>Weekly Hits</h2>
+        
+    </div>
 </div>
 
-<!-- <router-outlet></router-outlet> -->

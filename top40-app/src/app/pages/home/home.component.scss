@@ -1,10 +1,22 @@
 @import '../../../styles.scss';
 
 .home{
-    background-color: $white;
-    height: 100vh;
+    .albums-slider{
+        margin-top: 10em;
 
-    h1{
-        color: $black;
+        .carousel-cell{
+
+            .album-img-box{
+
+
+                img{
+                    border-radius: 15px;
+                    box-shadow: 0 0 50px #ccc;
+
+                }
+            }
+        }
+
     }
+
 }

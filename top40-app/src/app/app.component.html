@@ -1,5 +1,11 @@
 <div class="main-body">
-    <app-header></app-header>
-    <router-outlet></router-outlet>
-    <app-footer></app-footer>
+    <app-header class="header"></app-header>
+    <div class="main">
+        <div class="search-bar">
+            <app-searchbar></app-searchbar>
+        </div>
+        <div class="content">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
 </div>

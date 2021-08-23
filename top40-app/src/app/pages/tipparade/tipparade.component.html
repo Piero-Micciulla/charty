@@ -4,7 +4,7 @@
         <div *ngFor="let song of top40Tipparades$ | async">
             <div class="card" style="height: 500px; width: 300px">
                 <p>{{song.position}}</p>
-                <p>{{song.title}}</p>
+                <a routerLink="/tipparade/{{song.title_id}}">>{{song.title}}</a>
                 <p>{{song.label}}</p>
                 <p>{{song.youtube_url}}</p>
                 <p>{{song.itunes_track_price}}</p>

@@ -1,0 +1,7 @@
+<div *ngIf="tipparadeDetails$ | async as tipparadeDetails">
+    <p>{{tipparadeDetails.title}}</p>
+    <p>{{tipparadeDetails.youtube_url}}</p>
+    <p>{{tipparadeDetails.artists[0].name}}</p>
+    <p>{{tipparadeDetails.highest_position}}</p>
+    <p>{{tipparadeDetails.itunes_track_price}}</p>
+</div>

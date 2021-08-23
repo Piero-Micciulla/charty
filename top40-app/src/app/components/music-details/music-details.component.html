@@ -1,0 +1,7 @@
+<div *ngIf="musicDetails$ | async as musicDetails">
+    <p>{{musicDetails.title}}</p>
+    <p>{{musicDetails.youtube_url}}</p>
+    <p>{{musicDetails.artists[0].name}}</p>
+    <p>{{musicDetails.highest_position}}</p>
+    <p>{{musicDetails.itunes_track_price}}</p>
+</div>

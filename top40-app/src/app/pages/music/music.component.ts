@@ -24,11 +24,7 @@ export class MusicComponent implements OnInit {
     this.top40Songs$ = this.dataService.loadTop40Objects(this.apiUrl)
 
 
-    // this.top40Songs$.subscribe(
-    //   songsArray => songsArray,
-    //   () => {},
-    //   () => console.log('completed')
-    // )
+
 
   }
 

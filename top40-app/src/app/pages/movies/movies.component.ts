@@ -20,11 +20,6 @@ export class MoviesComponent implements OnInit {
 
     this.top40Movies$ = this.dataService.loadTop40Objects(this.apiUrl)
 
-    // this.top40Movies$.subscribe(
-    //   moviesArray => moviesArray,
-    //   () => {},
-    //   () => console.log('completed')
-    // )
 
   }
 
