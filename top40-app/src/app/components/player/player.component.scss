@@ -1,0 +1,42 @@
+.media-footer{
+    position: relative;
+
+    .media-action-bar{
+        position: fixed; 
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100px;
+        background-color: turquoise;
+        display: flex;
+        justify-content: flex-start;
+        z-index: 100;
+        padding: 2em 2em;
+
+        .current-song-details{
+            display: flex;
+            align-items: center;
+            width: 33em;
+
+            img{
+                border-radius:15px;
+                box-shadow: 0 0 50px #ccc;
+                height: 70px;
+                margin-right: 1em;
+            }
+
+            .artist-details-container{
+                
+                .song-title{
+                    font-weight: bold;
+                    margin-bottom: 0;
+                }
+
+                .song-credit{
+                    font-size: 12px;
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+}

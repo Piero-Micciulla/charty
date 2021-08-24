@@ -18,6 +18,8 @@ export class HomeComponent implements OnInit {
   top40Albums$ : Observable<IObject[]> | null = null;
   top40Songs$ : Observable<IObject[]> | null = null;
 
+
+
   constructor(
     private dataService: DataService
   ) { }

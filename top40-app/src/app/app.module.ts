@@ -17,6 +17,9 @@ import { MusicDetailsComponent } from './components/music-details/music-details.
 import { TipparadeDetailsComponent } from './components/tipparade-details/tipparade-details.component';
 import { SearchbarComponent } from './components/searchbar/searchbar.component';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
+import { PlayerComponent } from './components/player/player.component';
 
 @NgModule({
   declarations: [
@@ -32,13 +35,16 @@ import {IvyCarouselModule} from 'angular-responsive-carousel';
     MoviesDetailsComponent,
     MusicDetailsComponent,
     TipparadeDetailsComponent,
-    SearchbarComponent
+    SearchbarComponent,
+    PlayerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    IvyCarouselModule
+    IvyCarouselModule,
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

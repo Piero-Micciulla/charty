@@ -1,9 +1,10 @@
 .main-body{
+    position: relative;
     display: grid;
     grid-template-areas:
-    'header main main main main'
-    'header main main main main'
-    'header main main main main';
+    'header main main main'
+    'header main main main'
+    'header main main main';
 
     .header{
         grid-area: header;
