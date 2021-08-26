@@ -1,17 +1,12 @@
-export interface IObjectDetails {
-    title_id: number,
-    credit: string,
-    title: string,
-    cover_img_url_medium: string,
-    cover_img_url_small: string,
+import {IArtist} from './artist';
+import {IRelatedTrack} from './related-track';
+import {IObject} from './object';
+
+export interface IObjectDetails extends IObject {
     num_weeks_top40: number,
     highest_position: number,
-    points: number,
     first_position_year: number,
     youtube_url: string,
-    itunes_track_url: string,
-    itunes_track_preview_url: string,
-    itunes_track_price: number,
     itunes_video_url: string,
     itunes_video_preview_url: string,
     itunes_video_price: number,
@@ -28,19 +23,6 @@ export interface IObjectDetails {
     songwiki_label: string,
     songwiki_releasedate: string,
     main_artist: string,
-    artists: 
-         [ { artist_id: number,
-             name: string,
-             biography: string,
-             country: string,
-             artist_img_url: string,
-             birthdate: string,
-             dateofdeath: string } ],
-        related_tracks: 
-         [ 
-             { title_id: number,
-             credit: string,
-             title: string,
-             cover_img_url: string }
-         ] 
+    artists: IArtist[],
+    related_tracks: IRelatedTrack[] 
 }

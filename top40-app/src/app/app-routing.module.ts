@@ -10,6 +10,7 @@ import { MusicDetailsComponent } from './components/music-details/music-details.
 import { TipparadeDetailsComponent } from './components/tipparade-details/tipparade-details.component';
 import { MoviesDetailsComponent } from './components/movies-details/movies-details.component';
 
+
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'music', component: MusicComponent},

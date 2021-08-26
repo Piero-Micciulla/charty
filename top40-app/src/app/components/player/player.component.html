@@ -1,6 +1,6 @@
 
 <!-- audio player and song list -->
-<div class="weekly-hits">
+<!-- <div class="weekly-hits">
     <h2>Weekly Hits</h2>
     <mat-list color="primary">
         <h3 mat-subheader>Songs</h3>
@@ -13,12 +13,12 @@
             <mat-divider></mat-divider>
         </mat-list-item>
     </mat-list>
-</div>
+</div> -->
 <div class="media-footer">
     <mat-toolbar color="primary">
       <mat-toolbar-row>
          {{ state?.readableCurrentTime }}
-         <mat-slider class="time-slider" min="0" [max]="state?.duration" step="1" [value]="state?.currentTime" (input)="onSliderChangeEnd($event)" [disabled]="state?.error || currentFile.index === undefined"></mat-slider>
+         <mat-slider class="time-slider" min="0" [max]="state?.duration" step="1" [value]="state?.currentTime" (input)="onSliderChangeEnd($event)" [disabled]="state?.error || currentFileIndex === undefined"></mat-slider>
          {{ state?.readableDuration }}
       </mat-toolbar-row>
       <mat-toolbar-row class="media-action-bar">
