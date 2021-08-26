@@ -16,15 +16,15 @@ import {PlayerComponent} from '../../components/player/player.component';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  
+
   albumsFiles: Array<IObject> = [];
   songsFiles: Array<IObject> = [];
 
 
-  currentFile?: { 
+  currentFile?: {
     file: IObject
-    index: number 
-    source: 'song' | 'album' 
+    index: number
+    source: 'song' | 'album'
   };
 
   currentFileTitle: string | null = null;
@@ -37,59 +37,48 @@ export class HomeComponent implements OnInit {
 
   top40Albums$ : Observable<IObject[]> | null = null;
   top40Songs$ : Observable<IObject[]> | null = null;
-  
+
   constructor(
     private dataService: DataService,
     public audioService: AudioService,
     public playerService: PlayerService,
-  ) { 
+  ) {
 
     this.top40Albums$ = this.dataService.loadTop40Objects(this.apiAlbumsUrl);
     this.top40Songs$ = this.dataService.loadTop40Objects(this.apiSongsUrl);
 
     this.dataService.loadTop40Objects(this.apiAlbumsUrl).subscribe(files => {
-      this.albumsFiles = files 
+      this.albumsFiles = files
     })
 
     this.dataService.loadTop40Objects(this.apiSongsUrl).subscribe(files => {
-      this.songsFiles = files 
+      this.songsFiles = files
     })
 
-    
-    
+
+
     // merge(this.top40Albums$, this.top40Songs$).pipe(
     //   // merge both results of the two observables
     // ).subscribe(files => {
     //     this.playerService.fileSubject.next(files);
     // })
 
-    
+
   }
 
   ngOnInit(): void {
   //   this.top40Albums$ = this.dataService.loadTop40Objects(this.apiAlbumsUrl);
-  //   this.top40Songs$ = this.dataService.loadTop40Objects(this.apiSongsUrl);  
+  //   this.top40Songs$ = this.dataService.loadTop40Objects(this.apiSongsUrl);
   }
 
-  playStream(url: string) {
-    this.audioService.playStream(url)
-    .subscribe(events => {
-      // listening for fun here
-    });
-  }
-  // todo refactor to playFile?
-  // moving the logic to open a file in the specific component
-  openFile(file: IObject, index: number, source: 'song' | 'album') {
 
-    // this.playerService.play(file);
 
-    // HomeComponent -> PlayerService -> PlayerComponent -> AudioService -> Play
-    
-    this.currentFile = { index, file, source };
-    this.playerService.saveData(index, source, file);
-    console.log(this.currentFile)
-    this.audioService.stop();
-    this.playStream(file.itunes_track_preview_url);
-    
+  openSong(file: IObject): void{
+    this.playerService.updateCurrentFile(file);
   }
+
+  openAlbum(file: IObject): void {
+    this.playerService.updateCurrentFile(file);
+  }
+
 }
