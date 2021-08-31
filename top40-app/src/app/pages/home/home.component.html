@@ -1,13 +1,28 @@
-<div class="home">
+<section class="home">
+    <div class="background-container">
+        <div class="current-track-details">
+            <h1 *ngIf="currentFileTitle">{{currentFileCredit | titlecase}} - {{currentFileTitle | titlecase}}</h1>
+            <div class="positions-container">
+                <div class="current-previous-positions">
+                    <p *ngIf="currentFilePosition">Position: #{{currentFilePosition}}</p>
+                    <p *ngIf="currentFilePreviousPosition">Preavious position: #{{currentFilePreviousPosition}}</p>
+                </div>
+                <p class="position-difference" *ngIf="currentFilePosition && currentFilePreviousPosition && currentFilePreviousPosition! > currentFilePosition!"><i class="fas fa-chevron-up"></i> {{currentFilePreviousPosition! - currentFilePosition!}}</p>
+                <p class="position-difference" *ngIf="currentFilePosition && currentFilePreviousPosition && currentFilePreviousPosition! < currentFilePosition!"><i class="fas fa-chevron-down"></i>{{Math.abs(currentFilePreviousPosition! - currentFilePosition!)}}</p>
+            </div>
+        <a routerLink="/track/{{currentFileTitleId}}">See More</a>
+        </div>
+        <div>
+            <img src="{{currentBackground}}" alt="{{currentFileTitle}}">
+        </div>
+    </div>
     <div class="albums-slider">
         <h3>Featured</h3>
         <h2>Top 40 Albums</h2>
         <carousel [cellWidth]=300
-                  [cellsToShow]=7
+                  [cellsToShow]=4
                   [cellsToScroll]=3
-                  [lightDOM]=true
-                  [autoplay]=true
-                  [autoplayInterval]=5000
+                  [lightDOM]=true                 
                   [pauseOnHover]=true
                   [margin]=20
                   [arrowsOutside]=false
@@ -15,31 +30,46 @@
         >
             <div *ngFor="let album of albumsFiles; let i = index"
                  class="carousel-cell"
-                 (click)="openAlbum(album)"
+                 (click)="openAlbum(album);setBackground(album)"
             >
+                <div class="position">#{{album.position}}</div>
                 <div class="album-img-box">
                     <img  src="{{album.cover_img_url_medium}}" />
-                    <p>#{{album.position}} - {{album.title}}</p>
-                    <p>{{album.credit}}</p>
+                    <div class="album-details">
+                        <p class="title">{{album.title | titlecase}}</p>
+                        <p>{{album.credit | titlecase}}</p>
+                    </div>
                 </div>
             </div>
         </carousel>
     </div>
-    <div class="weekly-hits">
-        <h2>Weekly Hits</h2>
-        <mat-list color="primary">
-            <h3 mat-subheader>Songs</h3>
-            <mat-list-item *ngFor="let song of songsFiles; let i = index"
-                           (click)="openSong(song)"
-            >
-                <mat-icon color="primary" mat-list-icon>music_note</mat-icon>
-                <h4 mat-line>{{ song.title }}</h4>
-                <h5 mat-line>by {{ song.credit }}</h5>
-                <mat-icon color="primary" *ngIf="currentFile?.index === i && !state?.error">volume_up</mat-icon>
-                <h6 *ngIf="currentFile?.index === i && state?.error">ERROR</h6>
-                <mat-divider></mat-divider>
-            </mat-list-item>
-        </mat-list>
+    <div class="bottom-container">
+        <div class="weekly-hits">
+            <h2>Weekly Hits</h2>
+            <mat-list color="primary">
+                <h3>Songs</h3>
+                <div class="songs-list">
+                    <mat-list-item class="song-container" *ngFor="let song of songsFiles; let i = index"
+                    >
+                        <div class="position">#{{song.position}}</div>
+                        <img matListAvatar src="{{song.cover_img_url_small}}" alt="{{song.title}}" (click)="openSong(song);setBackground(song)"> 
+                        <div style="padding: 1em 1em; width: 200px; overflow-x: hidden;">
+                            <h4 matLine>{{ song.title }}</h4>
+                            <h5 matLine>by {{ song.credit }}</h5>
+                        </div>  
+                        <div class="socials">
+                            <i class="fab fa-youtube-square" (click)="setYouTubeUrl(song)"></i>
+                            <i class="fab fa-itunes"></i>
+                        </div>  
+                        <mat-icon color="primary" *ngIf="currentFile?.index === i && !state?.error">volume_up</mat-icon>
+                        <h6 *ngIf="currentFile?.index === i && state?.error">ERROR</h6>
+                    </mat-list-item>
+                </div>
+            </mat-list>
+        </div>
+        <div class="screen">
+            <iframe [src]="currentYouTubeUrl | safe" frameborder="0" allowfullscreen></iframe>
+        </div>
     </div>
-</div>
+</section>
 

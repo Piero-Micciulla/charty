@@ -1,15 +1,48 @@
-<div class="tipparade">
-    <h1>Tipparade</h1>
-    <div class="tipparade-grid-container">
-        <div *ngFor="let song of top40Tipparades$ | async">
-            <div class="card" style="height: 500px; width: 300px">
-                <p>{{song.position}}</p>
-                <a routerLink="/tipparade/{{song.title_id}}">>{{song.title}}</a>
-                <p>{{song.label}}</p>
-                <p>{{song.youtube_url}}</p>
-                <p>{{song.itunes_track_price}}</p>
-                <p>{{song.itunes_track_url}}</p>
+<section class="tipparade">
+    <div class="background-container">
+        <div class="current-track-details">
+            <h1 *ngIf="currentFileTitle">{{currentFileCredit | titlecase}} - {{currentFileTitle | titlecase}}</h1>
+            <div class="positions-container">
+                <div class="current-previous-positions">
+                    <p *ngIf="currentFilePosition">Position: #{{currentFilePosition}}</p>
+                    <p *ngIf="currentFilePreviousPosition">Preavious position: #{{currentFilePreviousPosition}}</p>
+                </div>
+                <p class="position-difference" *ngIf="currentFilePosition && currentFilePreviousPosition && currentFilePreviousPosition! > currentFilePosition!"><i class="fas fa-chevron-up"></i> {{currentFilePreviousPosition! - currentFilePosition!}}</p>
+                <p class="position-difference" *ngIf="currentFilePosition && currentFilePreviousPosition && currentFilePreviousPosition! < currentFilePosition!"><i class="fas fa-chevron-down"></i>{{Math.abs(currentFilePreviousPosition! - currentFilePosition!)}}</p>
             </div>
+            <a routerLink="/track/{{currentFileTitleId}}">See More</a>
+        </div>
+        <div>
+            <img src="{{currentBackground}}" alt="{{currentFileTitle}}">
         </div>
     </div>
-</div>
+    <div class="tipparade-container">
+        <div class="weekly-tipparade-hits">
+            <h2>Tipparade Weekly Hits</h2>
+            <mat-list color="primary">
+                <h3>Songs</h3>
+                <div class="songs-list">
+                    <mat-list-item class="song-container" *ngFor="let song of songsFiles; let i = index"
+                    >
+                        <div class="position">#{{song.position}}</div>
+                        <img matListAvatar src="{{song.cover_img_url_small}}" alt="{{song.title}}" (click)="openSong(song);setBackground(song)"> 
+                        <div style="padding: 1em 1em; width: 200px; overflow-x: hidden;">
+                            <h4 matLine>{{ song.title }}</h4>
+                            <h5 matLine>by {{ song.credit }}</h5>
+                        </div>  
+                        <div class="socials">
+                            <i class="fab fa-youtube-square" (click)="setYouTubeUrl(song)"></i>
+                            <i class="fab fa-itunes"></i>
+                        </div>  
+                        <mat-icon color="primary" *ngIf="currentFile?.index === i && !state?.error">volume_up</mat-icon>
+                        <h6 *ngIf="currentFile?.index === i && state?.error">ERROR</h6>
+                    </mat-list-item>
+                </div>
+            </mat-list>
+        </div>
+        <div class="screen">
+            <iframe [src]="currentYouTubeUrl | safe" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+</section>
+

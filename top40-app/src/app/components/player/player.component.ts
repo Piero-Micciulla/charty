@@ -18,6 +18,7 @@ export class PlayerComponent implements OnInit {
   allFiles: Array<IObject> = []
   songsFiles: Array<IObject> = []
   albumsFiles: Array<IObject> = []
+  tipparadeFiles: Array<IObject> = []
   state: StreamState | null = null
   currentFile: IObject | null = null
 
@@ -29,6 +30,7 @@ export class PlayerComponent implements OnInit {
 
   private apiSongsUrl = environment.top40SongsApiUrl
   private apiAlbumsUrl = environment.top40AlbumsApiUrl
+  private apiTipparadeUrl = environment.top40TipparadeApiUrl
   top40Songs$: Observable<IObject[]> | null = null
 
   public get currentIndex(): number {
@@ -44,8 +46,10 @@ export class PlayerComponent implements OnInit {
     combineLatest([
       this.dataService.loadTop40Objects(this.apiAlbumsUrl),
       this.dataService.loadTop40Objects(this.apiSongsUrl),
-    ]).subscribe(([albums, songs]) => {
-      this.allFiles = albums.concat(songs)
+      this.dataService.loadTop40Objects(this.apiTipparadeUrl),
+    ]).subscribe(([albums, songs, tipparade]) => {
+      // this.allFiles = albums.concat(songs)
+      this.allFiles = [...albums, ...songs, ...tipparade]
     })
 
     // listen to stream state

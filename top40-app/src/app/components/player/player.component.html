@@ -1,27 +1,6 @@
 
-<!-- audio player and song list -->
-<!-- <div class="weekly-hits">
-    <h2>Weekly Hits</h2>
-    <mat-list color="primary">
-        <h3 mat-subheader>Songs</h3>
-        <mat-list-item *ngFor="let file of files; let i = index" (click)="openFile(file, i)">
-            <mat-icon color="primary" mat-list-icon>music_note</mat-icon>
-            <h4 mat-line>{{ file.title }}</h4>
-            <h5 mat-line>by {{ file.credit }}</h5>
-            <mat-icon color="primary" *ngIf="currentFile.index === i && !state?.error">volume_up</mat-icon>
-            <h6 *ngIf="currentFile.index === i && state?.error">ERROR</h6>
-            <mat-divider></mat-divider>
-        </mat-list-item>
-    </mat-list>
-</div> -->
 <div class="media-footer">
-    <mat-toolbar color="primary">
-      <mat-toolbar-row>
-         {{ state?.readableCurrentTime }}
-         <mat-slider class="time-slider" min="0" [max]="state?.duration" step="1" [value]="state?.currentTime" (input)="onSliderChangeEnd($event)" [disabled]="state?.error || currentFileIndex === undefined"></mat-slider>
-         {{ state?.readableDuration }}
-      </mat-toolbar-row>
-      <mat-toolbar-row class="media-action-bar">
+      <div class="media-action-bar">
         <div class="current-song-details">
             <img src="{{currentFileAvatar}}" alt="{{currentFileTitle}}">
             <div class="artist-details-container">
@@ -41,6 +20,5 @@
         <button  mat-button [disabled]="isLastPlaying()" (click)="next()">
           <mat-icon mat-list-icon>skip_next</mat-icon>
         </button>
-      </mat-toolbar-row>
-    </mat-toolbar>
+      </div>
   </div>

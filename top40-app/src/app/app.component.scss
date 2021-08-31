@@ -1,19 +1,16 @@
 .main-body{
     position: relative;
-    display: grid;
-    grid-template-areas:
-    'header main main main'
-    'header main main main'
-    'header main main main';
+    display: flex;
+    background: #3f51b5;
 
     .header{
-        grid-area: header;
+        flex: 20;
     }
 
     .main{
-        grid-area: main;
+        flex: 80;
         padding: 2em 2em;
-        height: 100vh;
+        height: 100%;
     }
 
 }

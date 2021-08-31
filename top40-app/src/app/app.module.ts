@@ -7,19 +7,17 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
-import { MusicComponent } from './pages/music/music.component';
-import { AlbumsComponent } from './pages/albums/albums.component';
 import { MoviesComponent } from './pages/movies/movies.component';
 import { TipparadeComponent } from './pages/tipparade/tipparade.component';
 import { AlbumDetailsComponent } from './components/album-details/album-details.component';
-import { MoviesDetailsComponent } from './components/movies-details/movies-details.component';
 import { MusicDetailsComponent } from './components/music-details/music-details.component';
-import { TipparadeDetailsComponent } from './components/tipparade-details/tipparade-details.component';
 import { SearchbarComponent } from './components/searchbar/searchbar.component';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { PlayerComponent } from './components/player/player.component';
+import {SafePipe} from './utils/safe.pipe';
+import {StripHtmlPipe} from './utils/stripHTML.pipe';
 
 @NgModule({
   declarations: [
@@ -27,16 +25,14 @@ import { PlayerComponent } from './components/player/player.component';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    MusicComponent,
-    AlbumsComponent,
     MoviesComponent,
     TipparadeComponent,
     AlbumDetailsComponent,
-    MoviesDetailsComponent,
     MusicDetailsComponent,
-    TipparadeDetailsComponent,
     SearchbarComponent,
-    PlayerComponent
+    PlayerComponent,
+    SafePipe,
+    StripHtmlPipe
   ],
   imports: [
     BrowserModule,

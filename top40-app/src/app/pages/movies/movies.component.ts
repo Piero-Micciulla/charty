@@ -1,8 +1,14 @@
+// import { DataService } from './../../shared/services/top-40-service/data.service';
+// import { Component, OnInit } from '@angular/core';
+// import {Observable} from 'rxjs';
+// import {IObject} from '../../shared/models/object';
+// import {environment} from '../../../environments/environment'
 import { DataService } from './../../shared/services/top-40-service/data.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
+import {environment} from '../../../environments/environment';
 import {IObject} from '../../shared/models/object';
-import {environment} from '../../../environments/environment'
+
 
 @Component({
   selector: 'app-movies',
@@ -11,16 +17,51 @@ import {environment} from '../../../environments/environment'
 })
 export class MoviesComponent implements OnInit {
 
-  private apiUrl = environment.top40MoviesApiUrl;
-  top40Movies$ : Observable<IObject[]> | null = null;
+  moviesFiles: Array<IObject> = [];
 
-  constructor(private dataService: DataService) { }
+  Math: any;
+  currentBackground: string | null = null;
+  currentFileTitle: string | null = null;
+  currentFileTitleId: number | null = null;
+  currentFileCredit: string | null = null;
+  currentFileAvatar: string | null = null;
+  currentFileLabel: string | null = null;
+  currentFilePosition: number | null = null;
+  currentFilePreviousPosition: number | null = null;
+  
+  private apiMoviesUrl = environment.top40MoviesApiUrl;
+
+
+  
+
+  constructor(private dataService: DataService) { 
+    this.Math = Math;
+
+
+
+    this.dataService.loadTop40Objects(this.apiMoviesUrl).subscribe(files => {
+      this.moviesFiles = files
+      this.currentBackground = this.moviesFiles[0].cover_img_url_large;
+      this.currentFileTitle = this.moviesFiles[0].title;
+      this.currentFileCredit = this.moviesFiles[0].credit;
+      this.currentFilePosition = this.moviesFiles[0].position;
+      this.currentFilePreviousPosition = this.moviesFiles[0].prev_position;
+      this.currentFileTitleId = this.moviesFiles[0].title_id;
+      this.currentFileLabel = this.moviesFiles[0].label;
+    })
+  }
 
   ngOnInit(): void {
+  }
 
-    this.top40Movies$ = this.dataService.loadTop40Objects(this.apiUrl)
-
-
+  setBackground(file: IObject): void {
+    this.currentBackground = file.cover_img_url_large;
+    this.currentFileTitle = file.title;
+    this.currentFileCredit = file.credit;
+    this.currentFilePosition = file.position;
+    this.currentFilePreviousPosition = file.prev_position;
+    this.currentFileTitleId = file.title_id;
+    this.currentFileLabel = file.label;
   }
 
 }

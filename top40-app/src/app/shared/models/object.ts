@@ -9,6 +9,7 @@ export interface IObject {
     title: string;
     credit: string;
     hitrecord: boolean;
+    cover_img_url_large: string;
     cover_img_url_medium: string;
     cover_img_url_small: string;
     site_url: string;

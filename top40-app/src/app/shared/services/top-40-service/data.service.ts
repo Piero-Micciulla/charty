@@ -35,15 +35,8 @@ export class DataService {
   }
 
 
-  loadObjectdetails(title_id: string): Observable<IObjectDetails>{
-    // const objectTitleId =  this.loadTop40Objects(apiUrl)
-    //   .pipe(
-    //     map((objects: IObject[]) => objects.find(object => Number(object.title_id) == Number(title_id)))
-    //   )
-    //   .subscribe(
-    //     objectId => objectId
-    //   )
-    
+  loadObjectdetails(title_id: number): Observable<IObjectDetails>{
+
     const detailUrl = `https://www.top40.nl/app_api/titledetails_top40_json/${title_id}`;
     this.objectDetails$ = this.http.get<IObjectDetails>(detailUrl);
 

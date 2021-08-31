@@ -1,3 +1,5 @@
+@import '../../../styles.scss';
+
 .media-footer{
     position: relative;
 
@@ -6,23 +8,29 @@
         bottom: 0;
         left: 0;
         right: 0;
-        height: 100px;
-        background-color: turquoise;
+        height: 40px;
+        background: #2F343D;
         display: flex;
         justify-content: flex-start;
         z-index: 100;
         padding: 2em 2em;
+        border-top: 5px solid #3F83EF;
+
+        button{
+            color: #3F82EE;
+            box-shadow: $box-shadow;
+        }
 
         .current-song-details{
             display: flex;
             align-items: center;
-            width: 33em;
+            width: 44em;
 
             img{
                 border-radius:15px;
-                box-shadow: 0 0 50px #ccc;
                 height: 70px;
                 margin-right: 1em;
+                box-shadow: $box-shadow;
             }
 
             .artist-details-container{

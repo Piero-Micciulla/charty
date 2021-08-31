@@ -28,6 +28,8 @@ $font-size-mobile: 14px;
 //fonts
 $primary-font: 'Alata', sans-serif;
 
+// box-shadow
+$box-shadow: 0 3px 10px rgb(0 0 0 / 20%);
 
 
 // GLOBAL STYLES
@@ -42,8 +44,13 @@ body{
     background-color: #CBDBE9;
 }
 
-h1{
+::-webkit-scrollbar {
+    display: none;
+}
+
+h1,h2,h3,h4,h5{
     margin: 0;
+    color: $white;
 }
 
 a{
@@ -52,7 +59,7 @@ a{
 }
 
 p{
-    color: $very-dark-grayish-blue;
+    color: $white;
     line-height: 1.5em;
 }
 

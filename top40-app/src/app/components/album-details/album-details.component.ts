@@ -15,7 +15,7 @@ export class AlbumDetailsComponent implements OnInit {
 
 
   private apiUrl = environment.top40AlbumsApiUrl;
-  albumTitleId: string | null = null;
+  albumTitleId: number | null = null;
   albumDetails$: Observable<IObjectDetails> | null = null;
 
   constructor(
@@ -24,7 +24,7 @@ export class AlbumDetailsComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.albumTitleId = this.route.snapshot.paramMap.get('title_id');
+    this.albumTitleId = Number(this.route.snapshot.paramMap.get('title_id'));
 
     this.albumDetails$ = this.route.paramMap.pipe(
       switchMap(params => {
