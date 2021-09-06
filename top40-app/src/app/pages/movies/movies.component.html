@@ -18,9 +18,7 @@
     </div>
     <div class="movies-slider">
         <h2>Top 40 Movies</h2>
-        <carousel [cellWidth]=300
-                  [cellsToShow]=4
-                  [cellsToScroll]=3
+        <carousel 
                   [lightDOM]=true                 
                   [pauseOnHover]=true
                   [margin]=20
@@ -33,7 +31,7 @@
             >
                 <div class="position">#{{movie.position}}</div>
                 <div class="movie-img-box">
-                    <img  src="{{movie.cover_img_url_medium}}" />
+                    <img  src="{{movie.cover_img_url_medium}}" alt="{{movie.title}}" />
                     <div class="movie-details">
                         <p class="title">{{movie.title | titlecase}}</p>
                         <p>{{movie.credit | titlecase}}</p>

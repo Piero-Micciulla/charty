@@ -1,18 +1,23 @@
-<header>
+<div (click)="onToggle()" class="hamburger-menu">
+    <div class="spinner diagonal part-1" [ngClass]="showToggle? 'rotate-part-1': ''"></div>
+    <div class="spinner horizontal" [ngClass]="showToggle? 'disappear-horizontal': ''"></div>
+    <div class="spinner diagonal part-2" [ngClass]="showToggle? 'rotate-part-2': ''"></div>
+</div>
+<header *ngIf="showToggle">
     <nav>
-            <span>
-                <a routerLink="/home" routerLinkActive="active"><h1>MOODY</h1></a>
-            </span>
+        <span>
+            <a routerLink="/home" routerLinkActive="active"><h1>Moody</h1></a>
+        </span>
         <ul>
             <li routerLinkActive="active">
-                    <span>
-                        <i class="fas fa-film"></i><a routerLink="/movies">Movies</a>
-                    </span>
+                <span>
+                    <i class="fas fa-film"></i><a routerLink="/movies">Movies</a>
+                </span>
             </li>
             <li routerLinkActive="active">
-                    <span>
-                        <i class="fas fa-music"></i><a routerLink="/tipparade">Tip</a>
-                    </span>
+                <span>
+                    <i class="fas fa-music"></i><a routerLink="/tipparade">Tip</a>
+                </span>
             </li>
         </ul>
     </nav>

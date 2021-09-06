@@ -29,7 +29,7 @@ export class MoviesComponent implements OnInit {
   currentFilePosition: number | null = null;
   currentFilePreviousPosition: number | null = null;
   
-  private apiMoviesUrl = environment.top40MoviesApiUrl;
+  private apiMoviesUrlEndpoint = environment.top40MoviesApiUrlEndpoint;
 
 
   
@@ -39,7 +39,7 @@ export class MoviesComponent implements OnInit {
 
 
 
-    this.dataService.loadTop40Objects(this.apiMoviesUrl).subscribe(files => {
+    this.dataService.loadTop40Objects(this.apiMoviesUrlEndpoint).subscribe(files => {
       this.moviesFiles = files
       this.currentBackground = this.moviesFiles[0].cover_img_url_large;
       this.currentFileTitle = this.moviesFiles[0].title;

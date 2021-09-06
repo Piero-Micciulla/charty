@@ -11,17 +11,30 @@
             align-items: flex-start;
             justify-content: space-between;
             margin-bottom: 2em;
+            
+            h1{
+                font-size: $h1-font-size;
+            }
+
+            img{
+                border-radius: $border-radius;
+                width: 251px;
+            }
 
             .artist-text-container{
                 width: 50%;
                 height: 300px;
                 overflow: scroll;
                 text-align: center;
-                border-radius: 15px;
-                border: 5px solid #3F83EF;
-                background: #2F343D;
-                padding: 1em 1em;
+                border-radius: $border-radius;
+                border: 5px solid $light-blue;
+                background: $light-black;
+                padding: 1em 2em;
                 box-shadow: $box-shadow;
+
+                p{
+                    line-height: 2em
+                }
             }
         }
 
@@ -31,16 +44,18 @@
 
             carousel{
                 z-index: 0;
+                height: 305px !important; 
+                width: 1107px;
                 
     
                 .carousel-cell{
-                    box-shadow: $box-shadow;
+
     
     
                     .album-img-box{
                         padding: 1em 1em;
-                        background: #2F343D;
-                        border-radius: 15px;
+                        background: $light-black;
+                        border-radius: $border-radius;
                         transition: 0.5s;
                         position: relative;
                         box-shadow: $box-shadow;
@@ -49,11 +64,11 @@
     
                         &:hover{
                             transition: 0s;
-                            background: #242932;
+                            background:$dark-black;
                         }
     
                         img{
-                            border-radius: 15px;
+                            border-radius: $border-radius;
     
                         }
                         .album-details{
@@ -85,13 +100,13 @@
 
                 .artists-avatars{
                     display: flex;
-                    align-items: center;
+                    align-items: flex-end;
                     margin: 1em 0 1em 0;
                     
                     img{
                         height: 70px;
                         width: 70px;
-                        border-radius: 15px;
+                        border-radius: $border-radius;
                         box-shadow: $box-shadow;
                         margin-right: 1em;
                     }
@@ -104,14 +119,92 @@
                 height: 300px;
                 overflow: scroll;
                 text-align: center;
-                border-radius: 15px;
-                border: 5px solid #3F83EF;
-                background: #2F343D;
-                padding: 1em 1em;
+                border-radius: $border-radius;
+                border: 5px solid $light-blue;
+                background: $light-black;
+                padding: 1em 2em;
                 box-shadow: $box-shadow;
+
+                p{
+                    line-height: 2em
+                }
             }
         }
 
     }
+
+}
+
+
+// mobile view
+
+@media only screen and (max-width: 768px){
+
+    .track-details-container{
+
+    
+        .track-details{
+
+    
+            .track-title-lyrics{
+                display: block;
+                
+                h1{
+                    font-size: $h1-mobile-font-size;
+                }
+    
+                img{
+                    width: 251px;
+                    margin-bottom: 1em;
+                }
+    
+                .artist-text-container{
+                    width: 70%;
+                    height: 300px;
+    
+
+                }
+            }
+    
+            .related-tracks-slider{
+
+    
+                carousel{
+                    width: 264px;
+                    height: 400px !important;
+
+        
+                }
+        
+            }
+    
+        
+    
+            .artists-details-container{
+                display: block;
+            
+                .artists-details{
+    
+                    .artists-avatars{
+
+                        
+                        img{
+                            height: 70px;
+                            width: 70px;
+                        }
+                    }
+    
+                }
+    
+                .artist-text-container{
+                    width: 70%;
+                    height: 300px;
+                }
+            }
+    
+        }
+    
+    }
+
 
 }

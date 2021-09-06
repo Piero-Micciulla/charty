@@ -1,18 +1,86 @@
 @import '../../../styles.scss';
+.hamburger-menu{
+    position: fixed;
+    top: 2em;
+    left: 2em;
+    z-index: 100;
+    display: none;
+    width: 30px;
+    height: 30px;
+
+    .spinner {
+        transition: all 0.3s;
+        box-sizing: border-box;
+        height: 5px;
+        border-radius: 15px;
+        width: 100%;
+        background-color: $white;
+    }
+    .horizontal {
+        box-sizing: border-box;
+        position: relative;
+        float: left;
+        margin-top: 3px;
+    }
+
+    .disappear-horizontal{
+        box-sizing: border-box;
+        opacity: 0; 
+    }
+
+    .diagonal.part-1 {
+        position: relative;
+        transition: all 0.3s;
+        box-sizing: border-box;
+        float: left;
+    }
+
+    .rotate-part-1{
+        transition: all 0.3s;
+        box-sizing: border-box;
+        transform: rotate(135deg);
+        margin-top: 10px;
+        left: -3px;
+    
+    }
+    
+    .diagonal.part-2 {
+        transition: all 0.3s;
+        box-sizing: border-box;
+        position: relative;
+        float: left;
+        margin-top: 3px;
+    }
+
+    .rotate-part-2{
+        transition: all 0.3s;
+        box-sizing: border-box;
+        transform: rotate(-135deg);
+        margin-top: -12px !important;
+        left: -1px;
+    }
+}
 
 header {
     height: 100vh;
     width: 16%;
     padding: 2em 0 2em 2em;
     text-align: left;
-    background: #2F343D;
-    border-right: 5px solid #3F83EF;
+    background: $light-black;
+    border-right: 5px solid $light-blue;
     position: fixed;
+
+
+    
 
     nav{
 
-        div{
-            margin-bottom: 5em;
+        a{
+            h1{
+                font-size: $h1-font-size;
+                font-weight: bold;
+                line-height: 1.5em;
+            }
         }
 
         ul{
@@ -20,20 +88,20 @@ header {
             li{
                 list-style: none;             
                 cursor: pointer;
-                border-top-left-radius: 20px;
-                border-bottom-left-radius: 20px;
+                border-top-left-radius: $cta-font-size;
+                border-bottom-left-radius: $cta-font-size;
                 height: 2em;
                 padding: 0.5em 0em 0.5em 1em;
                 transition: 0.5s;
 
                 &:hover{
                     transition: 0s;
-                    background: #242932;
+                    background: $dark-black;
                 }
 
                 &.active{
                     transition: 0s;
-                    background: #3F83EF;
+                    background: $light-blue;
                 }
 
                 span{
@@ -42,16 +110,66 @@ header {
                     width: 80%;
                     color: $white;
 
+                    i{
+                        font-size: $cta-font-size;
+                        
+                    }
+
                     
                     a{
                         font-weight: bold;
+                        font-size: $cta-font-size;
                         margin-left: 0.5em;
 
                         &.active{
                             transition: 0s;
-                            background: #3F83EF;
+                            background: $light-blue;
                         }
+
                         
+                        
+                        
+                    }
+                }
+            }
+        }
+    }
+}
+
+// mobile view
+
+@media only screen and (max-width: 768px){
+    .hamburger-menu{
+        display: block;
+    }
+
+    header{
+        height: 100%;
+        z-index: 99;
+        width: 30%;
+
+        nav{
+
+            a{
+
+                h1{
+                    font-size: $h1-mobile-font-size;
+                    margin-top: 1em;
+                }
+            }
+            ul{
+
+                li{
+
+                    span{
+
+                        i{
+                            font-size: $font-size-mobile;
+                        }
+
+                        a{
+                            font-size: $font-size-mobile;  
+                        }
                     }
                 }
             }

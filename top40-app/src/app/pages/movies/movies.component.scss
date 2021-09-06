@@ -14,12 +14,12 @@
         .current-movie-details{
 
             a{
-                font-size: 20px; 
+                font-size: $cta-font-size; 
             }
             .positions-container{
                 display: flex;
                 align-items: center;
-                font-size: 20px;
+                font-size: $cta-font-size;
 
                 
 
@@ -48,7 +48,7 @@
         }
 
         h1{
-            font-size: 50px;
+            font-size: $h1-font-size;
             font-weight: bold;
             line-height: 1.5em;
         }
@@ -56,7 +56,7 @@
         div{   
 
             img{
-                border-radius: 15px;
+                border-radius: $border-radius;
                 box-shadow: $box-shadow;
                 
             }
@@ -71,7 +71,7 @@
                 box-shadow: $box-shadow;
 
                 .position{
-                    border-radius: 15px;
+                    border-radius: $border-radius;
                     background-color: #3E82EE;
                     width: 40px;
                     height: 40px;
@@ -89,7 +89,7 @@
                 .movie-img-box{
                     padding: 1em 1em;
                     background: #2F343D;
-                    border-radius: 15px;
+                    border-radius: $border-radius;
                     transition: 0.5s;
                     position: relative;
                     min-height: 370px;
@@ -103,7 +103,7 @@
                     }
 
                     img{
-                        border-radius: 15px;
+                        border-radius: $border-radius;
 
                     }
                     .movie-details{
@@ -122,5 +122,70 @@
 
         }
 
+    }
+}
+
+// mobile view
+
+@media only screen and (max-width: 768px){
+    .movies{
+
+        .background-container{
+            display: block;
+
+    
+            .current-movie-details{
+                margin-bottom: 1em;
+
+                h1{
+                    font-size: $h1-mobile-font-size;
+                }
+                .positions-container{
+    
+                    .position-difference{
+                        font-size: $h1-font-size;
+    
+                    }
+    
+                    
+                }
+    
+            }
+    
+            h1{
+                margin-bottom: 0em;
+            }
+    
+            div{   
+    
+                img{
+                    width: 265px;
+                    
+                }
+            }
+        }
+
+        .movies-slider{
+                       
+            carousel{
+
+                .carousel-cell{
+    
+                    .movie-img-box{
+                        
+                        .movie-details{
+  
+                            .title{
+                                
+                                font-size: $font-size-mobile;
+                            }
+                        }
+    
+                    }
+                }
+    
+            }
+    
+        }
     }
 }

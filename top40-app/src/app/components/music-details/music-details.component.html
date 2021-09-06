@@ -1,7 +1,10 @@
 <section class="track-details-container">
     <div class="track-details" *ngIf="musicDetails$ | async as musicDetails">
         <div class="track-title-lyrics">
-            <h1>{{musicDetails.title}}</h1>
+            <div>
+                <h1>{{musicDetails.title | titlecase}}</h1>
+                <img  src="{{musicDetails.cover_img_url_large}}" alt="{{musicDetails.title}}" />
+            </div>
             <div *ngIf="trackLyrics" class="artist-text-container">
                 <h2>LYRICS</h2>
                 <p>{{trackLyrics}}</p>
@@ -10,20 +13,18 @@
 
         <div *ngIf="relatedTracks.length !== 0" class="related-tracks-slider">
             <h2>Related Tracks</h2>
-            <carousel [cellWidth]=10
-                      [cellsToShow]=5
-                      [cellsToScroll]=3
+            <carousel 
                       [lightDOM]=true                 
                       [pauseOnHover]=true
                       [margin]=20
                       [arrowsOutside]=false
-                      style="height: 305px; width: 1107px"
+                      
             >
                 <div *ngFor="let track of relatedTracks"
                      class="carousel-cell"
                 >
                     <div class="album-img-box">
-                        <img  src="{{track.cover_img_url}}" />
+                        <img  src="{{track.cover_img_url}}" alt="{{track.title}}" />
                         <div class="album-details">
                             <p class="title">{{track.title | titlecase}}</p>
                             <p>{{track.credit | titlecase}}</p>
@@ -35,7 +36,7 @@
 
         <div class="artists-details-container">
                 <div class="artists-details" *ngIf="artists.length !== 0">
-                <p>By</p>
+                <h2>By</h2>
                 <div class="artists-avatars" *ngFor="let artist of artists" (click)="getArtistBio(artist)">
                     <img src="{{artist.artist_img_url}}" alt="{{artist.name}}"/>
                     <h2>{{artist.name}}</h2>

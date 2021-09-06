@@ -3,6 +3,7 @@ import {IRelatedTrack} from './related-track';
 import {IObject} from './object';
 
 export interface IObjectDetails extends IObject {
+    cover_img_url_large: string;
     num_weeks_top40: number,
     highest_position: number,
     first_position_year: number,

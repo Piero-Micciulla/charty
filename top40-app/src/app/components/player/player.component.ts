@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { AudioService } from '../../shared/services/audio-service/audio.service'
 import { DataService } from '../../shared/services/top-40-service/data.service'
 import { PlayerService } from '../../shared/services/player.service'
+import {FilterService} from '../../shared/services/filter-service/filter.service'
 import { StreamState } from '../../shared/models/streamState'
 import { IObject } from '../../shared/models/object'
 import { environment } from '../../../environments/environment'
@@ -28,9 +29,12 @@ export class PlayerComponent implements OnInit {
   currentFileCredit: string | null = null
   currentFileAvatar: string | null = null
 
-  private apiSongsUrl = environment.top40SongsApiUrl
-  private apiAlbumsUrl = environment.top40AlbumsApiUrl
-  private apiTipparadeUrl = environment.top40TipparadeApiUrl
+  currentWeek: string | null = null
+  currentYear: string | null = null
+
+  private apiSongsUrlEndpoint = environment.top40SongsApiUrlEndpoint
+  private apiAlbumsUrlEndpoint = environment.top40AlbumsApiUrlEndpoint
+  private apiTipparadeUrlEndpoint = environment.top40TipparadeApiUrlEndpoint
   top40Songs$: Observable<IObject[]> | null = null
 
   public get currentIndex(): number {
@@ -42,11 +46,18 @@ export class PlayerComponent implements OnInit {
     public audioService: AudioService,
     public dataService: DataService,
     public playerService: PlayerService,
+    public filterService: FilterService,
   ) {
+    this.filterService.currentWeekFilter.subscribe(week => this.currentWeek = week)
+    this.filterService.currentYearFilter.subscribe(year => this.currentWeek = year)
+    console.log(this.currentWeek)
+    console.log(this.currentYear)
+
     combineLatest([
-      this.dataService.loadTop40Objects(this.apiAlbumsUrl),
-      this.dataService.loadTop40Objects(this.apiSongsUrl),
-      this.dataService.loadTop40Objects(this.apiTipparadeUrl),
+      this.dataService.loadTop40Objects(this.apiAlbumsUrlEndpoint),
+      this.dataService.loadTop40Objects(this.apiSongsUrlEndpoint),
+      this.dataService.loadTop40Objects(this.apiTipparadeUrlEndpoint),
+      
     ]).subscribe(([albums, songs, tipparade]) => {
       // this.allFiles = albums.concat(songs)
       this.allFiles = [...albums, ...songs, ...tipparade]

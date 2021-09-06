@@ -48,3 +48,39 @@
         }
     }
 }
+
+
+@media only screen and (max-width: 768px){
+    .media-footer{
+
+    
+        .media-action-bar{
+
+    
+            button{
+
+            }
+    
+            .current-song-details{
+                
+    
+                img{
+
+                }
+    
+                .artist-details-container{
+                    display: none;
+                    
+                    .song-title{
+
+                    }
+    
+                    .song-credit{
+
+                    }
+                }
+            }
+        }
+    }
+
+}

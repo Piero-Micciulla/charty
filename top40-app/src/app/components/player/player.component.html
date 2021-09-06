@@ -4,20 +4,20 @@
         <div class="current-song-details">
             <img src="{{currentFileAvatar}}" alt="{{currentFileTitle}}">
             <div class="artist-details-container">
-                <p class="song-title">{{currentFileTitle}}</p>
-                <p class="song-credit">{{currentFileCredit}}</p>
+                <p class="song-title">{{currentFileTitle | titlecase}}</p>
+                <p class="song-credit">{{currentFileCredit | titlecase}}</p>
             </div>
         </div>
-        <button mat-button [disabled]="isFirstPlaying()" (click)="previous()">
+        <button aria-label="previous" mat-button [disabled]="isFirstPlaying()" (click)="previous()">
           <mat-icon mat-list-icon>skip_previous</mat-icon>
         </button>
-        <button mat-button (click)="play()" [disabled]="state?.error" *ngIf="!state?.playing">
+        <button aria-label="play" mat-button (click)="play()" [disabled]="state?.error" *ngIf="!state?.playing">
           <mat-icon mat-list-icon>play_circle_filled</mat-icon>
         </button>
-        <button mat-button (click)="pause()" *ngIf="state?.playing">
+        <button aria-label="pause" mat-button (click)="pause()" *ngIf="state?.playing">
           <mat-icon mat-list-icon>pause</mat-icon>
         </button>
-        <button  mat-button [disabled]="isLastPlaying()" (click)="next()">
+        <button aria-label="next"  mat-button [disabled]="isLastPlaying()" (click)="next()">
           <mat-icon mat-list-icon>skip_next</mat-icon>
         </button>
       </div>

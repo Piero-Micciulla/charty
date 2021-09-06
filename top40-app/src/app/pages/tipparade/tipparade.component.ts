@@ -4,8 +4,10 @@ import {Observable} from 'rxjs';
 import {environment} from '../../../environments/environment';
 import {IObject} from '../../shared/models/object';
 import {AudioService} from '../../shared/services/audio-service/audio.service';
-import {PlayerService} from '../../shared/services/player.service'
+import {PlayerService} from '../../shared/services/player.service';
+import {FilterService} from '../../shared/services/filter-service/filter.service';
 import {StreamState} from '../../shared/models/streamState';
+import { FormGroup, FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-tipparade',
@@ -34,16 +36,30 @@ export class TipparadeComponent implements OnInit {
   currentYouTubeUrl: string  = '';
   state: StreamState | null = null;
 
-  private tipparadeApiUrl = environment.top40TipparadeApiUrl;
+  // setting weeks/years values 
+  range = function range(size: number, startAt = 0): number[] {
+    return [...Array(size).keys()].map(i => i + startAt);
+  }
+
+  weeksOptions: string[] = this.range(52, 1).reverse().map(String)
+  yearOptions: string[] = this.range(56, 1965).reverse().map(String)
+  
+  form = new FormGroup({
+    weeks: new FormControl(''),
+    year: new FormControl('')
+  }); 
+
+  private tipparadeApiUrlEndpoint = environment.top40TipparadeApiUrlEndpoint;
   top40Tipparades$ : Observable<IObject[]> | null = null;
 
   constructor(
     private dataService: DataService,
     public audioService: AudioService,
     public playerService: PlayerService,
+    public filterService: FilterService,
   ) { 
 
-    this.dataService.loadTop40Objects(this.tipparadeApiUrl).subscribe(files => {
+    this.dataService.loadTop40Objects(this.tipparadeApiUrlEndpoint).subscribe(files => {
       this.songsFiles = files
       this.currentBackground = this.songsFiles[0].cover_img_url_large;
       this.currentFileTitle = this.songsFiles[0].title;
@@ -76,6 +92,24 @@ export class TipparadeComponent implements OnInit {
   setYouTubeUrl(file: IObject): void {
     this.watchYouTubeUrl = file.youtube_url.split('watch?v=');
     this.currentYouTubeUrl = this.watchYouTubeUrl[0]+'embed/'+this.watchYouTubeUrl[1]; 
+  }
+
+
+  submit(){
+    console.log(this.form.value.year, this.form.value.weeks);
+    this.filterService.changeFilters(this.form.value.weeks, this.form.value.year)
+    // this.dataService.getNewParamsFilters(this.form.value.weeks, this.form.value.year);
+    // return this.dataService.loadTop40Objects(this.apiAlbumsUrlEndpoint).subscribe(files => {
+    //   this.albumsFiles = files
+    //   console.log(this.albumsFiles[0])
+    //   this.currentBackground = this.albumsFiles[0].cover_img_url_large;
+    //   this.currentFileTitle = this.albumsFiles[0].title;
+    //   this.currentFileCredit = this.albumsFiles[0].credit;
+    //   this.currentFilePosition = this.albumsFiles[0].position;
+    //   this.currentFilePreviousPosition = this.albumsFiles[0].prev_position;
+    //   this.currentFileTitleId = this.albumsFiles[0].title_id;
+    // })
+    
   }
 
 }

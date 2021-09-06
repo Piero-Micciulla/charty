@@ -1,4 +1,22 @@
 <section class="home">
+    <div class="form-container">          
+        <form [formGroup]="form" (ngSubmit)="submit()">             
+            <div class="form-group">
+                <label for="weeks">Week:</label>
+                <select formControlName="weeks" class="form-control">
+                    <option *ngFor="let week of weeksOptions">{{week}}</option>
+                </select>
+                <label for="year">Year:</label>
+                <select formControlName="year" class="form-control">
+                    <option *ngFor="let year of yearOptions">{{year}}</option>
+                </select>            
+            </div>          
+            <button class="btn btn-primary" type="submit">
+                Search
+            <i class="fas fa-search"></i>
+            </button>
+        </form>
+    </div>
     <div class="background-container">
         <div class="current-track-details">
             <h1 *ngIf="currentFileTitle">{{currentFileCredit | titlecase}} - {{currentFileTitle | titlecase}}</h1>
@@ -10,18 +28,19 @@
                 <p class="position-difference" *ngIf="currentFilePosition && currentFilePreviousPosition && currentFilePreviousPosition! > currentFilePosition!"><i class="fas fa-chevron-up"></i> {{currentFilePreviousPosition! - currentFilePosition!}}</p>
                 <p class="position-difference" *ngIf="currentFilePosition && currentFilePreviousPosition && currentFilePreviousPosition! < currentFilePosition!"><i class="fas fa-chevron-down"></i>{{Math.abs(currentFilePreviousPosition! - currentFilePosition!)}}</p>
             </div>
-        <a routerLink="/track/{{currentFileTitleId}}">See More</a>
+            <a class="see-more" routerLink="/track/{{currentFileTitleId}}">
+                Track Details
+                <i class="fas fa-chevron-right"></i>
+            </a>
         </div>
         <div>
-            <img src="{{currentBackground}}" alt="{{currentFileTitle}}">
+            <img src="{{currentBackground}}" alt="{{currentFileTitle}}" />
         </div>
     </div>
     <div class="albums-slider">
         <h3>Featured</h3>
         <h2>Top 40 Albums</h2>
-        <carousel [cellWidth]=300
-                  [cellsToShow]=4
-                  [cellsToScroll]=3
+        <carousel 
                   [lightDOM]=true                 
                   [pauseOnHover]=true
                   [margin]=20
@@ -34,7 +53,8 @@
             >
                 <div class="position">#{{album.position}}</div>
                 <div class="album-img-box">
-                    <img  src="{{album.cover_img_url_medium}}" />
+                    <img  src="{{album.cover_img_url_medium}}" alt="{{album.title}}" />
+                    <i class="far fa-play-circle"></i>
                     <div class="album-details">
                         <p class="title">{{album.title | titlecase}}</p>
                         <p>{{album.credit | titlecase}}</p>
@@ -53,13 +73,13 @@
                     >
                         <div class="position">#{{song.position}}</div>
                         <img matListAvatar src="{{song.cover_img_url_small}}" alt="{{song.title}}" (click)="openSong(song);setBackground(song)"> 
-                        <div style="padding: 1em 1em; width: 200px; overflow-x: hidden;">
+                        <div class="song-details" style="padding: 1em 1em; width: 200px; overflow-x: hidden;">
                             <h4 matLine>{{ song.title }}</h4>
                             <h5 matLine>by {{ song.credit }}</h5>
                         </div>  
                         <div class="socials">
+                            <i class="far fa-play-circle"></i>
                             <i class="fab fa-youtube-square" (click)="setYouTubeUrl(song)"></i>
-                            <i class="fab fa-itunes"></i>
                         </div>  
                         <mat-icon color="primary" *ngIf="currentFile?.index === i && !state?.error">volume_up</mat-icon>
                         <h6 *ngIf="currentFile?.index === i && state?.error">ERROR</h6>
@@ -68,7 +88,7 @@
             </mat-list>
         </div>
         <div class="screen">
-            <iframe [src]="currentYouTubeUrl | safe" frameborder="0" allowfullscreen></iframe>
+            <iframe title="{{currentFileTitle}}" [src]="currentYouTubeUrl | safe" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
 </section>

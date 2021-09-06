@@ -10,9 +10,12 @@ export class HeaderComponent implements OnInit {
 
   constructor() { }
 
-
+  showToggle: boolean = true;
 
   ngOnInit(): void {
   }
 
+  onToggle() {
+    this.showToggle = !this.showToggle;
+  }
 }
