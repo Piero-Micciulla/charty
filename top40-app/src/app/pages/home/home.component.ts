@@ -54,9 +54,6 @@ export class HomeComponent implements OnInit {
     weeks: new FormControl(''),
     year: new FormControl('')
   }); 
-  
-  // currentWeekFilter: string = '';
-  // currentYearFilter: string = '';
 
 
   private apiAlbumsUrlEndpoint = environment.top40AlbumsApiUrlEndpoint;
@@ -99,8 +96,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.filterService.currentWeekFilter.subscribe(week => this.currentWeekFilter = week)
-    // this.filterService.currentYearFilter.subscribe(year => this.currentWeekFilter = year)
   }
 
 
@@ -131,22 +126,19 @@ export class HomeComponent implements OnInit {
   }
   
   submit(){
-    console.log(this.form.value.year, this.form.value.weeks);
     this.filterService.changeFilters(this.form.value.weeks, this.form.value.year)
-    // this.dataService.getNewParamsFilters(this.form.value.weeks, this.form.value.year);
-    // return this.dataService.loadTop40Objects(this.apiAlbumsUrlEndpoint).subscribe(files => {
-    //   this.albumsFiles = files
-    //   console.log(this.albumsFiles[0])
-    //   this.currentBackground = this.albumsFiles[0].cover_img_url_large;
-    //   this.currentFileTitle = this.albumsFiles[0].title;
-    //   this.currentFileCredit = this.albumsFiles[0].credit;
-    //   this.currentFilePosition = this.albumsFiles[0].position;
-    //   this.currentFilePreviousPosition = this.albumsFiles[0].prev_position;
-    //   this.currentFileTitleId = this.albumsFiles[0].title_id;
-    // })
-    
+    this.dataService.getNewParamsFilters(this.form.value.weeks, this.form.value.year);
+    this.dataService.loadTop40Objects(this.apiAlbumsUrlEndpoint).subscribe(files => {
+      this.albumsFiles = files
+      this.currentBackground = this.albumsFiles[0].cover_img_url_large;
+      this.currentFileTitle = this.albumsFiles[0].title;
+      this.currentFileCredit = this.albumsFiles[0].credit;
+      this.currentFilePosition = this.albumsFiles[0].position;
+      this.currentFilePreviousPosition = this.albumsFiles[0].prev_position;
+      this.currentFileTitleId = this.albumsFiles[0].title_id;
+    })
+    this.dataService.loadTop40Objects(this.apiSongsUrlEndpoint).subscribe(files => {
+      this.songsFiles = files
+    })  
   }
-
-  
-
 }

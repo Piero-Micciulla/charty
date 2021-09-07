@@ -15,7 +15,7 @@ import { combineLatest, Observable } from 'rxjs'
 })
 export class PlayerComponent implements OnInit {
 
-  //music player
+
   allFiles: Array<IObject> = []
   songsFiles: Array<IObject> = []
   albumsFiles: Array<IObject> = []
@@ -38,7 +38,6 @@ export class PlayerComponent implements OnInit {
   top40Songs$: Observable<IObject[]> | null = null
 
   public get currentIndex(): number {
-    // todo this is not super neat-o.. as it's not garantueed that title_id is unique in the array allFiles. But it's quick solution, for now.. ;)
     return this.allFiles.findIndex((file) => file.title_id === this.currentFile?.title_id)
   }
 
@@ -59,7 +58,6 @@ export class PlayerComponent implements OnInit {
       this.dataService.loadTop40Objects(this.apiTipparadeUrlEndpoint),
       
     ]).subscribe(([albums, songs, tipparade]) => {
-      // this.allFiles = albums.concat(songs)
       this.allFiles = [...albums, ...songs, ...tipparade]
     })
 
@@ -117,9 +115,7 @@ export class PlayerComponent implements OnInit {
     this.audioService.stop()
   }
 
-  /**
-   * TODO as an bonus exercise: Look at the code shared between next() and previous(). Can that be reduced?
-   */
+  
   next() {
     const currentIndex = this.currentIndex
     if (currentIndex > -1) {
@@ -130,7 +126,7 @@ export class PlayerComponent implements OnInit {
       }
 
     } else {
-      // todo .. there is no current file loaded... do we want something to happen?
+      console.log("No current file loaded")
     }
 
   }
@@ -145,7 +141,7 @@ export class PlayerComponent implements OnInit {
       }
 
     } else {
-      // todo .. there is no current file loaded... do we want something to happen?
+      console.log("No current file loaded")
     }
 
 

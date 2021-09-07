@@ -14,7 +14,6 @@ export class PlayerService {
   currentFile$ = this.fileSubject.asObservable()
 
   /**
-   * TODO maybe explain what an 'index', a 'source' and a 'file' is.
    * @param index
    * @param source
    * @param file

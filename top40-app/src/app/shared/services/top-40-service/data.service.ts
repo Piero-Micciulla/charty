@@ -23,7 +23,7 @@ export class DataService {
   constructor(private http: HttpClient) { 
     
   }
-  // try to implement the filter
+  
   getNewParamsFilters(week: string, year: string){
     const filterParams = of(week, year);
     filterParams
@@ -35,7 +35,7 @@ export class DataService {
     )
     
   }
-  // end
+  
 
   loadTop40Objects(endpoint: string): Observable<IObject[]>{
     if(this.week && this.year){

@@ -15,6 +15,8 @@ import { MaterialModule } from './material.module';
 import { PlayerComponent } from './components/player/player.component';
 import {SafePipe} from './utils/safe.pipe';
 import {StripHtmlPipe} from './utils/stripHTML.pipe';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from 'src/environments/environment.prod';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,13 @@ import {StripHtmlPipe} from './utils/stripHTML.pipe';
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

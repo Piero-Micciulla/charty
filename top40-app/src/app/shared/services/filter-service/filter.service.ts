@@ -13,7 +13,6 @@ export class FilterService {
   currentYearFilter = this.filterYearParam.asObservable();
 
   changeFilters(week: string, year: string){
-    console.log(week, year)
     this.filterWeekParam.next(week);
     this.filterYearParam.next(year);
   }
