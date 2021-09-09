@@ -110,6 +110,25 @@
 
                 .current-previous-positions{
                     margin-right: 2em;
+
+                    p{
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+
+                        .position{
+                            border-radius: $border-radius;
+                            background-color: $light-black;
+                            width: 40px;
+                            height: 40px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            color: $white;
+                            font-weight: bold;
+                            margin-left: 1em;
+                        }
+                    }
                 }
 
                 .position-difference{
@@ -155,7 +174,6 @@
             
 
             .carousel-cell{
-                
 
                 .position{
                     border-radius: $border-radius;
@@ -177,7 +195,7 @@
                     padding: 1em 1em;
                     background: $light-black;
                     border-radius: $border-radius;
-                    transition: 0.5s;
+                    transition: all 0.5s;
                     position: relative;
                     min-height: 334px;
                     box-shadow: $box-shadow;
@@ -191,6 +209,10 @@
 
                     &:hover .fa-play-circle{
                         opacity: 1;
+                    }
+
+                    &:hover img{
+                        filter: contrast(150%);
                     }
 
                     img{
@@ -218,8 +240,6 @@
                         transition: 0.2s;
                         font-size: 70px;
                         color: $light-blue;
-                        
-
                     }
                 }
             }
@@ -233,6 +253,7 @@
         align-items: flex-end;
         justify-content: space-between;
         padding: 5em 0 5em 0;
+        margin-bottom: 3em;
 
         .weekly-hits{   
 
@@ -249,7 +270,13 @@
                 .song-container{
                     width: 100%;
                     border-radius: $border-radius;
-                    transition: 0.5s;
+                    transition: all 0.5s;
+
+                    .song-details{
+                        padding: 1em 1em; 
+                        width: 200px;
+                        overflow-x: hidden;
+                    }
 
 
                     .position{
@@ -290,6 +317,10 @@
                         background-color: $light-blue;
                     }
 
+                    &:hover img{
+                        filter: contrast(150%);
+                    }
+
                         img{
                             width: $h1-font-size;
                             height: $h1-font-size;
@@ -318,8 +349,6 @@
                                 color: $light-blue;
                                 box-shadow: $box-shadow;
                             }
-
-
                         }
                 }
             }
@@ -364,7 +393,7 @@
                     select{
                         font-size: $font-size-mobile;
                         padding: 10px $cta-font-size;
-                        width: 84px;
+                        width: 82px;
                         
                     }
                 }
@@ -391,11 +420,8 @@
                 .positions-container{
     
                     .position-difference{
-                        font-size: $h1-font-size;
-    
-                    }
-    
-                    
+                        font-size: 30px; 
+                    }                   
                 }
     
             }
@@ -407,8 +433,7 @@
             div{   
     
                 img{
-                    width: 265px;
-                    
+                    width: 100%;         
                 }
             }
         }
@@ -423,8 +448,7 @@
                         
                         .album-details{
 
-                            .title{
-                                
+                            .title{                               
                                 font-size: $font-size-mobile;
                             }
                         }
@@ -440,36 +464,35 @@
         display: block;
         padding: 5em 0 5em 0;
 
-        .weekly-hits{   
-
+        .weekly-hits{          
             margin-bottom: 1em;
-            .songs-list{
-                
 
-                .song-container{
-                    justify-content: space-between;
+                .songs-list{
+                    
 
-                    .song-details{
-                        display: none;
-                    }
-                        img{                          
-                            margin-right: 70px;
+                    .song-container{
+                        justify-content: space-between;
+
+                        .song-details{
+                            display: none;
                         }
-
-                        .socials{
-                            width: 100px;
-                            display: flex;
-                            align-items: center;
-                            justify-content: space-between;
-
-                            i{
-                                font-size: $h1-font-size;
-                                
+                            img{                          
+                                margin-right: 70px;
                             }
-                        }
-                }
-            }
 
+                            .socials{
+                                width: 100px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-between;
+
+                                i{
+                                    font-size: $h1-font-size;
+                                    
+                                }
+                            }
+                    }
+                }
         }
 
         .screen{

@@ -56,7 +56,7 @@
                         padding: 1em 1em;
                         background: $light-black;
                         border-radius: $border-radius;
-                        transition: 0.5s;
+                        transition: all 0.5s;
                         position: relative;
                         box-shadow: $box-shadow;
                         
@@ -65,6 +65,10 @@
                         &:hover{
                             transition: 0s;
                             background:$dark-black;
+                        }
+
+                        &:hover img{
+                            filter: contrast(150%);
                         }
     
                         img{
@@ -80,6 +84,31 @@
     
                             .title{
                                 font-weight: bold;
+                                max-height: 24px;
+                                display: -webkit-box;
+                                -webkit-box-orient: vertical;
+                                -moz-box-orient: vertical;
+                                -ms-box-orient: vertical;
+                                box-orient: vertical;
+                                -webkit-line-clamp: 5;
+                                -moz-line-clamp: 5;
+                                -ms-line-clamp: 5;
+                                line-clamp: 5;
+                                overflow: hidden;
+                            }
+
+                            .credit{
+                                max-height: 24px;
+                                display: -webkit-box;
+                                -webkit-box-orient: vertical;
+                                -moz-box-orient: vertical;
+                                -ms-box-orient: vertical;
+                                box-orient: vertical;
+                                -webkit-line-clamp: 5;
+                                -moz-line-clamp: 5;
+                                -ms-line-clamp: 5;
+                                line-clamp: 5;
+                                overflow: hidden;
                             }
                         }
                     }
@@ -95,6 +124,7 @@
             display: flex;
             align-items: flex-start;
             justify-content: space-between;
+            margin-bottom: 7em;
         
             .artists-details{
 
@@ -154,15 +184,17 @@
                 }
     
                 img{
-                    width: 251px;
+                    width: 100%;
                     margin-bottom: 1em;
                 }
     
                 .artist-text-container{
-                    width: 70%;
+                    width: 78%;
                     height: 300px;
-    
 
+                    p{
+                        font-style: italic;
+                    }
                 }
             }
     
@@ -197,7 +229,7 @@
                 }
     
                 .artist-text-container{
-                    width: 70%;
+                    width: 78%;
                     height: 300px;
                 }
             }

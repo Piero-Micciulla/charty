@@ -22,8 +22,8 @@
             <h1 *ngIf="currentFileTitle">{{currentFileCredit | titlecase}} - {{currentFileTitle | titlecase}}</h1>
             <div class="positions-container">
                 <div class="current-previous-positions">
-                    <p *ngIf="currentFilePosition">Position: #{{currentFilePosition}}</p>
-                    <p *ngIf="currentFilePreviousPosition">Preavious position: #{{currentFilePreviousPosition}}</p>
+                    <p *ngIf="currentFilePosition">Current position: <span class="position">#{{currentFilePosition}}</span></p>
+                    <p *ngIf="currentFilePreviousPosition">Preavious position: <span class="position">#{{currentFilePreviousPosition}}</span></p>
                 </div>
                 <p class="position-difference" *ngIf="currentFilePosition && currentFilePreviousPosition && currentFilePreviousPosition! > currentFilePosition!"><i class="fas fa-chevron-up"></i> {{currentFilePreviousPosition! - currentFilePosition!}}</p>
                 <p class="position-difference" *ngIf="currentFilePosition && currentFilePreviousPosition && currentFilePreviousPosition! < currentFilePosition!"><i class="fas fa-chevron-down"></i>{{Math.abs(currentFilePreviousPosition! - currentFilePosition!)}}</p>
@@ -69,11 +69,10 @@
             <mat-list color="primary">
                 <h3>Songs</h3>
                 <div class="songs-list">
-                    <mat-list-item class="song-container" *ngFor="let song of songsFiles; let i = index"
-                    >
+                    <mat-list-item class="song-container" *ngFor="let song of songsFiles; let i = index">
                         <div class="position">#{{song.position}}</div>
                         <img matListAvatar src="{{song.cover_img_url_small}}" alt="{{song.title}}" (click)="openSong(song);setBackground(song)"> 
-                        <div class="song-details" style="padding: 1em 1em; width: 200px; overflow-x: hidden;">
+                        <div class="song-details">
                             <h4 matLine>{{ song.title }}</h4>
                             <h5 matLine>by {{ song.credit }}</h5>
                         </div>  

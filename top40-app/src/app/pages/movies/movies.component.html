@@ -5,8 +5,8 @@
             <h2>Producer: {{currentFileLabel | titlecase}}</h2>
             <div class="positions-container">
                 <div class="current-previous-positions">
-                    <p *ngIf="currentFilePosition">Position: #{{currentFilePosition}}</p>
-                    <p *ngIf="currentFilePreviousPosition">Preavious position: #{{currentFilePreviousPosition}}</p>
+                    <p *ngIf="currentFilePosition">Position: <span class="position">#{{currentFilePosition}}</span></p>
+                    <p *ngIf="currentFilePreviousPosition">Preavious position: <span class="position">#{{currentFilePreviousPosition}}</span></p>
                 </div>
                 <p class="position-difference" *ngIf="currentFilePosition && currentFilePreviousPosition && currentFilePreviousPosition! > currentFilePosition!"><i class="fas fa-chevron-up"></i> {{currentFilePreviousPosition! - currentFilePosition!}}</p>
                 <p class="position-difference" *ngIf="currentFilePosition && currentFilePreviousPosition && currentFilePreviousPosition! < currentFilePosition!"><i class="fas fa-chevron-down"></i>{{Math.abs(currentFilePreviousPosition! - currentFilePosition!)}}</p>
@@ -34,7 +34,7 @@
                     <img  src="{{movie.cover_img_url_medium}}" alt="{{movie.title}}" />
                     <div class="movie-details">
                         <p class="title">{{movie.title | titlecase}}</p>
-                        <p>{{movie.credit | titlecase}}</p>
+                        <p class="credit">{{movie.credit | titlecase}}</p>
                     </div>
                 </div>
             </div>

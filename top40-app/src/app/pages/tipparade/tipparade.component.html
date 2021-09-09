@@ -22,8 +22,8 @@
             <h1 *ngIf="currentFileTitle">{{currentFileCredit | titlecase}} - {{currentFileTitle | titlecase}}</h1>
             <div class="positions-container">
                 <div class="current-previous-positions">
-                    <p *ngIf="currentFilePosition">Position: #{{currentFilePosition}}</p>
-                    <p *ngIf="currentFilePreviousPosition">Preavious position: #{{currentFilePreviousPosition}}</p>
+                    <p *ngIf="currentFilePosition">Position: <span class="position">#{{currentFilePosition}}</span></p>
+                    <p *ngIf="currentFilePreviousPosition">Preavious position: <span class="position">#{{currentFilePreviousPosition}}</span></p>
                 </div>
                 <p class="position-difference" *ngIf="currentFilePosition && currentFilePreviousPosition && currentFilePreviousPosition! > currentFilePosition!"><i class="fas fa-chevron-up"></i> {{currentFilePreviousPosition! - currentFilePosition!}}</p>
                 <p class="position-difference" *ngIf="currentFilePosition && currentFilePreviousPosition && currentFilePreviousPosition! < currentFilePosition!"><i class="fas fa-chevron-down"></i>{{Math.abs(currentFilePreviousPosition! - currentFilePosition!)}}</p>

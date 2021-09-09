@@ -25,6 +25,25 @@
 
                 .current-previous-positions{
                     margin-right: 2em;
+
+                    p{
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+
+                        .position{
+                            border-radius: $border-radius;
+                            background-color: $light-black;
+                            width: 40px;
+                            height: 40px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            color: $white;
+                            font-weight: bold;
+                            margin-left: 1em;
+                        }
+                    }
                 }
 
                 .position-difference{
@@ -63,12 +82,15 @@
         }
     }
     .movies-slider{
+        min-height: 535px;
+        margin-bottom: 3em;
+
         carousel{
             z-index: 0;
             
 
             .carousel-cell{
-                box-shadow: $box-shadow;
+                
 
                 .position{
                     border-radius: $border-radius;
@@ -90,9 +112,8 @@
                     padding: 1em 1em;
                     background: #2F343D;
                     border-radius: $border-radius;
-                    transition: 0.5s;
+                    transition: all 0.5s;
                     position: relative;
-                    min-height: 370px;
                     box-shadow: $box-shadow;
                     
                     
@@ -100,6 +121,11 @@
                     &:hover{
                         transition: 0s;
                         background: #242932;
+                    }
+
+                    &:hover img{
+                        transition: 0s;
+                        filter: contrast(150%);
                     }
 
                     img{
@@ -115,6 +141,31 @@
 
                         .title{
                             font-weight: bold;
+                            max-height: 24px;
+                            display: -webkit-box;
+                            -webkit-box-orient: vertical;
+                            -moz-box-orient: vertical;
+                            -ms-box-orient: vertical;
+                            box-orient: vertical;
+                            -webkit-line-clamp: 5;
+                            -moz-line-clamp: 5;
+                            -ms-line-clamp: 5;
+                            line-clamp: 5;
+                            overflow: hidden;
+                        }
+
+                        .credit{
+                            max-height: 24px;
+                            display: -webkit-box;
+                            -webkit-box-orient: vertical;
+                            -moz-box-orient: vertical;
+                            -ms-box-orient: vertical;
+                            box-orient: vertical;
+                            -webkit-line-clamp: 5;
+                            -moz-line-clamp: 5;
+                            -ms-line-clamp: 5;
+                            line-clamp: 5;
+                            overflow: hidden;
                         }
                     }
                 }
@@ -143,7 +194,7 @@
                 .positions-container{
     
                     .position-difference{
-                        font-size: $h1-font-size;
+                        font-size: 30px;
     
                     }
     
@@ -159,8 +210,7 @@
             div{   
     
                 img{
-                    width: 265px;
-                    
+                    width: 100%;                 
                 }
             }
         }
