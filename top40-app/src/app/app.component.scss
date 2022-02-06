@@ -1,0 +1,28 @@
+.main-body{
+    position: relative;
+    display: flex;
+    background: #3f51b5;
+
+    .header{
+        flex: 20;
+    }
+
+    .main{
+        flex: 80;
+        padding: 2em 2em;
+        height: fit-content;
+    }
+
+}
+
+@media only screen and (max-width: 768px){
+    .main-body{
+        .header{
+            flex: 0;
+        }
+
+        .main{
+            
+        }
+    }
+}

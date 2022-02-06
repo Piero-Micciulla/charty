@@ -1,0 +1,241 @@
+@import '../../../styles.scss';
+
+.movies{
+    height: 100%;
+    
+    
+    .background-container{
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        width: 100%;
+        padding: 5em 0 5em 0;
+
+        .current-movie-details{
+
+            a{
+                font-size: $cta-font-size; 
+            }
+            .positions-container{
+                display: flex;
+                align-items: center;
+                font-size: $cta-font-size;
+
+                
+
+                .current-previous-positions{
+                    margin-right: 2em;
+
+                    p{
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+
+                        .position{
+                            border-radius: $border-radius;
+                            background-color: $light-black;
+                            width: 40px;
+                            height: 40px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            color: $white;
+                            font-weight: bold;
+                            margin-left: 1em;
+                        }
+                    }
+                }
+
+                .position-difference{
+                    font-size: 80px;
+
+                    .fa-chevron-up{
+                        color: green;
+                        
+                    }
+        
+                    .fa-chevron-down{
+                        color: red;
+                        
+                    }
+
+                }
+
+                
+            }
+
+        }
+
+        h1{
+            font-size: $h1-font-size;
+            font-weight: bold;
+            line-height: 1.5em;
+        }
+
+        div{   
+
+            img{
+                border-radius: $border-radius;
+                box-shadow: $box-shadow;
+                
+            }
+        }
+    }
+    .movies-slider{
+        min-height: 535px;
+        margin-bottom: 3em;
+
+        carousel{
+            z-index: 0;
+            
+
+            .carousel-cell{
+                
+
+                .position{
+                    border-radius: $border-radius;
+                    background-color: #3E82EE;
+                    width: 40px;
+                    height: 40px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: absolute;
+                    top:0px;
+                    left: 0px;
+                    z-index: 1;
+                    color: $white;
+                    font-weight: bold;
+                }
+
+                .movie-img-box{
+                    padding: 1em 1em;
+                    background: #2F343D;
+                    border-radius: $border-radius;
+                    transition: all 0.5s;
+                    position: relative;
+                    box-shadow: $box-shadow;
+                    
+                    
+
+                    &:hover{
+                        transition: 0s;
+                        background: #242932;
+                    }
+
+                    &:hover img{
+                        transition: 0s;
+                        filter: contrast(150%);
+                    }
+
+                    img{
+                        border-radius: $border-radius;
+
+                    }
+                    .movie-details{
+                        padding: 1em 1em;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        justify-content: center;
+
+                        .title{
+                            font-weight: bold;
+                            max-height: 24px;
+                            display: -webkit-box;
+                            -webkit-box-orient: vertical;
+                            -moz-box-orient: vertical;
+                            -ms-box-orient: vertical;
+                            box-orient: vertical;
+                            -webkit-line-clamp: 5;
+                            -moz-line-clamp: 5;
+                            -ms-line-clamp: 5;
+                            line-clamp: 5;
+                            overflow: hidden;
+                        }
+
+                        .credit{
+                            max-height: 24px;
+                            display: -webkit-box;
+                            -webkit-box-orient: vertical;
+                            -moz-box-orient: vertical;
+                            -ms-box-orient: vertical;
+                            box-orient: vertical;
+                            -webkit-line-clamp: 5;
+                            -moz-line-clamp: 5;
+                            -ms-line-clamp: 5;
+                            line-clamp: 5;
+                            overflow: hidden;
+                        }
+                    }
+                }
+            }
+
+        }
+
+    }
+}
+
+// mobile view
+
+@media only screen and (max-width: 768px){
+    .movies{
+
+        .background-container{
+            display: block;
+
+    
+            .current-movie-details{
+                margin-bottom: 1em;
+
+                h1{
+                    font-size: $h1-mobile-font-size;
+                }
+                .positions-container{
+    
+                    .position-difference{
+                        font-size: 30px;
+    
+                    }
+    
+                    
+                }
+    
+            }
+    
+            h1{
+                margin-bottom: 0em;
+            }
+    
+            div{   
+    
+                img{
+                    width: 100%;                 
+                }
+            }
+        }
+
+        .movies-slider{
+                       
+            carousel{
+
+                .carousel-cell{
+    
+                    .movie-img-box{
+                        
+                        .movie-details{
+  
+                            .title{
+                                
+                                font-size: $font-size-mobile;
+                            }
+                        }
+    
+                    }
+                }
+    
+            }
+    
+        }
+    }
+}

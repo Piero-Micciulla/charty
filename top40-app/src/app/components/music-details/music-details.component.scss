@@ -1,0 +1,242 @@
+@import '../../../styles.scss';
+
+.track-details-container{
+    height: 100%;
+
+    .track-details{
+        padding: 2em 0 2em 0;
+
+        .track-title-lyrics{
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 2em;
+            
+            h1{
+                font-size: $h1-font-size;
+            }
+
+            img{
+                border-radius: $border-radius;
+                width: 251px;
+            }
+
+            .artist-text-container{
+                width: 50%;
+                height: 300px;
+                overflow: scroll;
+                text-align: center;
+                border-radius: $border-radius;
+                border: 5px solid $light-blue;
+                background: $light-black;
+                padding: 1em 2em;
+                box-shadow: $box-shadow;
+
+                p{
+                    line-height: 2em
+                }
+            }
+        }
+
+        .related-tracks-slider{
+            width: 100%;
+            margin: 2em 0 2em 0;
+
+            carousel{
+                z-index: 0;
+                height: 305px !important; 
+                width: 1107px;
+                
+    
+                .carousel-cell{
+
+    
+    
+                    .album-img-box{
+                        padding: 1em 1em;
+                        background: $light-black;
+                        border-radius: $border-radius;
+                        transition: all 0.5s;
+                        position: relative;
+                        box-shadow: $box-shadow;
+                        
+                        
+    
+                        &:hover{
+                            transition: 0s;
+                            background:$dark-black;
+                        }
+
+                        &:hover img{
+                            filter: contrast(150%);
+                        }
+    
+                        img{
+                            border-radius: $border-radius;
+    
+                        }
+                        .album-details{
+                            padding: 1em 1em;
+                            display: flex;
+                            flex-direction: column;
+                            align-items: flex-start;
+                            justify-content: center;
+    
+                            .title{
+                                font-weight: bold;
+                                max-height: 24px;
+                                display: -webkit-box;
+                                -webkit-box-orient: vertical;
+                                -moz-box-orient: vertical;
+                                -ms-box-orient: vertical;
+                                box-orient: vertical;
+                                -webkit-line-clamp: 5;
+                                -moz-line-clamp: 5;
+                                -ms-line-clamp: 5;
+                                line-clamp: 5;
+                                overflow: hidden;
+                            }
+
+                            .credit{
+                                max-height: 24px;
+                                display: -webkit-box;
+                                -webkit-box-orient: vertical;
+                                -moz-box-orient: vertical;
+                                -ms-box-orient: vertical;
+                                box-orient: vertical;
+                                -webkit-line-clamp: 5;
+                                -moz-line-clamp: 5;
+                                -ms-line-clamp: 5;
+                                line-clamp: 5;
+                                overflow: hidden;
+                            }
+                        }
+                    }
+                }
+    
+            }
+    
+        }
+
+    
+
+        .artists-details-container{
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 7em;
+        
+            .artists-details{
+
+                .artists-avatars{
+                    display: flex;
+                    align-items: flex-end;
+                    margin: 1em 0 1em 0;
+                    
+                    img{
+                        height: 70px;
+                        width: 70px;
+                        border-radius: $border-radius;
+                        box-shadow: $box-shadow;
+                        margin-right: 1em;
+                    }
+                }
+
+            }
+
+            .artist-text-container{
+                width: 50%;
+                height: 300px;
+                overflow: scroll;
+                text-align: center;
+                border-radius: $border-radius;
+                border: 5px solid $light-blue;
+                background: $light-black;
+                padding: 1em 2em;
+                box-shadow: $box-shadow;
+
+                p{
+                    line-height: 2em
+                }
+            }
+        }
+
+    }
+
+}
+
+
+// mobile view
+
+@media only screen and (max-width: 768px){
+
+    .track-details-container{
+
+    
+        .track-details{
+
+    
+            .track-title-lyrics{
+                display: block;
+                
+                h1{
+                    font-size: $h1-mobile-font-size;
+                }
+    
+                img{
+                    width: 100%;
+                    margin-bottom: 1em;
+                }
+    
+                .artist-text-container{
+                    width: 78%;
+                    height: 300px;
+
+                    p{
+                        font-style: italic;
+                    }
+                }
+            }
+    
+            .related-tracks-slider{
+
+    
+                carousel{
+                    width: 264px;
+                    height: 400px !important;
+
+        
+                }
+        
+            }
+    
+        
+    
+            .artists-details-container{
+                display: block;
+            
+                .artists-details{
+    
+                    .artists-avatars{
+
+                        
+                        img{
+                            height: 70px;
+                            width: 70px;
+                        }
+                    }
+    
+                }
+    
+                .artist-text-container{
+                    width: 78%;
+                    height: 300px;
+                }
+            }
+    
+        }
+    
+    }
+
+
+}

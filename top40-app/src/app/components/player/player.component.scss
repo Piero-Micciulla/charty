@@ -1,0 +1,87 @@
+@import '../../../styles.scss';
+
+.media-footer{
+    position: relative;
+
+    .media-action-bar{
+        position: fixed; 
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 40px;
+        background: #2F343D;
+        display: flex;
+        justify-content: flex-start;
+        z-index: 100;
+        padding: 2em 2em;
+        border-top: 5px solid #3F83EF;
+
+        button{
+            color: #3F82EE;
+            box-shadow: $box-shadow;
+        }
+
+        .current-song-details{
+            display: flex;
+            align-items: center;
+            width: 44em;
+
+            img{
+                border-radius:15px;
+                height: 70px;
+                margin-right: 1em;
+                box-shadow: $box-shadow;
+            }
+
+            .artist-details-container{
+                
+                .song-title{
+                    font-weight: bold;
+                    margin-bottom: 0;
+                    margin-top: 1em;
+                }
+
+                .song-credit{
+                    font-size: 12px;
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+}
+
+
+@media only screen and (max-width: 768px){
+    .media-footer{
+
+    
+        .media-action-bar{
+
+    
+            button{
+
+            }
+    
+            .current-song-details{
+                
+    
+                img{
+
+                }
+    
+                .artist-details-container{
+                    display: none;
+                    
+                    .song-title{
+
+                    }
+    
+                    .song-credit{
+
+                    }
+                }
+            }
+        }
+    }
+
+}

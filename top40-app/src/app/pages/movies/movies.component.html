@@ -1,0 +1,62 @@
+<section class="movies">
+    <div class="background-container">
+        <div class="current-movie-details">
+            <h1 *ngIf="currentFileTitle">{{currentFileCredit | titlecase}} - {{currentFileTitle | titlecase}}</h1>
+            <h2>Producer: {{currentFileLabel | titlecase}}</h2>
+            <div class="positions-container">
+                <div class="current-previous-positions">
+                    <p *ngIf="currentFilePosition">Position: <span class="position">#{{currentFilePosition}}</span></p>
+                    <p *ngIf="currentFilePreviousPosition">Preavious position: <span class="position">#{{currentFilePreviousPosition}}</span></p>
+                </div>
+                <p class="position-difference" *ngIf="currentFilePosition && currentFilePreviousPosition && currentFilePreviousPosition! > currentFilePosition!"><i class="fas fa-chevron-up"></i> {{currentFilePreviousPosition! - currentFilePosition!}}</p>
+                <p class="position-difference" *ngIf="currentFilePosition && currentFilePreviousPosition && currentFilePreviousPosition! < currentFilePosition!"><i class="fas fa-chevron-down"></i>{{Math.abs(currentFilePreviousPosition! - currentFilePosition!)}}</p>
+            </div>
+        </div>
+        <div>
+            <img src="{{currentBackground}}" alt="{{currentFileTitle}}">
+        </div>
+    </div>
+    <div class="movies-slider">
+        <h2>Top 40 Movies</h2>
+        <carousel 
+                  [lightDOM]=true                 
+                  [pauseOnHover]=true
+                  [margin]=20
+                  [arrowsOutside]=false
+                  style="height: 400px; width: 100%;"
+        >
+            <div *ngFor="let movie of moviesFiles; let i = index"
+                 class="carousel-cell"
+                 (click)="setBackground(movie)"
+            >
+                <div class="position">#{{movie.position}}</div>
+                <div class="movie-img-box">
+                    <img  src="{{movie.cover_img_url_medium}}" alt="{{movie.title}}" />
+                    <div class="movie-details">
+                        <p class="title">{{movie.title | titlecase}}</p>
+                        <p class="credit">{{movie.credit | titlecase}}</p>
+                    </div>
+                </div>
+            </div>
+        </carousel>
+    </div>
+</section>
+
+
+
+
+<!-- <div class="movies">
+    <h1>All Movies</h1>
+    <div class="movies-grid-container">
+        <div *ngFor="let movie of top40Movies$ | async">
+            <div class="card" style="height: 500px; width: 300px">
+                <p>{{movie.position}}</p>
+                <a routerLink="/movies/{{movie.title_id}}">>{{movie.title}}</a>
+                <p>{{movie.label}}</p>
+                <p>{{movie.youtube_url}}</p>
+                <p>{{movie.itunes_track_price}}</p>
+                <p>{{movie.itunes_track_url}}</p>
+            </div>
+        </div>
+    </div>
+</div> -->

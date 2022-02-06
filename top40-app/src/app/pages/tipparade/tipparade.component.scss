@@ -1,0 +1,399 @@
+@import '../../../styles.scss';
+
+.tipparade{
+    height: 100%;
+
+    .form-container{
+
+        form{
+            display: flex;
+            align-items: center;
+
+            div{
+
+                label{
+                    color: $white;
+                    font-size: $cta-font-size;
+                    margin-right: .5em;
+                }
+
+                select{
+                    padding: 15px 20px;
+                    background: $light-black;
+                    text-align: center;
+                    font-size: $cta-font-size;
+                    color: $white;
+                    border-radius: $border-radius;
+                    font-weight: bold;
+                    cursor: pointer;
+                    width: 100px;
+                    appearance: none;
+                    text-align-last: center;
+                    margin-right: .5em;
+                    box-shadow: $box-shadow;
+                    transition: 0.5s;
+
+                    &:hover{
+                        transition: 0s;
+                        background: $dark-black;
+                    }
+
+                    &:focus {
+                        outline: none !important;
+                    }
+                }
+
+            }
+
+            button{
+                padding: 15px 15px;
+                background: $light-black;
+                font-size: $cta-font-size;
+                color: $white;
+                border-radius: $border-radius;
+                font-weight: bold;
+                cursor: pointer;
+                width: 150px;
+                box-shadow: $box-shadow;
+                transition: 0.5s;
+                border: none;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+
+                &:hover{
+                    transition: 0s;
+                    background: $dark-black;
+                }
+
+            }
+        }
+    }
+    
+    
+    .background-container{
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        width: 100%;
+        padding: 5em 0 5em 0;
+
+        .current-track-details{
+
+            a{
+                padding: 15px 15px;
+                background: $light-black;
+                font-size: $cta-font-size;
+                color: $white;
+                border-radius: $border-radius;
+                font-weight: bold;
+                cursor: pointer;
+                width: 150px;
+                box-shadow: $box-shadow;
+                transition: 0.5s;
+                border: none;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+
+                &:hover{
+                    transition: 0s;
+                    background: $dark-black;
+                }
+            }
+            .positions-container{
+                display: flex;
+                align-items: center;
+                font-size: $cta-font-size;
+
+                
+
+                .current-previous-positions{
+                    margin-right: 2em;
+
+                    p{
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+
+                        .position{
+                            border-radius: $border-radius;
+                            background-color: $light-black;
+                            width: 40px;
+                            height: 40px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            color: $white;
+                            font-weight: bold;
+                            margin-left: 1em;
+                        }
+                    }
+                }
+
+                .position-difference{
+                    font-size: 80px;
+
+                    .fa-chevron-up{
+                        color: green;
+                        
+                    }
+        
+                    .fa-chevron-down{
+                        color: red;
+                        
+                    }
+
+                }
+
+                
+            }
+
+        }
+
+        h1{
+            font-size: $h1-font-size;
+            font-weight: bold;
+            line-height: 1.5em;
+        }
+
+        div{   
+
+            img{
+                border-radius: $border-radius;
+                box-shadow: $box-shadow;
+                
+            }
+        }
+    }
+    
+
+    .tipparade-container{
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        padding: 5em 0 5em 0;
+        margin-bottom: 3em;
+
+        .weekly-tipparade-hits{   
+
+            .songs-list{
+                height: 420px;
+                overflow: scroll;
+                mask-image: linear-gradient(to bottom, black 92%, transparent 96%),
+                            linear-gradient(to top, black 92%, transparent 96%);
+                mask-size: 110% 110%;
+                mask-position: center;
+                mask-repeat:no-repeat;
+                mask-composite: intersect;
+
+                .song-container{
+                    width: 100%;
+                    border-radius: $border-radius;
+                    transition: all 0.5s;
+
+
+                    .position{
+                        border-radius: $border-radius;
+                        background-color: $dark-black;
+                        width: 30px;
+                        height: 30px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        position: absolute;
+                        top:0px;
+                        left: 0px;
+                        z-index: 1;
+                        color: $white;
+                        font-weight: bold;
+                        transition: 0.2s;
+                    }
+
+                    &:hover{
+                        transition: 0s;
+                        background: $dark-black;
+                    }
+
+                    .fa-play-circle{
+                        opacity: 0;
+                        transition: 0.2s;
+                        color: $light-blue;
+                        
+
+                    }
+
+                    &:hover .fa-play-circle{
+                        opacity: 1;
+                    }
+
+                    &:hover .position{
+                        background-color: $light-blue;
+                    }
+
+                    &:hover img{
+                        filter: contrast(150%);
+                    }
+
+                        img{
+                            width: 50px;
+                            height: 50px;
+                            border-radius: $border-radius;
+                            cursor: pointer;
+                            box-shadow: $box-shadow;
+                        }
+
+                        .socials{
+                            width: 100px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+
+                            i{
+                                font-size: $h1-font-size;
+                                cursor: pointer;
+                            }
+
+                            .fa-youtube-square{
+                                color: #FC0101;
+                                box-shadow: $box-shadow;
+                            }
+
+                            .fa-itunes{
+                                color: $light-blue;
+                                box-shadow: $box-shadow;
+                            }
+
+
+                        }
+                }
+            }
+
+        }
+
+        .screen{
+            width: 50%;
+            height: 420px;
+            position: relative;
+            box-shadow: $box-shadow;
+            border-radius: $border-radius;
+            
+            iframe{
+                position: absolute;
+                top: 0;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
+
+// mobile view
+
+@media only screen and (max-width: 768px){
+    .tipparade{
+    
+        .form-container{
+
+            form{
+
+                display: block;
+
+                div{
+                    margin: 1em 0em;
+
+                    label{
+                        font-size: $font-size-mobile;
+                    }
+
+                    select{
+                        font-size: $font-size-mobile;
+                        padding: 10px 20px;
+                        width: 82px;               
+                    }
+                }
+
+                button{
+                    font-size: $font-size-mobile;
+                    padding: 12px 15px;
+                    width: 100px;
+                }
+            }
+
+        }
+
+        .background-container{
+            display: block;
+
+    
+            .current-track-details{
+                margin-bottom: 1em;
+
+                h1{
+                    font-size: $h1-mobile-font-size;
+                }
+                .positions-container{
+    
+                    .position-difference{
+                        font-size: 30px;
+                    }                  
+                }   
+            }
+    
+            h1{
+                margin-bottom: 0em;
+            }
+    
+            div{   
+    
+                img{
+                    width: 100%;                   
+                }
+            }
+        }
+
+
+        .tipparade-container{
+        display: block;
+        padding: 5em 0 5em 0;
+
+        .weekly-tipparade-hits{   
+
+            margin-bottom: 1em;
+            .songs-list{
+                
+
+                .song-container{
+                    justify-content: space-between;
+
+                    .song-details{
+                        display: none;
+                    }
+                        img{                          
+                            margin-right: 70px;
+                        }
+
+                        .socials{
+                            width: 100px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+
+                            i{
+                                font-size: $h1-font-size;
+                                
+                            }
+                        }
+                }
+            }
+
+        }
+
+        .screen{
+            
+            width: 100%;
+            height: 300px;
+        }
+    }
+    }
+}
